@@ -19,6 +19,12 @@ language's Bible edition:
                                 psalter. The Synodal is modern Russian and is
                                 deliberately NOT accepted here.
 
+VERSE ALIGNMENT DIFFERS BETWEEN PSALTERS. The Slavonic numbers a psalm's
+superscription as verse 0 and begins the body at verse 1; Brenton and Swete
+number the superscription 1-2 and begin the body at verse 3. So a verse RANGE
+means different things in different psalters, and prayer documents must cite
+whole psalms only. A test enforces that.
+
 A language whose psalter is not loaded is left empty and reported. Filling it
 from the nearest available Bible would put a different rendering of the psalm
 into someone's rule than the one their prayer book prints — wrong in a way
@@ -71,6 +77,13 @@ class Command(BaseCommand):
                 if b.get("type") != "psalm":
                     continue
                 ref = b.get("ref", "")
+                if ":" in ref:
+                    raise CommandError(
+                        f"Psalm reference {ref!r} carries a verse range. "
+                        "Psalters disagree on verse numbering — the Slavonic "
+                        "superscription is verse 0, Brenton's is 1-2 — so a "
+                        "range would select different text in each language. "
+                        "Cite whole psalms in prayer documents.")
                 numbering = b.get("numbering", "masoretic")
                 text = dict(b.get("text") or {})
                 sources = dict(b.get("sources") or {})

@@ -18,7 +18,8 @@ Formats vary by source, so the input shape is auto-detected:
                  are handled: lines of "1:1 text…" (byztxt/greektext-antoniades)
                  JSON element lists (TehShrike/world-english-bible), and
                  word-per-line "book.chapter.verse word" (nathans/lxx-swete),
-                 and eBible HTML, one file per chapter (Brenton).
+                 eBible HTML one file per chapter (Brenton), and Ponomar
+                 ".text" files ("#chapter" then "n| verse").
 
     manage.py load_scripture rus-synodal.zefania.xml --edition synodal
 """
@@ -73,6 +74,10 @@ class Command(BaseCommand):
             raise CommandError(f"No such file: {src}")
 
         books: dict[str, dict] = defaultdict(lambda: defaultdict(dict))
+
+        if src.is_file() and src.suffix.lower() == ".text":
+            self._ponomar_text(src, books)
+            return self._write(books, opts["edition"])
 
         if src.is_dir():
             if any(src.glob("*.json")):
@@ -276,6 +281,29 @@ class Command(BaseCommand):
                 text = " ".join(text.split())
                 if text:
                     books[code][chapter][vnum] = text
+
+    def _ponomar_text(self, src: Path, books: dict) -> None:
+        """Ponomar's plain-text scripture: "#n" opens a chapter, "n| text" is a
+        verse. The filename names the book.
+
+        Church Slavonic carries combining marks and titlo above the line; the
+        text is stored exactly as given, with no normalisation, because folding
+        those away would change what the reader sees in their prayer book.
+        """
+        code = code_for(src.stem)
+        if not code:
+            raise CommandError(f"Unrecognised book file {src.name}.")
+        chapter = None
+        for line in src.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line.startswith("#"):
+                chapter = line[1:].strip()
+                continue
+            if "|" in line and chapter:
+                num, _, text = line.partition("|")
+                num, text = num.strip(), text.strip()
+                if num.isdigit() and text:
+                    books[code][chapter][num] = text
 
     def _write(self, books: dict, edition: str):
         out = DEST / edition

@@ -30,6 +30,26 @@ CC BY-SA binds the *text*, not this application's own code, so it does not
 force the app open-source. It does mean the Greek Old Testament must stay
 attributed and redistributable under the same terms.
 
+**Church Slavonic Psalter (Елизаветинская Библия, 1751)** — taken from the
+Ponomar liturgics suite, `Ponomar/languages/cu/bible/elis/Psalm.text`.
+Source: <https://github.com/typiconman/ponomar>
+
+> **OPEN LICENSING QUESTION — resolve before public release.**
+> The Ponomar *repository* is licensed GPL v3. The Elizabeth Bible itself dates
+> from 1751 and is public domain by age, and a licence cannot encumber a work
+> its holder does not own — so the GPL most likely covers Ponomar's software
+> suite rather than the scripture files that sit in the same tree. That is a
+> reasonable reading, not a confirmed one.
+>
+> The Slavonic Computing Initiative (sci.ponomar.net) has been asked to confirm
+> whether the GPL extends to the text files under `Ponomar/languages/`. Record
+> their answer here when it arrives.
+>
+> If they say the text IS GPL-covered, replace it: GPL and App Store
+> distribution conflict, and the parish should not be distributing anything in
+> violation. `manage.py load_scripture <file> --edition elizabeth` makes the
+> swap a single command, and only the Psalter is used.
+
 ## Prayers
 
 Traditional received English, Greek and Church Slavonic, in the forms in

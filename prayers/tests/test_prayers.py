@@ -82,14 +82,20 @@ class TestAssembler(unittest.TestCase):
         self.assertEqual(asked, [],
                          "a prayer document reached into the Bible store")
 
-    def test_a_language_without_a_psalter_is_left_empty(self):
-        """Slavonic has no psalter loaded, so its psalms carry no text — they
-        are not filled from the Synodal Bible that IS loaded."""
+    def test_psalm_text_comes_only_from_a_designated_psalter(self):
+        """Slavonic psalms must come from the Church Slavonic psalter, never
+        from the Synodal Bible that is also loaded. Earlier this test asserted
+        the text stayed absent, which was only true while no psalter existed;
+        the durable invariant is where the text comes from.
+        """
+        from parish.management.commands.bake_psalms import PRAYER_PSALTERS
         built = assemble("hour-sixth", self.day)
         psalms = [b for b in built["blocks"] if b["type"] == "psalm"]
         self.assertEqual(len(psalms), 3)
         for b in psalms:
-            self.assertNotIn("ru", b["text"], f"{b['ref']} borrowed Slavonic text")
+            for lang, source in (b.get("sources") or {}).items():
+                self.assertEqual(source, PRAYER_PSALTERS[lang],
+                                 f"{b['ref']} took {lang} from {source}")
 
     def test_sourced_psalm_text_is_emitted(self):
         from prayers.assembler import _expand
@@ -415,3 +421,49 @@ class TestBookAliasTable(unittest.TestCase):
                                ("John", "JHN"), ("Ecclesiastes", "ECC"),
                                ("Sirach", "SIR"), ("1 Corinthians", "1CO")):
             self.assertEqual(code_for(name), expected, f"{name} did not resolve")
+
+
+class TestPsalterAlignment(unittest.TestCase):
+    """Psalters disagree about verse numbering, so prayer rules cite whole
+    psalms only.
+
+    The Church Slavonic psalter numbers a psalm's superscription as verse 0 and
+    begins the body at verse 1. Brenton and Swete number the superscription 1-2
+    and begin the body at verse 3. A verse range would therefore select
+    different text in each language — silently, and only for some psalms.
+    """
+
+    def test_prayer_psalms_carry_no_verse_range(self):
+        for doc_id, doc in catalogue().items():
+            for b in doc["blocks"]:
+                if b.get("type") != "psalm":
+                    continue
+                self.assertNotIn(":", b.get("ref", ""),
+                                 f"{doc_id}: {b.get('ref')} has a verse range")
+
+    def test_all_three_psalters_are_septuagint_numbered(self):
+        """All three carry 151 psalms. Psalm 151 exists only in the LXX, so its
+        presence is the check that a psalter follows Septuagint numbering."""
+        import json
+        from pathlib import Path
+        import prayers.scripture as sc
+        from prayers.scripture import available
+        root = Path(sc.__file__).parent / "data" / "scripture"
+        for edition in ("elizabeth", "brenton", "swete"):
+            if edition not in available():
+                continue
+            psa = json.loads((root / edition / "PSA.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(psa), 151, f"{edition} is not LXX-numbered")
+
+    def test_every_prayer_psalm_has_all_three_languages(self):
+        from prayers.scripture import available
+        if not {"swete", "brenton", "elizabeth"} <= set(available()):
+            self.skipTest("not all three psalters loaded")
+        for doc_id in ("hour-third", "hour-sixth", "hour-ninth", "compline-small"):
+            for b in load(doc_id)["blocks"]:
+                if b.get("type") != "psalm":
+                    continue
+                self.assertEqual(sorted(b["text"]), ["el", "en", "ru"],
+                                 f"{doc_id}: {b['ref']} is incomplete")
+                self.assertEqual(b["sources"]["ru"], "elizabeth")
+                self.assertEqual(b["sources"]["en"], "brenton")

@@ -192,12 +192,15 @@ app never renders an empty heading and we always know what is outstanding.
    |---|---|---|
    | `el` | Swete's Septuagint | **done** — the Horologion's psalms *are* the LXX |
    | `en` | Brenton | **done** — LXX-based, as an English Orthodox psalter is |
-   | `ru` | Church Slavonic Psalter | outstanding; the Synodal is refused |
+   | `ru` | Church Slavonic Psalter (Elizabeth) | **done** — see the licensing note in CREDITS.md |
 
    The refusals are deliberate and tested. A language without its psalter is
    left empty rather than borrowing from the nearest Bible.
+   Psalters disagree on verse numbering — the Slavonic superscription is verse
+   0, Brenton's is verses 1-2 — so prayer documents cite **whole psalms only**,
+   enforced by both the bake command and a test.
 5. **Troparia.** Every `proper` slot is still unfilled in all three languages —
-   366 days of hymn texts. This is the largest remaining content gap.
+   366 days of hymn texts. This is now the only remaining gap in the rule.
 6. **Translations.** Greek and Slavonic cover the Great Feasts, the movable
    cycle and the invariable prayers. The long tail of the Menaion is
    English-only. `translation_report` has the exact numbers.
