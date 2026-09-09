@@ -328,9 +328,17 @@ class TestLectionaryCourse(unittest.TestCase):
         wednesday = p - timedelta(days=46)
         self.assertEqual(wednesday.weekday(), 2)
         r = readings_detail(wednesday, -46)
-        self.assertEqual(r["kind"], "lenten_old_testament")
-        self.assertEqual(r["courses"], ["GEN", "PRO", "ISA"])
-        self.assertIn("vespers", r["services"])
+        self.assertEqual(r["status"], "appointed")
+        sources = {e["source"] for e in r["readings"]}
+        self.assertIn("Vespers", sources)
+        self.assertIn("6th Hour", sources)
+        # No Gospel: the full Liturgy is not served on a Lenten weekday.
+        self.assertNotIn("Gospel", sources)
+        # orthocal marks Old Testament pericopes with a generic book of "OT";
+        # the actual book is carried in the display reference.
+        shown = " ".join(e["display"] for e in r["readings"])
+        for book in ("Genesis", "Proverbs", "Isaiah"):
+            self.assertIn(book, shown, f"{book} not appointed: {shown}")
 
     def test_no_day_of_the_year_claims_to_have_nothing_appointed(self):
         """Every day has readings; the only question is whether we hold them."""
@@ -399,3 +407,46 @@ class TestGospelCourseSplit(unittest.TestCase):
         _, off = reference_pascha(sunday)
         self.assertEqual(sunday.weekday(), 6)
         self.assertEqual(course_for(sunday, off)["gospel"], "LUK")
+
+
+
+class TestImportedLectionary(unittest.TestCase):
+    """The imported daily readings, keyed by paschal offset.
+
+    orthocal's `pdist` is the same number as this project's `pascha_offset`,
+    so the tables line up with no translation.
+    """
+
+    def test_a_known_weekday_matches_the_published_reading(self):
+        from liturgics.lectionary import readings_detail
+        d = date(2026, 9, 9)
+        _, off = reference_pascha(d)
+        self.assertEqual(off, 150)
+        r = readings_detail(d, off)
+        common = {e["display"] for e in r["readings"] if e["tradition"] == "common"}
+        self.assertIn("Galatians 3:15-22", common)
+        self.assertIn("Mark 6:7-13", common)
+
+    def test_greek_tradition_rows_are_kept_and_slavic_dropped(self):
+        from liturgics.lectionary import imported
+        traditions = {e["tradition"]
+                      for group in (imported()["movable"], imported()["fixed"])
+                      for entries in group.values() for e in entries}
+        self.assertEqual(traditions, {"common", "greek"})
+
+    def test_coverage_is_effectively_the_whole_year(self):
+        from liturgics.lectionary import readings_detail
+        d, appointed, total = date(2027, 1, 1), 0, 0
+        while d.year == 2027:
+            _, off = reference_pascha(d)
+            appointed += readings_detail(d, off)["status"] == "appointed"
+            total += 1
+            d += timedelta(days=1)
+        self.assertGreater(appointed / total, 0.95, "lectionary coverage regressed")
+
+    def test_references_use_a_colon_not_a_dot(self):
+        from liturgics.lectionary import imported
+        for entries in imported()["movable"].values():
+            for e in entries:
+                self.assertNotRegex(e["display"], r"\d\.\d",
+                                    f"{e['display']} kept orthocal's dot form")

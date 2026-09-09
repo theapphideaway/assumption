@@ -183,6 +183,46 @@ Converting an already-Septuagint-numbered edition shifts the psalm twice.
 The API reports these in a `missing` array on every prayer response, so the
 app never renders an empty heading and we always know what is outstanding.
 
+1. **Daily readings — imported, ~97% of days.** `manage.py import_lectionary`
+   reads orthocal's calendarium fixture (MIT) and writes
+   `liturgics/data/lectionary.json`. orthocal's `pdist` is this project's
+   `pascha_offset`, so movable readings key straight across; fixed readings key
+   month-day. Common and Greek rows are kept and Slavic dropped.
+
+   Covers the Epistle and Gospel, plus Vespers and Sixth Hour lessons, Matins
+   Gospels, the Twelve Passion Gospels and the Royal Hours. A Lenten weekday
+   correctly yields Genesis and Proverbs at Vespers and Isaiah at the Sixth
+   Hour, with no Gospel, since the full Liturgy is not served.
+
+   The remaining gap is roughly twelve days a year, in the stretch after
+   Pentecost that runs long when Pascha falls very late. orthocal resolves
+   those with reserve-week logic in code rather than data; those days still
+   report `unsourced` with their course and week.
+
+2. **Ecclesiastes is missing in Greek.** Swete supplies a polytonic Greek Old
+   Testament *with* the Orthodox deuterocanon — Tobit, Judith, Wisdom, Sirach,
+   Baruch, 1-3 Maccabees, Susanna, Bel — but the First1KGreek repo has no
+   Ecclesiastes. Note Ecclesiasticus is Sirach, a different book.
+   **Swete is CC BY-SA 4.0, not public domain: attribution is required.**
+3. **The Synodal file is the 66-book canon.** The Orthodox Old Testament is
+   larger — Tobit, Judith, Wisdom, Sirach, Baruch, 1-3 Maccabees, the Prayer
+   of Manasseh. Readings from those report missing.
+
+**Do not infer psalm numbering from an edition's name.** A printed Synodal
+Bible is Septuagint-numbered, but the Zefania file we ingest was renumbered to
+Masoretic chapters to fit the 66-book schema, keeping the Synodal reference
+inline as `(50:3)`. It is therefore NOT in `LXX_NATIVE`. Verify each edition
+after loading: open Psalm 50 and 51 and see which one is penitential.
+
+Editions in `scripture.LXX_NATIVE` — Brenton, Rahlfs, and the Synodal psalter,
+which follows Slavonic/LXX numbering — are **not** renumbered on read.
+Converting an already-Septuagint-numbered edition shifts the psalm twice.
+
+## Content gaps
+
+The API reports these in a `missing` array on every prayer response, so the
+app never renders an empty heading and we always know what is outstanding.
+
 1. **Weekday lectionary — machinery done, ~77% of days still unsourced.**
    Sundays, Great Feasts and Holy Week resolve. The course-reading engine and
    the **Lucan jump** are implemented and tested: the course of Luke begins on

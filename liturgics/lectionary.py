@@ -131,6 +131,37 @@ ELEVATION = (9, 14)
 _PERICOPES = _Path(__file__).parent / "data" / "pericopes.json"
 
 
+_IMPORTED = _Path(__file__).parent / "data" / "lectionary.json"
+
+
+@_lru(maxsize=1)
+def imported() -> dict:
+    """The full daily lectionary, when imported.
+
+    `manage.py import_lectionary` writes this from orthocal's calendarium
+    fixture (MIT). Movable readings are keyed by paschal offset — orthocal's
+    pdist is the same number — and fixed readings by month-day.
+
+    Absent, the engine falls back to the small hand-authored tables below and
+    reports the rest as unsourced.
+    """
+    if not _IMPORTED.exists():
+        return {"movable": {}, "fixed": {}}
+    return _json.loads(_IMPORTED.read_text(encoding="utf-8"))
+
+
+def _grouped(entries: list[dict]) -> dict:
+    """Collapse a day's readings into the shape the app renders."""
+    out = {"readings": entries}
+    for e in entries:
+        key = e["source"].lower()
+        if key == "gospel" and "gospel" not in out:
+            out["gospel"] = e["display"]
+        elif key == "epistle" and "epistle" not in out:
+            out["epistle"] = e["display"]
+    return out
+
+
 @_lru(maxsize=1)
 def pericopes() -> dict:
     """The weekday course tables, when someone has supplied them.
@@ -218,6 +249,12 @@ def readings_detail(d: date, offset: int) -> dict:
     would be simply wrong, and would tell a parishioner there is nothing
     appointed when in fact there are three lessons.
     """
+    table = imported()
+    entries = list(table["movable"].get(str(offset), []))
+    entries += table["fixed"].get(f"{d.month:02d}-{d.day:02d}", [])
+    if entries:
+        return {**_grouped(entries), "status": "appointed", "source": "lectionary"}
+
     got = readings_for(d, offset)
     if got:
         return {**got, "status": "appointed"}

@@ -50,6 +50,22 @@ Source: <https://github.com/typiconman/ponomar>
 > violation. `manage.py load_scripture <file> --edition elizabeth` makes the
 > swap a single command, and only the Psalter is used.
 
+## Lectionary
+
+**Daily readings** — imported from the calendarium fixture of **orthocal**, by
+Brian Glass, used under the **MIT Licence**. Common and Greek-tradition rows
+are kept; Slavic rows are dropped, Assumption being GOARCH.
+Source: <https://github.com/brianglass/orthocal-python>
+
+> MIT License. Copyright (c) Brian Glass. Permission is hereby granted, free of
+> charge, to any person obtaining a copy of this software and associated
+> documentation files, to deal in the Software without restriction. The above
+> copyright notice and this permission notice shall be included in all copies
+> or substantial portions of the Software.
+
+MIT imposes no copyleft, so this carries none of the concerns attached to the
+Church Slavonic psalter above.
+
 ## Prayers
 
 Traditional received English, Greek and Church Slavonic, in the forms in
