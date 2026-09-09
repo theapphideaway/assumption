@@ -18,8 +18,14 @@ correct one; only English forces a compromise.
                                        Orthodox use. ALREADY LXX-NUMBERED.
     el  Patriarchal Text of 1904       the official ecclesiastical text of the
                                        Church of Constantinople. Public domain,
-                                       and exactly what GOARCH reads.
-        Rahlfs Septuagint (1935)       for the Old Testament.
+                                       and exactly what GOARCH reads. NT only,
+                                       and UNACCENTED in the edition we ingest.
+        Swete's Septuagint             Old Testament, POLYTONIC, and carrying
+                                       the full Orthodox deuterocanon. Swete's
+                                       text is public domain by age; the
+                                       First1KGreek digitisation is CC BY-SA
+                                       4.0, so ATTRIBUTION IS REQUIRED.
+                                       Ecclesiastes is absent from that repo.
     ru  Синодальный перевод (1876)     the standard Russian Bible, public
                                        domain. Its psalter follows Slavonic/LXX
                                        numbering — verify on load.
@@ -65,7 +71,8 @@ EDITIONS: dict[str, str] = {
 # follows the LXX, so these are preferred for OT passages where loaded.
 OT_EDITIONS: dict[str, str] = {
     "en": "brenton",
-    "el": "rahlfs",
+    "el": "swete",      # Swete's Septuagint: polytonic, and carries the
+                        # Orthodox deuterocanon the Patriarchal NT does not.
 }
 
 # Editions whose psalms already follow Septuagint numbering. Converting these
@@ -78,7 +85,8 @@ OT_EDITIONS: dict[str, str] = {
 # NOT listed here: the penitential psalm lives at chapter 51 in that file and
 # must be converted like any Masoretic edition. The same translation from a
 # different source could well need the opposite.
-LXX_NATIVE: frozenset[str] = frozenset({"brenton", "elizabeth", "rahlfs"})
+LXX_NATIVE: frozenset[str] = frozenset(
+    {"brenton", "elizabeth", "rahlfs", "swete"})
 
 # The Septuagint and Masoretic psalters do not merely differ by one — they
 # disagree about where several psalms divide, so some LXX psalms span two

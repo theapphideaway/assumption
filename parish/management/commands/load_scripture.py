@@ -16,7 +16,8 @@ Formats vary by source, so the input shape is auto-detected:
                  <VERS vnumber="1">…</VERS>  — what open-bibles ships.
     Directory    one file per book, the filename naming the book. Two shapes
                  are handled: lines of "1:1 text…" (byztxt/greektext-antoniades)
-                 and JSON element lists (TehShrike/world-english-bible).
+                 JSON element lists (TehShrike/world-english-bible), and
+                 word-per-line "book.chapter.verse word" (nathans/lxx-swete).
 
     manage.py load_scripture rus-synodal.zefania.xml --edition synodal
 """
@@ -75,6 +76,8 @@ class Command(BaseCommand):
         if src.is_dir():
             if any(src.glob("*.json")):
                 self._element_dir(src, books)
+            elif self._is_word_per_line(src):
+                self._words_dir(src, books)
             else:
                 self._lines_dir(src, books)
             return self._write(books, opts["edition"])
@@ -183,6 +186,49 @@ class Command(BaseCommand):
                 existing = books[code][str(ch)].get(str(v))
                 books[code][str(ch)][str(v)] = (
                     f"{existing} {value}" if existing else value)
+
+    # Digitised Greek occasionally carries Latin look-alikes where a capital
+    # was typeset — visually identical, but they break search and sorting.
+    _HOMOGLYPHS = str.maketrans({
+        "A": "Α", "B": "Β", "E": "Ε", "H": "Η", "I": "Ι", "K": "Κ", "M": "Μ",
+        "N": "Ν", "O": "Ο", "P": "Ρ", "T": "Τ", "X": "Χ", "Y": "Υ", "Z": "Ζ",
+    })
+
+    @staticmethod
+    def _is_word_per_line(src: Path) -> bool:
+        """One token per line, prefixed 'book.chapter.verse'."""
+        for path in sorted(src.glob("*.txt"))[:1]:
+            head = path.read_text(encoding="utf-8").splitlines()[:5]
+            return all(re.match(r"^\d+\.\d+\.\d+\s+\S+$", l) for l in head if l)
+        return False
+
+    def _words_dir(self, src: Path, books: dict) -> None:
+        """Tokenised text: each line is one word of one verse.
+
+        Words accumulate per verse in file order. Where a book appears in two
+        recensions the Theodotion version is preferred, since that is the text
+        read liturgically; the Old Greek is skipped rather than silently
+        overwriting it.
+        """
+        ref = re.compile(r"^(\d+)\.(\d+)\.(\d+)\s+(\S+)$")
+        for path in sorted(src.glob("*.txt")):
+            stem = path.stem.split(".", 1)[-1]
+            if "translatio_Graeca" in stem:
+                self.stdout.write(f"  skipping Old Greek recension: {path.name}")
+                continue
+            code = code_for(stem)
+            if not code:
+                raise CommandError(
+                    f"Unrecognised book file {path.name}. Add it to "
+                    "prayers/books.py rather than skipping it.")
+            for line in path.read_text(encoding="utf-8").splitlines():
+                m = ref.match(line)
+                if not m:
+                    continue
+                _, ch, v, word = m.groups()
+                word = word.translate(self._HOMOGLYPHS)
+                existing = books[code][ch].get(v)
+                books[code][ch][v] = f"{existing} {word}" if existing else word
 
     def _write(self, books: dict, edition: str):
         out = DEST / edition

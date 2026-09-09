@@ -96,6 +96,8 @@ what people actually say aloud. A modern Russian translation is a different
 text and reads as a study aid rather than a rule. If the parish wants both,
 add a fourth language `ru_mod` rather than replacing this one.
 
+See [CREDITS.md](CREDITS.md) for the attribution the bundled texts require.
+
 ## Prayer books and the Bible are separate
 
 Two independent content domains. Mixing them is the mistake to avoid.
@@ -134,6 +136,7 @@ that can move or disappear.
 | `web` | TehShrike/world-english-bible | 66 | 31,098 | Masoretic numbering |
 | `synodal` | open-bibles `rus-synodal.zefania.xml` | 66 | 31,352 | Masoretic-chaptered; **no deuterocanon** |
 | `patriarchal` | byztxt/greektext-antoniades | 27 (NT) | 7,956 | **Unaccented** |
+| `swete` | nathans/lxx-swete (First1KGreek) | 52 (OT) | 28,543 | **CC BY-SA — attribution required**; no Ecclesiastes |
 | `brenton` | — | — | — | no machine-readable format on eBible |
 
 ```bash
@@ -148,8 +151,11 @@ that can move or disappear.
    that text is stripped for searching, not set for reading. Correct edition
    and correct words, but a Greek reader sees it as raw immediately. Needs an
    accented Patriarchal text before it goes in front of the parish.
-2. **No Old Testament in Greek.** The Antoniades edition is New Testament only;
-   Greek OT readings report missing until a Septuagint is sourced.
+2. **Ecclesiastes is missing in Greek.** Swete supplies a polytonic Greek Old
+   Testament *with* the Orthodox deuterocanon — Tobit, Judith, Wisdom, Sirach,
+   Baruch, 1-3 Maccabees, Susanna, Bel — but the First1KGreek repo has no
+   Ecclesiastes. Note Ecclesiasticus is Sirach, a different book.
+   **Swete is CC BY-SA 4.0, not public domain: attribution is required.**
 3. **The Synodal file is the 66-book canon.** The Orthodox Old Testament is
    larger — Tobit, Judith, Wisdom, Sirach, Baruch, 1-3 Maccabees, the Prayer
    of Manasseh. Readings from those report missing.
@@ -178,11 +184,21 @@ app never renders an empty heading and we always know what is outstanding.
    `proper` slot currently reports missing rather than showing a placeholder.
 3. **Scripture. Nothing is bundled — not one verse.** The loader and reader
    exist; the text does not. See the table above for what to obtain.
-4. **Prayer-book psalms.** The psalms in the Hours and Compline are `psalm`
-   blocks with empty text, reported missing. They must be sourced from a
-   public-domain prayer book per language — NOT filled from a Bible, which
-   would put a different rendering into someone's rule than the one they say.
-5. **Translations.** Greek and Slavonic cover the Great Feasts, the movable
+4. **Prayer-book psalms — Greek done, English and Slavonic outstanding.**
+   `manage.py bake_psalms` writes psalm text into the prayer documents from
+   each tradition's own psalter, recorded in a `sources` field:
+
+   | | Psalter | Status |
+   |---|---|---|
+   | `el` | Swete's Septuagint | **done** — the Horologion's psalms *are* the LXX |
+   | `en` | Brenton | needs Brenton loaded; the WEB is Masoretic and is refused |
+   | `ru` | Church Slavonic Psalter | needs the Elizabeth Bible; the Synodal is refused |
+
+   The refusals are deliberate and tested. A language without its psalter is
+   left empty rather than borrowing from the nearest Bible.
+5. **Troparia.** Every `proper` slot is still unfilled in all three languages —
+   366 days of hymn texts. This is the largest remaining content gap.
+6. **Translations.** Greek and Slavonic cover the Great Feasts, the movable
    cycle and the invariable prayers. The long tail of the Menaion is
    English-only. `translation_report` has the exact numbers.
 

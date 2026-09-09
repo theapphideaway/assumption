@@ -67,23 +67,29 @@ class TestAssembler(unittest.TestCase):
             self.assertNotIn("scripture", kinds,
                              f"{doc_id} reads from the Bible store")
 
-    def test_prayerbook_psalms_are_reported_not_fetched(self):
-        """An unsourced psalm reports missing. It must never fall back to a
-        Bible translation, which would put a different rendering of the psalm
-        into someone's rule than the one their prayer book prints."""
-        built = assemble("hour-sixth", self.day)
-        refs = [m["ref"] for m in built["missing"] if m["type"] == "psalm"]
-        self.assertEqual(refs, ["Ps 53", "Ps 54", "Ps 90"])
-        self.assertNotIn("psalm", [b["type"] for b in built["blocks"]])
+    def test_psalm_blocks_never_consult_the_scripture_store(self):
+        """The invariant that matters: a prayer rule does not read from the
+        Bible at render time. Psalm text is baked in from the tradition's own
+        psalter beforehand, so the scripture callable must never be asked."""
+        asked = []
 
-    def test_psalms_are_not_affected_by_the_scripture_store(self):
-        """Even with a Bible loaded, prayer-book psalms stay missing until the
-        prayer-book text itself is sourced."""
-        built = assemble("hour-sixth", self.day,
-                         scripture=lambda ref, numbering="masoretic":
-                         [{"type": "verse", "n": 1, "text": {"en": "from a Bible"}}])
-        self.assertTrue(any(m["type"] == "psalm" for m in built["missing"]))
-        self.assertEqual([b for b in built["blocks"] if b["type"] == "verse"], [])
+        def spy(ref, numbering="masoretic"):
+            asked.append(ref)
+            return [{"type": "verse", "n": 1, "text": {"en": "from a Bible"}}]
+
+        for doc_id in ("hour-third", "hour-sixth", "hour-ninth", "compline-small"):
+            assemble(doc_id, self.day, scripture=spy)
+        self.assertEqual(asked, [],
+                         "a prayer document reached into the Bible store")
+
+    def test_a_language_without_a_psalter_is_left_empty(self):
+        """Slavonic has no psalter loaded, so its psalms carry no text — they
+        are not filled from the Synodal Bible that IS loaded."""
+        built = assemble("hour-sixth", self.day)
+        psalms = [b for b in built["blocks"] if b["type"] == "psalm"]
+        self.assertEqual(len(psalms), 3)
+        for b in psalms:
+            self.assertNotIn("ru", b["text"], f"{b['ref']} borrowed Slavonic text")
 
     def test_sourced_psalm_text_is_emitted(self):
         from prayers.assembler import _expand
@@ -190,11 +196,18 @@ class TestPrayerTranslations(unittest.TestCase):
         self.assertIn("Отче наш", pater["text"]["ru"])
         self.assertIn("Πάτερ ἡμῶν", pater["text"]["el"])
 
-    def test_no_block_is_slavonic_only_or_greek_only(self):
-        """English is the working language of the repo; every block must have
-        it so a gap in another language is always diffable against something."""
+    def test_authored_blocks_all_carry_english(self):
+        """English is the working language for text authored in this repo, so a
+        gap in Greek or Slavonic is always diffable against something.
+
+        Psalm blocks are exempt: their text is baked from each tradition's
+        psalter, and English waits on Brenton being loaded. That absence is
+        correct and deliberate, not an authoring oversight.
+        """
         for doc_id, doc in catalogue().items():
             for i, b in enumerate(doc["blocks"]):
+                if b.get("type") == "psalm":
+                    continue
                 t = b.get("text")
                 if t:
                     self.assertIn("en", t, f"{doc_id} block {i} has no English")
@@ -305,8 +318,67 @@ class TestLoadedScripture(unittest.TestCase):
         loaded = [d for d in root.iterdir() if d.is_dir()] if root.exists() else []
         if len(loaded) < 2:
             self.skipTest("need two editions loaded")
-        gospels = {"MAT", "MRK", "LUK", "JHN"}
-        for d in loaded:
-            names = {p.stem for p in d.glob("*.json")}
-            self.assertTrue(gospels <= names,
-                            f"{d.name} is missing gospel files: {gospels - names}")
+        # Editions differ in scope — Swete is Old Testament only, the
+        # Patriarchal text is New Testament only — so the invariant is not that
+        # every edition holds every book, but that editions sharing a book
+        # agree on its filename.
+        by_edition = {d.name: {p.stem for p in d.glob("*.json")} for d in loaded}
+        for name, books in by_edition.items():
+            self.assertTrue(books, f"{name} has no book files")
+            for code in books:
+                self.assertRegex(code, r"^[1-4A-Z]{3}$",
+                                 f"{name}: {code} is not a canonical code")
+        shared = set.intersection(*by_edition.values()) if len(by_edition) > 1 else set()
+        if {"swete", "web"} <= set(by_edition):
+            self.assertIn("PSA", by_edition["swete"] & by_edition["web"],
+                          "the Psalter should be shared under one code")
+
+
+class TestPrayerPsalters(unittest.TestCase):
+    """A prayer book's psalms must come from that tradition's psalter.
+
+    The whole point of separating prayer books from the Bible is that a rule
+    prints the text its own book prints. Substituting the nearest available
+    Bible translation would put a different rendering of the psalm in front of
+    someone than the one they say — wrong in a way that looks right.
+    """
+
+    def test_psalter_choice_is_not_the_language_bible_edition(self):
+        from parish.management.commands.bake_psalms import PRAYER_PSALTERS
+        from prayers.scripture import EDITIONS
+        # Russian: Bible is Synodal (modern Russian); the prayer psalter is the
+        # Church Slavonic Elizabeth Bible. They must not be the same.
+        self.assertEqual(EDITIONS["ru"], "synodal")
+        self.assertEqual(PRAYER_PSALTERS["ru"], "elizabeth")
+        self.assertNotEqual(PRAYER_PSALTERS["ru"], EDITIONS["ru"])
+        # English: Bible is the WEB (Masoretic); the psalter is Brenton (LXX).
+        self.assertEqual(PRAYER_PSALTERS["en"], "brenton")
+        self.assertNotEqual(PRAYER_PSALTERS["en"], EDITIONS["en"])
+
+    def test_slavonic_psalms_are_not_filled_from_the_russian_bible(self):
+        """Regression guard: the Synodal is loaded and the Slavonic psalter is
+        not, so Slavonic psalm text must stay ABSENT rather than borrow."""
+        for doc_id in ("hour-third", "hour-sixth", "hour-ninth", "compline-small"):
+            for b in load(doc_id)["blocks"]:
+                if b.get("type") != "psalm":
+                    continue
+                sources = b.get("sources") or {}
+                self.assertNotEqual(sources.get("ru"), "synodal",
+                                    f"{doc_id}: Slavonic psalm taken from a Bible")
+                self.assertNotEqual(sources.get("en"), "web",
+                                    f"{doc_id}: English psalm taken from the WEB")
+
+    def test_greek_psalms_are_present_and_sourced(self):
+        from prayers.scripture import available
+        if "swete" not in available():
+            self.skipTest("swete not loaded")
+        found = 0
+        for doc_id in ("hour-third", "hour-sixth", "hour-ninth"):
+            for b in load(doc_id)["blocks"]:
+                if b.get("type") != "psalm":
+                    continue
+                found += 1
+                self.assertTrue(b.get("text", {}).get("el"),
+                                f"{doc_id}: {b.get('ref')} has no Greek text")
+                self.assertEqual(b.get("sources", {}).get("el"), "swete")
+        self.assertEqual(found, 9, "three psalms in each of the three Hours")
