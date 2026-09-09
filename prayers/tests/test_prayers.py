@@ -221,11 +221,21 @@ class TestBibleSeparation(unittest.TestCase):
     def test_ot_edition_falls_back_when_not_loaded(self):
         self.assertEqual(edition_for_web_only("en", "Ps 50"), "web")
 
-    def test_synodal_is_treated_as_lxx_numbered(self):
-        """Russian Bibles number the psalms after the Septuagint, so Псалом 50
-        is the penitential psalm. Renumbering it would shift it twice."""
+    def test_numbering_is_a_property_of_the_file_not_the_translation(self):
+        """This test previously asserted the opposite, and the real file proved
+        it wrong — worth keeping as a record of why.
+
+        A printed Russian Synodal Bible IS Septuagint-numbered: Псалом 50 is
+        the penitential psalm. But the Zefania file we actually ingest was
+        renumbered to Masoretic chapters to fit the 66-book schema, keeping the
+        Synodal reference inline as "(50:3)". So the edition needs converting
+        like any Masoretic text, and inferring otherwise from the translation's
+        name would have served the wrong psalm every day, silently.
+
+        The rule: verify each file after loading. Never infer from the name.
+        """
         from prayers.scripture import LXX_NATIVE
-        self.assertIn("synodal", LXX_NATIVE)
+        self.assertNotIn("synodal", LXX_NATIVE)
         self.assertIn("brenton", LXX_NATIVE)
         self.assertNotIn("web", LXX_NATIVE)
 
