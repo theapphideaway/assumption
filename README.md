@@ -124,29 +124,35 @@ quotation and a licence-key API, not distribution inside an app.
 
 ### Loaded
 
+All three content languages resolve. The text is **vendored into this repo**
+(12 MB, all public domain) so the app is self-contained and deploying to
+PythonAnywhere is a `git pull` — the upstream sources are third-party repos
+that can move or disappear.
+
 | Edition | Source | Books | Verses | Caveat |
 |---|---|---|---|---|
+| `web` | TehShrike/world-english-bible | 66 | 31,098 | Masoretic numbering |
 | `synodal` | open-bibles `rus-synodal.zefania.xml` | 66 | 31,352 | Masoretic-chaptered; **no deuterocanon** |
 | `patriarchal` | byztxt/greektext-antoniades | 27 (NT) | 7,956 | **Unaccented** |
-| `web` | — | — | — | not yet loaded |
 | `brenton` | — | — | — | no machine-readable format on eBible |
 
 ```bash
 ./venv/bin/python manage.py load_scripture ~/Downloads/rus-synodal.zefania.xml --edition synodal
 ./venv/bin/python manage.py load_scripture path/to/antoniades/textonly/unicode --edition patriarchal
+./venv/bin/python manage.py load_scripture path/to/world-english-bible/json --edition web
 ```
 
-**Two problems with what is loaded, both visible to a reader:**
+**Three defects in the loaded data, all visible to a reader:**
 
 1. **The Greek is unaccented.** Zero accented vowels in 72,353 Greek letters —
-   the Antoniades text in that repo is stripped for searching, not set for
-   reading. Correct words, correct edition, but a Greek reader sees it as raw
-   immediately. Needs an accented Patriarchal text before it goes in front of
-   the parish.
-2. **The Synodal file is 66 books.** The Orthodox Old Testament is larger —
-   Tobit, Judith, Wisdom, Sirach, Baruch, 1-3 Maccabees, the Prayer of
-   Manasseh. Any reading from those reports missing. A fuller Synodal edition
-   exists; this Zefania file is the short canon.
+   that text is stripped for searching, not set for reading. Correct edition
+   and correct words, but a Greek reader sees it as raw immediately. Needs an
+   accented Patriarchal text before it goes in front of the parish.
+2. **No Old Testament in Greek.** The Antoniades edition is New Testament only;
+   Greek OT readings report missing until a Septuagint is sourced.
+3. **The Synodal file is the 66-book canon.** The Orthodox Old Testament is
+   larger — Tobit, Judith, Wisdom, Sirach, Baruch, 1-3 Maccabees, the Prayer
+   of Manasseh. Readings from those report missing.
 
 **Do not infer psalm numbering from an edition's name.** A printed Synodal
 Bible is Septuagint-numbered, but the Zefania file we ingest was renumbered to

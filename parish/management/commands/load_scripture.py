@@ -14,8 +14,9 @@ Formats vary by source, so the input shape is auto-detected:
     JSON dict    {"John": {"1": {"1": "…", "2": "…"}}}
     Zefania XML  <XMLBIBLE><BIBLEBOOK bname="John"><CHAPTER cnumber="1">
                  <VERS vnumber="1">…</VERS>  — what open-bibles ships.
-    Directory    one file per book, each line "1:1 text…", the filename naming
-                 the book — the shape byztxt/greektext-antoniades ships.
+    Directory    one file per book, the filename naming the book. Two shapes
+                 are handled: lines of "1:1 text…" (byztxt/greektext-antoniades)
+                 and JSON element lists (TehShrike/world-english-bible).
 
     manage.py load_scripture rus-synodal.zefania.xml --edition synodal
 """
@@ -72,7 +73,10 @@ class Command(BaseCommand):
         books: dict[str, dict] = defaultdict(lambda: defaultdict(dict))
 
         if src.is_dir():
-            self._lines_dir(src, books)
+            if any(src.glob("*.json")):
+                self._element_dir(src, books)
+            else:
+                self._lines_dir(src, books)
             return self._write(books, opts["edition"])
 
         if src.suffix.lower() in (".xml", ".zefania"):
@@ -146,6 +150,39 @@ class Command(BaseCommand):
                     current = (ch, v)
                 elif line.strip() and current:
                     books[code][current[0]][current[1]] += " " + line.strip()
+
+    # Element types that carry scripture text. `line text` is POETRY — psalms,
+    # proverbs, the prophets — and it is nearly as common as prose. Parsing only
+    # `paragraph text` silently drops about 44% of the Bible, most of the
+    # Psalter included, with no error and a plausible-looking verse count.
+    TEXT_ELEMENTS = ("paragraph text", "line text")
+
+    def _element_dir(self, src: Path, books: dict) -> None:
+        """A directory of per-book JSON element lists.
+
+        A verse can span several elements — across a paragraph break, or between
+        prose and poetry — so values accumulate in document order per verse
+        rather than overwriting.
+        """
+        for path in sorted(src.glob("*.json")):
+            code = code_for(path.stem)
+            if not code:
+                raise CommandError(
+                    f"Unrecognised book file {path.name}. Add it to "
+                    "prayers/books.py — skipping it would quietly ship an "
+                    "incomplete Bible.")
+            for el in json.loads(path.read_text(encoding="utf-8")):
+                if not isinstance(el, dict):
+                    continue
+                if el.get("type") not in self.TEXT_ELEMENTS:
+                    continue
+                ch, v = el.get("chapterNumber"), el.get("verseNumber")
+                value = (el.get("value") or "").strip()
+                if not (ch and v and value):
+                    continue
+                existing = books[code][str(ch)].get(str(v))
+                books[code][str(ch)][str(v)] = (
+                    f"{existing} {value}" if existing else value)
 
     def _write(self, books: dict, edition: str):
         out = DEST / edition

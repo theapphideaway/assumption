@@ -243,3 +243,70 @@ class TestBibleSeparation(unittest.TestCase):
 def edition_for_web_only(lang, ref):
     from prayers.scripture import edition_for
     return edition_for(lang, ref, loaded={"web"})
+
+
+class TestLoadedScripture(unittest.TestCase):
+    """Guards against silent data loss in the loaders.
+
+    Skipped when an edition is not loaded, so the suite still runs for anyone
+    who chooses not to vendor the text.
+    """
+
+    @staticmethod
+    def _loaded(edition):
+        from prayers.scripture import available
+        return edition in available()
+
+    def test_web_psalter_is_complete(self):
+        """Regression: the WEB JSON splits scripture across `paragraph text`
+        AND `line text`, the latter being poetry — psalms, proverbs, the
+        prophets. An earlier parser read only the first type, which would have
+        dropped roughly 44% of the Bible, most of the Psalter included, with no
+        error and a plausible-looking verse count.
+        """
+        if not self._loaded("web"):
+            self.skipTest("web edition not loaded")
+        import json
+        from pathlib import Path
+        import prayers.scripture as sc
+        psa = json.loads(
+            (Path(sc.__file__).parent / "data/scripture/web/PSA.json")
+            .read_text(encoding="utf-8"))
+        self.assertEqual(len(psa), 150, "Psalter should have 150 chapters")
+        self.assertEqual(sum(len(c) for c in psa.values()), 2461,
+                         "Psalter verse count — poetry was dropped if this fell")
+
+    def test_longest_psalm_survived_intact(self):
+        """Psalm 118 LXX / 119 Masoretic is entirely poetry and the longest
+        chapter in the Bible. If `line text` were dropped it would be empty."""
+        if not self._loaded("web"):
+            self.skipTest("web edition not loaded")
+        v = passage("Ps 118", edition="web", numbering="lxx")
+        self.assertIsNotNone(v)
+        self.assertEqual(len(v), 176)
+
+    def test_lxx_reference_lands_on_the_penitential_psalm(self):
+        """End-to-end: a prayer citing Ps 50 in LXX numbering must resolve to
+        the Miserere in every loaded edition, whatever that edition's own
+        chapter numbering happens to be."""
+        for edition in ("web", "synodal"):
+            if not self._loaded(edition):
+                continue
+            v = passage("Ps 50", edition=edition, numbering="lxx")
+            self.assertIsNotNone(v, f"{edition}: Ps 50 did not resolve")
+
+    def test_book_codes_are_shared_across_editions(self):
+        """Every edition stores under the same canonical filenames, so a
+        reference resolves regardless of the language the edition names its
+        books in."""
+        from pathlib import Path
+        import prayers.scripture as sc
+        root = Path(sc.__file__).parent / "data/scripture"
+        loaded = [d for d in root.iterdir() if d.is_dir()] if root.exists() else []
+        if len(loaded) < 2:
+            self.skipTest("need two editions loaded")
+        gospels = {"MAT", "MRK", "LUK", "JHN"}
+        for d in loaded:
+            names = {p.stem for p in d.glob("*.json")}
+            self.assertTrue(gospels <= names,
+                            f"{d.name} is missing gospel files: {gospels - names}")
