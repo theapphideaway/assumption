@@ -287,6 +287,9 @@ no `ArrayField`, no Postgres-only search — so the move is a dump and load.
 
 ## PythonAnywhere
 
+Step-by-step: **[DEPLOY.md](DEPLOY.md)**.
+
+
 1. **The $5 Hacker plan is the floor, not the free tier.** Free accounts can
    only reach a proxy whitelist, and `api.push.apple.com` is not on it — push
    notifications do not work at all on free. Hacker also buys the custom domain.

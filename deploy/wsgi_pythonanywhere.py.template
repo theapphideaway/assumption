@@ -1,0 +1,41 @@
+"""
+PythonAnywhere WSGI configuration.
+
+Copy the contents of this file into the WSGI file PythonAnywhere creates for
+you - the Web tab links to it, at a path like:
+
+    /var/www/<username>_pythonanywhere_com_wsgi.py
+
+Replace <username> below, then reload the web app.
+
+Environment variables set in a Bash console do NOT reach the web app: it runs
+as a separate process. They are read here from a .env file instead, which is
+gitignored so the secret key never enters the repository.
+"""
+
+import os
+import sys
+from pathlib import Path
+
+USERNAME = "<username>"
+PROJECT = Path("/home/{}/assumption".format(USERNAME))
+
+if str(PROJECT) not in sys.path:
+    sys.path.insert(0, str(PROJECT))
+
+# Load .env. Deliberately minimal - no dependency, and settings fail loudly
+# rather than starting the site with a development secret key.
+env_file = PROJECT / ".env"
+if env_file.exists():
+    for line in env_file.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        os.environ.setdefault(key.strip(), value.strip())
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+
+from django.core.wsgi import get_wsgi_application  # noqa: E402
+
+application = get_wsgi_application()

@@ -145,7 +145,36 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
+# collectstatic writes here; PythonAnywhere serves it as a static file mapping
+# so the admin renders. Without this the panel loads unstyled.
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# --- production hardening -------------------------------------------------
+# Only applied when DEBUG is off, so local development is unaffected.
+if not DEBUG:
+    # PythonAnywhere terminates TLS at its proxy and forwards the scheme.
+    # Without this, SECURE_SSL_REDIRECT sees "http" every time and loops.
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = "DENY"
+
+    # HSTS is deliberately opt-in. It is effectively irreversible for its
+    # duration, and this app starts on a shared pythonanywhere.com subdomain
+    # before moving to the parish's own domain. Turn it on once the real
+    # domain is live and settled, never on the shared one.
+    SECURE_HSTS_SECONDS = int(os.environ.get("DJANGO_HSTS_SECONDS", "0"))
+    if SECURE_HSTS_SECONDS:
+        SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+        SECURE_HSTS_PRELOAD = True
+
+    if SECRET_KEY.startswith("dev-only"):
+        raise RuntimeError(
+            "DJANGO_SECRET_KEY is unset in production. Generate one with:\n"
+            "  python -c \"import secrets; print(secrets.token_urlsafe(64))\"")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
