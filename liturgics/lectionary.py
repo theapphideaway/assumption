@@ -157,22 +157,47 @@ def lucan_jump(year: int) -> date:
     return sunday_after + _td(days=1)
 
 
+# After Pentecost the SUNDAY and WEEKDAY gospel courses diverge. Sundays run
+# through Matthew, but weekdays switch to Mark partway; the same happens in the
+# Lucan period. Treating a day's course as one value gets weekdays wrong for
+# roughly a third of the year — verified against a published daily reading for
+# Wednesday 9 September 2026, week 15 after Pentecost, which appoints Mark.
+#
+# NEEDS_CONFIRMATION: the switch weeks below are standard Byzantine practice,
+# but jurisdictions differ on the exact boundary. Confirm with Father.
+MATTHEW_WEEKDAY_WEEKS = 11      # weeks 1-11 weekdays read Matthew, then Mark
+LUKE_WEEKDAY_WEEKS = 12         # weeks 1-12 weekdays read Luke, then Mark
+
+
 def course_for(d: date, offset: int) -> dict | None:
-    """Which Gospel course a date falls in, and how far into it.
+    """Which gospel course a date falls in, and how far into it.
 
     Returns None inside the Triodion and Pentecostarion, which have their own
     appointed readings rather than a course.
     """
     if offset < 0 or offset <= 49:
         return None                      # Triodion, Holy Week, Pentecostarion
+
     jump = lucan_jump(d.year)
+    is_sunday = d.weekday() == 6
+
     if d < jump:
-        start = None                     # Matthew course, from the Monday after
-        pentecost = d - _td(days=offset - 50)
+        pentecost = d - _td(days=offset - 49)
         week = ((d - pentecost).days // 7) + 1
-        return {"gospel": "MAT", "week": week, "day": d.weekday()}
-    week = ((d - jump).days // 7) + 1
-    return {"gospel": "LUK", "week": week, "day": d.weekday()}
+        sunday_gospel = "MAT"
+        weekday_gospel = "MAT" if week <= MATTHEW_WEEKDAY_WEEKS else "MRK"
+    else:
+        week = ((d - jump).days // 7) + 1
+        sunday_gospel = "LUK"
+        weekday_gospel = "LUK" if week <= LUKE_WEEKDAY_WEEKS else "MRK"
+
+    return {
+        "gospel": sunday_gospel if is_sunday else weekday_gospel,
+        "sunday_gospel": sunday_gospel,
+        "weekday_gospel": weekday_gospel,
+        "week": week,
+        "day": d.weekday(),
+    }
 
 
 def lenten_weekday(offset: int, weekday: int) -> bool:

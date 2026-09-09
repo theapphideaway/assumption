@@ -363,3 +363,39 @@ class TestLectionaryCourse(unittest.TestCase):
             status = readings_detail(d, off)["status"]
             self.assertIn(status, ("appointed", "unsourced"))
             d += timedelta(days=1)
+
+
+class TestGospelCourseSplit(unittest.TestCase):
+    """Sunday and weekday gospel courses diverge after Pentecost.
+
+    Sundays run through Matthew while weekdays switch to Mark partway, and the
+    same happens in the Lucan period. Treating a day's course as a single value
+    got weekdays wrong for roughly a third of the year. Caught by checking the
+    engine against a published daily reading.
+    """
+
+    def test_week_fifteen_weekday_reads_mark_not_matthew(self):
+        from liturgics.lectionary import course_for
+        d = date(2026, 9, 9)                     # Wednesday, week 15
+        _, off = reference_pascha(d)
+        c = course_for(d, off)
+        self.assertEqual(c["week"], 15)
+        self.assertEqual(c["gospel"], "MRK", "weekday should have moved to Mark")
+        self.assertEqual(c["sunday_gospel"], "MAT", "Sundays stay in Matthew")
+
+    def test_early_weeks_weekday_still_reads_matthew(self):
+        from liturgics.lectionary import course_for
+        p = pascha(2026)
+        d = p + timedelta(days=52)               # Tuesday, week 1 after Pentecost
+        _, off = reference_pascha(d)
+        c = course_for(d, off)
+        self.assertLessEqual(c["week"], 2)
+        self.assertEqual(c["gospel"], "MAT")
+
+    def test_after_the_lucan_jump_sundays_read_luke(self):
+        from liturgics.lectionary import course_for, lucan_jump
+        jump = lucan_jump(2026)
+        sunday = jump + timedelta(days=6)
+        _, off = reference_pascha(sunday)
+        self.assertEqual(sunday.weekday(), 6)
+        self.assertEqual(course_for(sunday, off)["gospel"], "LUK")
