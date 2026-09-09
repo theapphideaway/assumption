@@ -14,6 +14,8 @@ Formats vary by source, so the input shape is auto-detected:
     JSON dict    {"John": {"1": {"1": "…", "2": "…"}}}
     Zefania XML  <XMLBIBLE><BIBLEBOOK bname="John"><CHAPTER cnumber="1">
                  <VERS vnumber="1">…</VERS>  — what open-bibles ships.
+    Directory    one file per book, each line "1:1 text…", the filename naming
+                 the book — the shape byztxt/greektext-antoniades ships.
 
     manage.py load_scripture rus-synodal.zefania.xml --edition synodal
 """
@@ -29,8 +31,29 @@ from django.core.management.base import BaseCommand, CommandError
 DEST = Path(__file__).resolve().parents[3] / "prayers" / "data" / "scripture"
 
 
-def _slug(book: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", book.lower())
+from prayers.books import code_for
+
+
+# Some editions prefix each verse with its reference under a different
+# numbering, e.g. the Synodal Zefania file writes "(49:1) Псалом Асафа…".
+# Useful provenance, but it renders as noise in the app, so it comes off here.
+_INLINE_REF = re.compile(r"^\(\d+[:.]\d+[a-z]?\)\s*")
+
+
+def _strip_inline_ref(text: str) -> str:
+    return _INLINE_REF.sub("", text, count=1)
+
+
+def _slug(book: str, number: int | None = None) -> str:
+    """Canonical code, so every edition stores under the same filenames
+    regardless of what language it names its books in."""
+    code = code_for(book, number)
+    if not code:
+        raise CommandError(
+            f"Unrecognised book {book!r} (number={number}). Add it to "
+            "prayers/books.py rather than letting it fall back to a slug — a "
+            "silent fallback writes a file nothing will ever look up.")
+    return code
 
 
 class Command(BaseCommand):
@@ -48,6 +71,10 @@ class Command(BaseCommand):
 
         books: dict[str, dict] = defaultdict(lambda: defaultdict(dict))
 
+        if src.is_dir():
+            self._lines_dir(src, books)
+            return self._write(books, opts["edition"])
+
         if src.suffix.lower() in (".xml", ".zefania"):
             self._zefania(src, books)
             return self._write(books, opts["edition"])
@@ -60,7 +87,7 @@ class Command(BaseCommand):
                 if not book:
                     raise CommandError(
                         "List rows need a 'book_name' or 'book' key.")
-                books[book][str(row["chapter"])][str(row["verse"])] = \
+                books[_slug(book)][str(row["chapter"])][str(row["verse"])] = \
                     row["text"].strip()
         elif isinstance(raw, dict):
             for book, chapters in raw.items():
@@ -82,21 +109,50 @@ class Command(BaseCommand):
         """
         root = ET.parse(src).getroot()
         for book in root.iter("BIBLEBOOK"):
-            name = book.get("bname") or f"book{book.get('bnumber')}"
+            try:
+                bnum = int(book.get("bnumber") or 0)
+            except ValueError:
+                bnum = 0
+            name = _slug(book.get("bname") or "", bnum or None)
             for chapter in book.iter("CHAPTER"):
                 cnum = chapter.get("cnumber")
                 for verse in chapter.iter("VERS"):
                     vnum = verse.get("vnumber")
                     text = " ".join(t.strip() for t in verse.itertext() if t.strip())
+                    text = _strip_inline_ref(text)
                     if cnum and vnum and text:
                         books[name][str(cnum)][str(vnum)] = text
+
+    def _lines_dir(self, src: Path, books: dict) -> None:
+        """A directory of per-book files whose lines are "chapter:verse text".
+
+        Continuation lines — those not opening with a reference — are appended
+        to the verse above, so a verse wrapped across lines is not truncated.
+        """
+        ref = re.compile(r"^\s*(\d+):(\d+)\s+(.*)$")
+        for path in sorted(src.glob("*")):
+            if not path.is_file() or path.suffix.lower() not in (".txt", ".ant"):
+                continue
+            code = code_for(path.stem)
+            if not code:
+                self.stdout.write(f"  skipping unrecognised book file {path.name}")
+                continue
+            current = None
+            for line in path.read_text(encoding="utf-8").splitlines():
+                m = ref.match(line)
+                if m:
+                    ch, v, text = m.group(1), m.group(2), m.group(3).strip()
+                    books[code][ch][v] = text
+                    current = (ch, v)
+                elif line.strip() and current:
+                    books[code][current[0]][current[1]] += " " + line.strip()
 
     def _write(self, books: dict, edition: str):
         out = DEST / edition
         out.mkdir(parents=True, exist_ok=True)
         verses = 0
         for book, chapters in books.items():
-            (out / f"{_slug(book)}.json").write_text(
+            (out / f"{book}.json").write_text(
                 json.dumps(chapters, ensure_ascii=False), encoding="utf-8")
             verses += sum(len(c) for c in chapters.values())
 

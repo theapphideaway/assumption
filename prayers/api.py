@@ -39,12 +39,27 @@ def _payload(d):
         missing.extend(built.pop("missing"))
         docs.append(built)
 
+    # Resolve the day's readings into actual text. A citation nobody can read
+    # without leaving the app is a citation nobody reads.
+    readings = dict(day["readings"] or {})
+    if readings and scripture:
+        for key in ("gospel", "epistle"):
+            ref = readings.get(key)
+            if not ref:
+                continue
+            verses = scripture(ref)
+            if verses:
+                readings[f"{key}_text"] = verses
+            else:
+                missing.append({"type": "reading", "ref": ref,
+                                "why": "passage not in the loaded editions"})
+
     by_slot = {s: [d_ for d_ in docs if d_["slot"] == s] for s in SLOTS}
     return {
         "date": day["date"],
         "suggested": slot_for_hour(timezone.localtime().hour),
         "day": {"title": day["title"], "fast": day["fast"],
-                "tone": day["tone"], "readings": day["readings"]},
+                "tone": day["tone"], "readings": readings or None},
         "slots": by_slot,
         "scripture_editions": editions,
         "missing": missing,

@@ -122,9 +122,37 @@ is preferred for OT passages where one is loaded. **The ESV and NKJV are
 copyrighted** and cannot be bundled; Crossway's ESV permissions cover
 quotation and a licence-key API, not distribution inside an app.
 
+### Loaded
+
+| Edition | Source | Books | Verses | Caveat |
+|---|---|---|---|---|
+| `synodal` | open-bibles `rus-synodal.zefania.xml` | 66 | 31,352 | Masoretic-chaptered; **no deuterocanon** |
+| `patriarchal` | byztxt/greektext-antoniades | 27 (NT) | 7,956 | **Unaccented** |
+| `web` | — | — | — | not yet loaded |
+| `brenton` | — | — | — | no machine-readable format on eBible |
+
 ```bash
-./venv/bin/python manage.py load_scripture web.json --edition web
+./venv/bin/python manage.py load_scripture ~/Downloads/rus-synodal.zefania.xml --edition synodal
+./venv/bin/python manage.py load_scripture path/to/antoniades/textonly/unicode --edition patriarchal
 ```
+
+**Two problems with what is loaded, both visible to a reader:**
+
+1. **The Greek is unaccented.** Zero accented vowels in 72,353 Greek letters —
+   the Antoniades text in that repo is stripped for searching, not set for
+   reading. Correct words, correct edition, but a Greek reader sees it as raw
+   immediately. Needs an accented Patriarchal text before it goes in front of
+   the parish.
+2. **The Synodal file is 66 books.** The Orthodox Old Testament is larger —
+   Tobit, Judith, Wisdom, Sirach, Baruch, 1-3 Maccabees, the Prayer of
+   Manasseh. Any reading from those reports missing. A fuller Synodal edition
+   exists; this Zefania file is the short canon.
+
+**Do not infer psalm numbering from an edition's name.** A printed Synodal
+Bible is Septuagint-numbered, but the Zefania file we ingest was renumbered to
+Masoretic chapters to fit the 66-book schema, keeping the Synodal reference
+inline as `(50:3)`. It is therefore NOT in `LXX_NATIVE`. Verify each edition
+after loading: open Psalm 50 and 51 and see which one is penitential.
 
 Editions in `scripture.LXX_NATIVE` — Brenton, Rahlfs, and the Synodal psalter,
 which follows Slavonic/LXX numbering — are **not** renumbered on read.

@@ -41,6 +41,8 @@ from __future__ import annotations
 import json
 import re
 from functools import lru_cache
+
+from .books import code_for
 from pathlib import Path
 
 _DATA = Path(__file__).parent / "data" / "scripture"
@@ -67,11 +69,16 @@ OT_EDITIONS: dict[str, str] = {
 }
 
 # Editions whose psalms already follow Septuagint numbering. Converting these
-# would shift the psalm twice — the classic double-offset bug. VERIFY each on
-# load: the Russian Synodal psalter follows Slavonic/LXX numbering, so Псалом 50
-# should be the penitential psalm, but confirm against the file you ingest.
-LXX_NATIVE: frozenset[str] = frozenset(
-    {"brenton", "elizabeth", "rahlfs", "synodal"})
+# would shift the psalm twice.
+#
+# VERIFY EVERY EDITION ON LOAD — do not infer this from the translation's name.
+# A printed Russian Synodal Bible is LXX-numbered, but the Zefania file we
+# actually ingest has been renumbered to Masoretic chapters to fit the 66-book
+# schema, keeping the Synodal reference inline as "(50:3)". So `synodal` is
+# NOT listed here: the penitential psalm lives at chapter 51 in that file and
+# must be converted like any Masoretic edition. The same translation from a
+# different source could well need the opposite.
+LXX_NATIVE: frozenset[str] = frozenset({"brenton", "elizabeth", "rahlfs"})
 
 # The Septuagint and Masoretic psalters do not merely differ by one — they
 # disagree about where several psalms divide, so some LXX psalms span two
@@ -133,7 +140,10 @@ def available() -> list[str]:
 
 @lru_cache(maxsize=128)
 def _book(edition: str, book: str) -> dict | None:
-    path = _DATA / edition / f"{book.lower().replace(' ', '')}.json"
+    code = code_for(book)
+    if not code:
+        return None
+    path = _DATA / edition / f"{code}.json"
     if not path.exists():
         return None
     return json.loads(path.read_text(encoding="utf-8"))
