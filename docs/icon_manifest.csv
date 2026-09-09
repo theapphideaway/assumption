@@ -1,0 +1,412 @@
+tier,key,kind,rank,english,greek,russian,icon_subject,icon_subject_greek,search_suggestion,note,filename
+1,01-06,fixed,2,The Theophany of the Lord,Τὰ Θεοφάνεια,Богоявление · Крещение Господне,The Baptism of Christ,Ἡ Βάπτισις / Θεοφάνεια,The Baptism of Christ,One of the Twelve Great Feasts,01-06.jpg
+1,02-02,fixed,2,The Meeting of the Lord in the Temple,Ἡ Ὑπαπαντὴ τοῦ Κυρίου,Сретение Господне,The Presentation in the Temple,Ἡ Ὑπαπαντή,The Presentation in the Temple,One of the Twelve Great Feasts,02-02.jpg
+1,03-25,fixed,2,The Annunciation of the Theotokos,Ὁ Εὐαγγελισμὸς τῆς Θεοτόκου,Благовещение Пресвятой Богородицы,The Annunciation,Ὁ Εὐαγγελισμός,The Annunciation,One of the Twelve Great Feasts,03-25.jpg
+1,08-06,fixed,2,The Transfiguration of the Lord,Ἡ Μεταμόρφωσις τοῦ Σωτῆρος,Преображение Господне,The Transfiguration,Ἡ Μεταμόρφωσις,The Transfiguration,One of the Twelve Great Feasts,08-06.jpg
+1,08-15,fixed,2,The Dormition of the Theotokos,Ἡ Κοίμησις τῆς Θεοτόκου,Успение Пресвятой Богородицы,The Dormition of the Theotokos,Ἡ Κοίμησις,The Dormition of the Theotokos,PATRONAL FEAST of the parish — One of the Twelve Great Feasts,08-15.jpg
+1,09-08,fixed,2,The Nativity of the Theotokos,Τὸ Γενέθλιον τῆς Θεοτόκου,Рождество Пресвятой Богородицы,The Nativity of the Theotokos,Τὸ Γενέθλιον,The Nativity of the Theotokos,One of the Twelve Great Feasts,09-08.jpg
+1,09-14,fixed,2,The Universal Elevation of the Precious Cross,Ἡ Ὕψωσις τοῦ Τιμίου Σταυροῦ,Воздвижение Креста Господня,The Exaltation of the Cross,Ἡ Ὕψωσις τοῦ Σταυροῦ,The Exaltation of the Cross,One of the Twelve Great Feasts,09-14.jpg
+1,11-21,fixed,2,The Entrance of the Theotokos into the Temple,Τὰ Εἰσόδια τῆς Θεοτόκου,Введение во храм Пресвятой Богородицы,The Presentation of the Virgin,Τὰ Εἰσόδια,The Presentation of the Virgin,One of the Twelve Great Feasts,11-21.jpg
+1,12-25,fixed,2,The Nativity of Christ,Ἡ Γέννησις τοῦ Χριστοῦ,Рождество Христово,The Nativity of Christ,Ἡ Γέννησις,The Nativity of Christ,One of the Twelve Great Feasts,12-25.jpg
+1,P+000,movable,1,Great and Holy Pascha,Τὸ Ἅγιον Πάσχα,Пасха · Светлое Христово Воскресение,Anastasis — the Harrowing of Hades,Ἀνάστασις,Anastasis — the Harrowing of Hades,Pascha — the Feast of Feasts,Pp000.jpg
+1,P+039,movable,2,The Ascension of the Lord,Ἀνάληψις,Вознесение Господне,The Ascension,Ἡ Ἀνάληψις,The Ascension,One of the Twelve Great Feasts,Pp039.jpg
+1,P+049,movable,2,Holy Pentecost,Πεντηκοστή,День Святой Троицы · Пятидесятница,The Descent of the Holy Spirit,Ἡ Πεντηκοστή,The Descent of the Holy Spirit,One of the Twelve Great Feasts,Pp049.jpg
+1,P-001,movable,2,Great and Holy Saturday,Μέγα Σάββατον,Великая Суббота,The Epitaphios — Lamentation at the Tomb,Ὁ Ἐπιτάφιος,The Epitaphios — Lamentation at the Tomb,Great Feast,Pm001.jpg
+1,P-002,movable,2,Great and Holy Friday,Μεγάλη Παρασκευή,Великая Пятница,The Crucifixion,Ἡ Σταύρωσις,The Crucifixion,Great Feast,Pm002.jpg
+1,P-007,movable,2,Palm Sunday,Κυριακὴ τῶν Βαΐων,Вход Господень в Иерусалим,The Entry into Jerusalem,Ἡ Βαϊοφόρος,The Entry into Jerusalem,One of the Twelve Great Feasts,Pm007.jpg
+2,01-01,fixed,3,The Circumcision of Christ · St. Basil the Great,Ἡ Περιτομὴ τοῦ Χριστοῦ · Μ. Βασιλείου,Обрезание Господне · свт. Василия Великого,,,The Circumcision of Christ · St. Basil the Great,Major commemoration,01-01.jpg
+2,01-07,fixed,3,Synaxis of St. John the Forerunner,Σύναξις Ἰωάννου Προδρόμου,Собор Иоанна Предтечи,,,Synaxis of St. John the Forerunner,Major commemoration,01-07.jpg
+2,01-17,fixed,3,St. Anthony the Great,Ἁγίου Ἀντωνίου τοῦ Μεγάλου,Прп. Антония Великого,,,St. Anthony the Great,Major commemoration,01-17.jpg
+2,01-18,fixed,3,Ss. Athanasius and Cyril of Alexandria,,,,,Ss. Athanasius and Cyril of Alexandria,Major commemoration,01-18.jpg
+2,01-20,fixed,3,St. Euthymius the Great,,,,,St. Euthymius the Great,Major commemoration,01-20.jpg
+2,01-25,fixed,3,St. Gregory the Theologian,Γρηγορίου τοῦ Θεολόγου,Свт. Григория Богослова,,,St. Gregory the Theologian,Major commemoration,01-25.jpg
+2,01-30,fixed,3,The Three Hierarchs,Τῶν Τριῶν Ἱεραρχῶν,Собор трёх святителей,,,The Three Hierarchs,Major commemoration,01-30.jpg
+2,02-06,fixed,3,"St. Photios the Great, Patriarch of Constantinople",,,,,"St. Photios the Great, Patriarch of Constantinople",Major commemoration,02-06.jpg
+2,02-10,fixed,3,Hieromartyr Charalampus,Ἁγίου Χαραλάμπους,,,,Hieromartyr Charalampus,Major commemoration,02-10.jpg
+2,02-17,fixed,3,Great Martyr Theodore the Recruit,,,,,Great Martyr Theodore the Recruit,Major commemoration,02-17.jpg
+2,02-24,fixed,3,First and Second Finding of the Head of the Forerunner,,,,,First and Second Finding of the Head of the Forerunner,Major commemoration,02-24.jpg
+2,03-09,fixed,3,The Forty Martyrs of Sebaste,Τῶν Ἁγίων Τεσσαράκοντα Μαρτύρων,40 мучеников Севастийских,,,The Forty Martyrs of Sebaste,Major commemoration,03-09.jpg
+2,03-30,fixed,3,St. John Climacus,,,,,St. John Climacus,Major commemoration,03-30.jpg
+2,04-01,fixed,3,St. Mary of Egypt,,,,,St. Mary of Egypt,Major commemoration,04-01.jpg
+2,04-23,fixed,3,Great Martyr George the Trophy-Bearer,Ἁγίου Γεωργίου τοῦ Τροπαιοφόρου,Вмч. Георгия Победоносца,,,Great Martyr George the Trophy-Bearer,Major commemoration,04-23.jpg
+2,04-25,fixed,3,Apostle and Evangelist Mark,,,,,Apostle and Evangelist Mark,Major commemoration,04-25.jpg
+2,05-08,fixed,3,Apostle and Evangelist John the Theologian,Ἰωάννου τοῦ Θεολόγου,Апостола Иоанна Богослова,,,Apostle and Evangelist John the Theologian,Major commemoration,05-08.jpg
+2,05-11,fixed,3,"Ss. Cyril and Methodius, Equals to the Apostles",Κυρίλλου καὶ Μεθοδίου,Равноапп. Кирилла и Мефодия,,,"Ss. Cyril and Methodius, Equals to the Apostles",Major commemoration,05-11.jpg
+2,05-21,fixed,3,"Ss. Constantine and Helen, Equals to the Apostles",Κωνσταντίνου καὶ Ἑλένης,Равноапп. Константина и Елены,,,"Ss. Constantine and Helen, Equals to the Apostles",Major commemoration,05-21.jpg
+2,06-24,fixed,3,The Nativity of St. John the Forerunner,Τὸ Γενέθλιον τοῦ Προδρόμου,Рождество Иоанна Предтечи,,,The Nativity of St. John the Forerunner,Major commemoration,06-24.jpg
+2,06-29,fixed,3,"Ss. Peter and Paul, the Chief Apostles",Πέτρου καὶ Παύλου,Первоверховных апп. Петра и Павла,,,"Ss. Peter and Paul, the Chief Apostles",Major commemoration,06-29.jpg
+2,06-30,fixed,3,Synaxis of the Twelve Apostles,Σύναξις τῶν Δώδεκα Ἀποστόλων,Собор двенадцати апостолов,,,Synaxis of the Twelve Apostles,Major commemoration,06-30.jpg
+2,07-11,fixed,3,Great Martyr Euphemia · St. Olga,,,,,Great Martyr Euphemia · St. Olga,Major commemoration,07-11.jpg
+2,07-12,fixed,3,St. Paisios of Mount Athos · Martyrs Proclus and Hilary,Ἁγίου Παϊσίου,,,,St. Paisios of Mount Athos · Martyrs Proclus and Hilary,Major commemoration,07-12.jpg
+2,07-17,fixed,3,Great Martyr Marina,Ἁγίας Μαρίνης,,,,Great Martyr Marina,Major commemoration,07-17.jpg
+2,07-20,fixed,3,The Prophet Elias,Προφήτου Ἠλιοὺ τοῦ Θεσβίτου,Пророка Илии,,,The Prophet Elias,Major commemoration,07-20.jpg
+2,07-22,fixed,3,"St. Mary Magdalene, Equal to the Apostles",Ἁγίας Μαρίας τῆς Μαγδαληνῆς,Равноап. Марии Магдалины,,,"St. Mary Magdalene, Equal to the Apostles",Major commemoration,07-22.jpg
+2,07-25,fixed,3,The Dormition of St. Anna,Κοίμησις Ἁγίας Ἄννης,,,,The Dormition of St. Anna,Major commemoration,07-25.jpg
+2,07-26,fixed,3,St. Paraskevi the Righteous Martyr,Ἁγίας Παρασκευῆς,,,,St. Paraskevi the Righteous Martyr,Major commemoration,07-26.jpg
+2,07-27,fixed,3,Great Martyr and Healer Panteleimon,Ἁγίου Παντελεήμονος,Вмч. и целителя Пантелеимона,,,Great Martyr and Healer Panteleimon,Major commemoration,07-27.jpg
+2,08-29,fixed,3,The Beheading of St. John the Forerunner,Ἡ Ἀποτομὴ τοῦ Προδρόμου,Усекновение главы Иоанна Предтечи,,,The Beheading of St. John the Forerunner,Major commemoration,08-29.jpg
+2,09-26,fixed,3,The Repose of St. John the Theologian,Ἡ Μετάστασις Ἰωάννου τοῦ Θεολόγου,Преставление ап. Иоанна Богослова,,,The Repose of St. John the Theologian,Major commemoration,09-26.jpg
+2,10-03,fixed,3,Hieromartyr Dionysius the Areopagite,,,,,Hieromartyr Dionysius the Areopagite,Major commemoration,10-03.jpg
+2,10-06,fixed,3,Apostle Thomas,,,,,Apostle Thomas,Major commemoration,10-06.jpg
+2,10-18,fixed,3,Apostle and Evangelist Luke,Λουκᾶ τοῦ Εὐαγγελιστοῦ,Апостола и евангелиста Луки,,,Apostle and Evangelist Luke,Major commemoration,10-18.jpg
+2,10-20,fixed,3,Great Martyr Artemius · St. Gerasimos of Kephalonia,,,,,Great Martyr Artemius · St. Gerasimos of Kephalonia,Major commemoration,10-20.jpg
+2,10-23,fixed,3,"Apostle James, the Brother of the Lord",,,,,"Apostle James, the Brother of the Lord",Major commemoration,10-23.jpg
+2,10-26,fixed,3,St. Demetrios the Myrrh-Streamer,Ἁγίου Δημητρίου τοῦ Μυροβλύτου,Вмч. Димитрия Солунского,,,St. Demetrios the Myrrh-Streamer,Major commemoration,10-26.jpg
+2,10-28,fixed,3,The Holy Protection of the Theotokos,Ἡ Ἁγία Σκέπη τῆς Θεοτόκου,Покров Пресвятой Богородицы,,,The Holy Protection of the Theotokos,Major commemoration,10-28.jpg
+2,11-08,fixed,3,Synaxis of the Archangels Michael and Gabriel,Σύναξις τῶν Ἀρχαγγέλων,Собор Архистратига Михаила,,,Synaxis of the Archangels Michael and Gabriel,Major commemoration,11-08.jpg
+2,11-09,fixed,3,St. Nectarios of Aegina,Ἁγίου Νεκταρίου Αἰγίνης,Свт. Нектария Эгинского,,,St. Nectarios of Aegina,Major commemoration,11-09.jpg
+2,11-13,fixed,3,St. John Chrysostom,Ἰωάννου τοῦ Χρυσοστόμου,Свт. Иоанна Златоуста,,,St. John Chrysostom,Major commemoration,11-13.jpg
+2,11-16,fixed,3,Apostle and Evangelist Matthew,Ματθαίου τοῦ Εὐαγγελιστοῦ,Апостола и евангелиста Матфея,,,Apostle and Evangelist Matthew,Major commemoration,11-16.jpg
+2,11-25,fixed,3,Great Martyr Catherine · Great Martyr Mercurius,Ἁγίας Αἰκατερίνης,Вмц. Екатерины,,,Great Martyr Catherine · Great Martyr Mercurius,Major commemoration,11-25.jpg
+2,11-30,fixed,3,Apostle Andrew the First-Called,Ἀνδρέου τοῦ Πρωτοκλήτου,Апостола Андрея Первозванного,,,Apostle Andrew the First-Called,Major commemoration,11-30.jpg
+2,12-02,fixed,3,St. Porphyrios of Kafsokalyvia · Prophet Habakkuk,Ἁγίου Πορφυρίου,,,,St. Porphyrios of Kafsokalyvia · Prophet Habakkuk,Major commemoration,12-02.jpg
+2,12-04,fixed,3,Great Martyr Barbara · St. John of Damascus,Ἁγίας Βαρβάρας,Вмц. Варвары,,,Great Martyr Barbara · St. John of Damascus,Major commemoration,12-04.jpg
+2,12-05,fixed,3,St. Savvas the Sanctified,Ἁγίου Σάββα τοῦ Ἡγιασμένου,Прп. Саввы Освященного,,,St. Savvas the Sanctified,Major commemoration,12-05.jpg
+2,12-06,fixed,3,St. Nicholas of Myra,Ἁγίου Νικολάου Μύρων,Свт. Николая Чудотворца,,,St. Nicholas of Myra,Major commemoration,12-06.jpg
+2,12-12,fixed,3,St. Spyridon of Trimythous,Ἁγίου Σπυρίδωνος,Свт. Спиридона Тримифунтского,,,St. Spyridon of Trimythous,Major commemoration,12-12.jpg
+2,12-24,fixed,3,Eve of the Nativity · Martyr Eugenia,,,,,Eve of the Nativity · Martyr Eugenia,Major commemoration,12-24.jpg
+2,12-26,fixed,3,Synaxis of the Theotokos,Ἡ Σύναξις τῆς Θεοτόκου,Собор Пресвятой Богородицы,,,Synaxis of the Theotokos,Major commemoration,12-26.jpg
+2,12-27,fixed,3,St. Stephen the Protomartyr,Στεφάνου τοῦ Πρωτομάρτυρος,Первомч. архидиакона Стефана,,,St. Stephen the Protomartyr,Major commemoration,12-27.jpg
+2,P+001,movable,3,Bright Monday,,Светлый Понедельник,,,Bright Monday,Major commemoration,Pp001.jpg
+2,P+002,movable,3,Bright Tuesday,,Светлый Вторник,,,Bright Tuesday,Major commemoration,Pp002.jpg
+2,P+003,movable,3,Bright Wednesday,,Светлая Среда,,,Bright Wednesday,Major commemoration,Pp003.jpg
+2,P+004,movable,3,Bright Thursday,,Светлый Четверг,,,Bright Thursday,Major commemoration,Pp004.jpg
+2,P+005,movable,3,Bright Friday · the Life-Giving Spring,Ζωοδόχου Πηγῆς,Светлая Пятница · Живоносного Источника,,,Bright Friday · the Life-Giving Spring,Major commemoration,Pp005.jpg
+2,P+006,movable,3,Bright Saturday,,Светлая Суббота,,,Bright Saturday,Major commemoration,Pp006.jpg
+2,P+007,movable,3,Thomas Sunday (Antipascha),Τοῦ Θωμᾶ,Антипасха · Фомина неделя,,,Thomas Sunday (Antipascha),Major commemoration,Pp007.jpg
+2,P+050,movable,3,Monday of the Holy Spirit,Ἁγίου Πνεύματος,День Святаго Духа,,,Monday of the Holy Spirit,Major commemoration,Pp050.jpg
+2,P+056,movable,3,Sunday of All Saints,Τῶν Ἁγίων Πάντων,Неделя всех святых,,,Sunday of All Saints,Major commemoration,Pp056.jpg
+2,P-003,movable,3,Great and Holy Thursday,,Великий Четверг,,,Great and Holy Thursday,Major commemoration,Pm003.jpg
+2,P-004,movable,3,Great and Holy Wednesday,,Великая Среда,,,Great and Holy Wednesday,Major commemoration,Pm004.jpg
+2,P-005,movable,3,Great and Holy Tuesday,,Великий Вторник,,,Great and Holy Tuesday,Major commemoration,Pm005.jpg
+2,P-006,movable,3,Great and Holy Monday,,Великий Понедельник,,,Great and Holy Monday,Major commemoration,Pm006.jpg
+2,P-008,movable,3,Lazarus Saturday,Σάββατον τοῦ Λαζάρου,Лазарева суббота,,,Lazarus Saturday,Major commemoration,Pm008.jpg
+2,P-016,movable,3,The Akathist Hymn,Ἀκάθιστος Ὕμνος,Похвала Пресвятой Богородицы · Акафист,,,The Akathist Hymn,Major commemoration,Pm016.jpg
+2,P-028,movable,3,Sunday of the Veneration of the Cross,Σταυροπροσκυνήσεως,Крестопоклонная неделя,,,Sunday of the Veneration of the Cross,Major commemoration,Pm028.jpg
+2,P-042,movable,3,Sunday of Orthodoxy,Κυριακὴ τῆς Ὀρθοδοξίας,Торжество Православия,,,Sunday of Orthodoxy,Major commemoration,Pm042.jpg
+2,P-048,movable,3,Clean Monday,Καθαρὰ Δευτέρα,Чистый понедельник,,,Clean Monday,Major commemoration,Pm048.jpg
+3,01-02,fixed,4,St. Seraphim of Sarov · St. Sylvester of Rome,,,,,St. Seraphim of Sarov · St. Sylvester of Rome,Notable commemoration,01-02.jpg
+3,01-03,fixed,4,Prophet Malachi · Martyr Gordius,,,,,Prophet Malachi · Martyr Gordius,Notable commemoration,01-03.jpg
+3,01-04,fixed,4,Synaxis of the Seventy Apostles,,,,,Synaxis of the Seventy Apostles,Notable commemoration,01-04.jpg
+3,01-05,fixed,4,Eve of Theophany · Martyrs Theopemptus and Theonas,,,,,Eve of Theophany · Martyrs Theopemptus and Theonas,Notable commemoration,01-05.jpg
+3,01-08,fixed,4,St. George the Chozebite · St. Domnica,,,,,St. George the Chozebite · St. Domnica,Notable commemoration,01-08.jpg
+3,01-09,fixed,4,Martyr Polyeuctus,,,,,Martyr Polyeuctus,Notable commemoration,01-09.jpg
+3,01-10,fixed,4,St. Gregory of Nyssa · St. Dometian,,,,,St. Gregory of Nyssa · St. Dometian,Notable commemoration,01-10.jpg
+3,01-11,fixed,4,St. Theodosius the Cenobiarch,,,,,St. Theodosius the Cenobiarch,Notable commemoration,01-11.jpg
+3,01-12,fixed,4,Martyr Tatiana,,,,,Martyr Tatiana,Notable commemoration,01-12.jpg
+3,01-13,fixed,4,Martyrs Hermylus and Stratonicus,,,,,Martyrs Hermylus and Stratonicus,Notable commemoration,01-13.jpg
+3,01-14,fixed,4,The Fathers slain at Sinai and Raithu,,,,,The Fathers slain at Sinai and Raithu,Notable commemoration,01-14.jpg
+3,01-15,fixed,4,St. Paul of Thebes · St. John Kalyvites,,,,,St. Paul of Thebes · St. John Kalyvites,Notable commemoration,01-15.jpg
+3,01-16,fixed,4,Veneration of the Chains of the Apostle Peter,,,,,Veneration of the Chains of the Apostle Peter,Notable commemoration,01-16.jpg
+3,01-19,fixed,4,St. Macarius the Great,,,,,St. Macarius the Great,Notable commemoration,01-19.jpg
+3,01-21,fixed,4,St. Maximus the Confessor,,,,,St. Maximus the Confessor,Notable commemoration,01-21.jpg
+3,01-22,fixed,4,Apostle Timothy,,,,,Apostle Timothy,Notable commemoration,01-22.jpg
+3,01-23,fixed,4,Hieromartyr Clement of Ancyra,,,,,Hieromartyr Clement of Ancyra,Notable commemoration,01-23.jpg
+3,01-24,fixed,4,St. Xenia of Rome,,,,,St. Xenia of Rome,Notable commemoration,01-24.jpg
+3,01-26,fixed,4,St. Xenophon and his companions,,,,,St. Xenophon and his companions,Notable commemoration,01-26.jpg
+3,01-27,fixed,4,Translation of the relics of St. John Chrysostom,,,,,Translation of the relics of St. John Chrysostom,Notable commemoration,01-27.jpg
+3,01-28,fixed,4,St. Ephraim the Syrian,,,,,St. Ephraim the Syrian,Notable commemoration,01-28.jpg
+3,01-29,fixed,4,Translation of the relics of Hieromartyr Ignatius,,,,,Translation of the relics of Hieromartyr Ignatius,Notable commemoration,01-29.jpg
+3,01-31,fixed,4,Ss. Cyrus and John the Unmercenaries,,,,,Ss. Cyrus and John the Unmercenaries,Notable commemoration,01-31.jpg
+3,02-01,fixed,4,Forefeast of the Meeting · Martyr Tryphon,,,,,Forefeast of the Meeting · Martyr Tryphon,Notable commemoration,02-01.jpg
+3,02-03,fixed,4,St. Symeon the God-Receiver and Anna the Prophetess,,,,,St. Symeon the God-Receiver and Anna the Prophetess,Notable commemoration,02-03.jpg
+3,02-04,fixed,4,St. Isidore of Pelusium,,,,,St. Isidore of Pelusium,Notable commemoration,02-04.jpg
+3,02-05,fixed,4,Martyr Agatha,,,,,Martyr Agatha,Notable commemoration,02-05.jpg
+3,02-07,fixed,4,St. Parthenius of Lampsacus · St. Luke of Steiris,,,,,St. Parthenius of Lampsacus · St. Luke of Steiris,Notable commemoration,02-07.jpg
+3,02-08,fixed,4,Great Martyr Theodore the Commander,,,,,Great Martyr Theodore the Commander,Notable commemoration,02-08.jpg
+3,02-09,fixed,4,Leavetaking of the Meeting · Martyr Nicephorus,,,,,Leavetaking of the Meeting · Martyr Nicephorus,Notable commemoration,02-09.jpg
+3,02-11,fixed,4,Hieromartyr Blaise of Sebaste,,,,,Hieromartyr Blaise of Sebaste,Notable commemoration,02-11.jpg
+3,02-12,fixed,4,St. Meletius of Antioch,,,,,St. Meletius of Antioch,Notable commemoration,02-12.jpg
+3,02-13,fixed,4,St. Martinian,,,,,St. Martinian,Notable commemoration,02-13.jpg
+3,02-14,fixed,4,"St. Auxentius · St. Cyril, Equal to the Apostles",,,,,"St. Auxentius · St. Cyril, Equal to the Apostles",Notable commemoration,02-14.jpg
+3,02-15,fixed,4,Apostle Onesimus,,,,,Apostle Onesimus,Notable commemoration,02-15.jpg
+3,02-16,fixed,4,Martyrs Pamphilus and Porphyrius,,,,,Martyrs Pamphilus and Porphyrius,Notable commemoration,02-16.jpg
+3,02-18,fixed,4,"St. Leo the Great, Pope of Rome",,,,,"St. Leo the Great, Pope of Rome",Notable commemoration,02-18.jpg
+3,02-19,fixed,4,Apostle Archippus,,,,,Apostle Archippus,Notable commemoration,02-19.jpg
+3,02-20,fixed,4,"St. Leo, Bishop of Catania",,,,,"St. Leo, Bishop of Catania",Notable commemoration,02-20.jpg
+3,02-21,fixed,4,St. Timothy of Symbola,,,,,St. Timothy of Symbola,Notable commemoration,02-21.jpg
+3,02-22,fixed,4,Finding of the relics of the Martyrs at Eugenios,,,,,Finding of the relics of the Martyrs at Eugenios,Notable commemoration,02-22.jpg
+3,02-23,fixed,4,Hieromartyr Polycarp of Smyrna,,,,,Hieromartyr Polycarp of Smyrna,Notable commemoration,02-23.jpg
+3,02-25,fixed,4,"St. Tarasius, Patriarch of Constantinople",,,,,"St. Tarasius, Patriarch of Constantinople",Notable commemoration,02-25.jpg
+3,02-26,fixed,4,St. Porphyrius of Gaza,,,,,St. Porphyrius of Gaza,Notable commemoration,02-26.jpg
+3,02-27,fixed,4,St. Procopius the Confessor,,,,,St. Procopius the Confessor,Notable commemoration,02-27.jpg
+3,02-28,fixed,4,St. Basil the Confessor,,,,,St. Basil the Confessor,Notable commemoration,02-28.jpg
+3,02-29,fixed,4,St. John Cassian the Roman,,,,,St. John Cassian the Roman,Notable commemoration,02-29.jpg
+3,03-01,fixed,4,Martyr Eudocia,,,,,Martyr Eudocia,Notable commemoration,03-01.jpg
+3,03-02,fixed,4,Hieromartyr Theodotus of Cyrenia,,,,,Hieromartyr Theodotus of Cyrenia,Notable commemoration,03-02.jpg
+3,03-03,fixed,4,"Martyrs Eutropius, Cleonicus and Basiliscus",,,,,"Martyrs Eutropius, Cleonicus and Basiliscus",Notable commemoration,03-03.jpg
+3,03-04,fixed,4,St. Gerasimus of the Jordan,,,,,St. Gerasimus of the Jordan,Notable commemoration,03-04.jpg
+3,03-05,fixed,4,Martyr Conon,,,,,Martyr Conon,Notable commemoration,03-05.jpg
+3,03-06,fixed,4,The Forty-two Martyrs of Amorion,,,,,The Forty-two Martyrs of Amorion,Notable commemoration,03-06.jpg
+3,03-07,fixed,4,The Hieromartyrs of Cherson,,,,,The Hieromartyrs of Cherson,Notable commemoration,03-07.jpg
+3,03-08,fixed,4,St. Theophylact of Nicomedia,,,,,St. Theophylact of Nicomedia,Notable commemoration,03-08.jpg
+3,03-10,fixed,4,Martyr Codratus,,,,,Martyr Codratus,Notable commemoration,03-10.jpg
+3,03-11,fixed,4,St. Sophronius of Jerusalem,,,,,St. Sophronius of Jerusalem,Notable commemoration,03-11.jpg
+3,03-12,fixed,4,St. Theophanes the Confessor,,,,,St. Theophanes the Confessor,Notable commemoration,03-12.jpg
+3,03-13,fixed,4,Translation of the relics of St. Nicephorus,,,,,Translation of the relics of St. Nicephorus,Notable commemoration,03-13.jpg
+3,03-14,fixed,4,St. Benedict of Nursia,,,,,St. Benedict of Nursia,Notable commemoration,03-14.jpg
+3,03-15,fixed,4,Martyr Agapius and his companions,,,,,Martyr Agapius and his companions,Notable commemoration,03-15.jpg
+3,03-16,fixed,4,Martyr Sabinus,,,,,Martyr Sabinus,Notable commemoration,03-16.jpg
+3,03-17,fixed,4,St. Alexis the Man of God,,,,,St. Alexis the Man of God,Notable commemoration,03-17.jpg
+3,03-18,fixed,4,St. Cyril of Jerusalem,,,,,St. Cyril of Jerusalem,Notable commemoration,03-18.jpg
+3,03-19,fixed,4,Martyrs Chrysanthus and Daria,,,,,Martyrs Chrysanthus and Daria,Notable commemoration,03-19.jpg
+3,03-20,fixed,4,The Fathers slain at the Monastery of St. Sabbas,,,,,The Fathers slain at the Monastery of St. Sabbas,Notable commemoration,03-20.jpg
+3,03-21,fixed,4,St. James the Confessor,,,,,St. James the Confessor,Notable commemoration,03-21.jpg
+3,03-22,fixed,4,Hieromartyr Basil of Ancyra,,,,,Hieromartyr Basil of Ancyra,Notable commemoration,03-22.jpg
+3,03-23,fixed,4,Martyr Nicon and his disciples,,,,,Martyr Nicon and his disciples,Notable commemoration,03-23.jpg
+3,03-24,fixed,4,Forefeast of the Annunciation,,,,,Forefeast of the Annunciation,Notable commemoration,03-24.jpg
+3,03-26,fixed,4,Synaxis of the Archangel Gabriel,,,,,Synaxis of the Archangel Gabriel,Notable commemoration,03-26.jpg
+3,03-27,fixed,4,Martyr Matrona of Thessalonica,,,,,Martyr Matrona of Thessalonica,Notable commemoration,03-27.jpg
+3,03-28,fixed,4,St. Hilarion the New,,,,,St. Hilarion the New,Notable commemoration,03-28.jpg
+3,03-29,fixed,4,St. Mark of Arethusa,,,,,St. Mark of Arethusa,Notable commemoration,03-29.jpg
+3,03-31,fixed,4,St. Hypatius of Gangra,,,,,St. Hypatius of Gangra,Notable commemoration,03-31.jpg
+3,04-02,fixed,4,St. Titus the Wonderworker,,,,,St. Titus the Wonderworker,Notable commemoration,04-02.jpg
+3,04-03,fixed,4,St. Nicetas the Confessor,,,,,St. Nicetas the Confessor,Notable commemoration,04-03.jpg
+3,04-04,fixed,4,St. George of Maleon · St. Joseph the Hymnographer,,,,,St. George of Maleon · St. Joseph the Hymnographer,Notable commemoration,04-04.jpg
+3,04-05,fixed,4,"Martyrs Claudius, Diodore and companions",,,,,"Martyrs Claudius, Diodore and companions",Notable commemoration,04-05.jpg
+3,04-06,fixed,4,St. Eutychius of Constantinople,,,,,St. Eutychius of Constantinople,Notable commemoration,04-06.jpg
+3,04-07,fixed,4,St. George of Mytilene,,,,,St. George of Mytilene,Notable commemoration,04-07.jpg
+3,04-08,fixed,4,"Apostles Herodion, Agabus and Rufus",,,,,"Apostles Herodion, Agabus and Rufus",Notable commemoration,04-08.jpg
+3,04-09,fixed,4,Martyr Eupsychius,,,,,Martyr Eupsychius,Notable commemoration,04-09.jpg
+3,04-10,fixed,4,Martyr Terence and his companions,,,,,Martyr Terence and his companions,Notable commemoration,04-10.jpg
+3,04-11,fixed,4,Hieromartyr Antipas of Pergamum,,,,,Hieromartyr Antipas of Pergamum,Notable commemoration,04-11.jpg
+3,04-12,fixed,4,St. Basil of Parium,,,,,St. Basil of Parium,Notable commemoration,04-12.jpg
+3,04-13,fixed,4,Hieromartyr Artemon,,,,,Hieromartyr Artemon,Notable commemoration,04-13.jpg
+3,04-14,fixed,4,"St. Martin the Confessor, Pope of Rome",,,,,"St. Martin the Confessor, Pope of Rome",Notable commemoration,04-14.jpg
+3,04-15,fixed,4,Apostle Aristarchus,,,,,Apostle Aristarchus,Notable commemoration,04-15.jpg
+3,04-16,fixed,4,"Martyrs Agape, Irene and Chionia",,,,,"Martyrs Agape, Irene and Chionia",Notable commemoration,04-16.jpg
+3,04-17,fixed,4,Hieromartyr Symeon of Persia,,,,,Hieromartyr Symeon of Persia,Notable commemoration,04-17.jpg
+3,04-18,fixed,4,"St. John, disciple of St. Gregory of Decapolis",,,,,"St. John, disciple of St. Gregory of Decapolis",Notable commemoration,04-18.jpg
+3,04-19,fixed,4,St. Paphnutius the Hieromartyr,,,,,St. Paphnutius the Hieromartyr,Notable commemoration,04-19.jpg
+3,04-20,fixed,4,St. Theodore Trichinas,,,,,St. Theodore Trichinas,Notable commemoration,04-20.jpg
+3,04-21,fixed,4,Hieromartyr Januarius,,,,,Hieromartyr Januarius,Notable commemoration,04-21.jpg
+3,04-22,fixed,4,St. Theodore the Sykeote,,,,,St. Theodore the Sykeote,Notable commemoration,04-22.jpg
+3,04-24,fixed,4,St. Elizabeth the Wonderworker,,,,,St. Elizabeth the Wonderworker,Notable commemoration,04-24.jpg
+3,04-26,fixed,4,Hieromartyr Basil of Amasea,,,,,Hieromartyr Basil of Amasea,Notable commemoration,04-26.jpg
+3,04-27,fixed,4,"Hieromartyr Symeon, kinsman of the Lord",,,,,"Hieromartyr Symeon, kinsman of the Lord",Notable commemoration,04-27.jpg
+3,04-28,fixed,4,Apostles Jason and Sosipater,,,,,Apostles Jason and Sosipater,Notable commemoration,04-28.jpg
+3,04-29,fixed,4,The Nine Martyrs of Cyzicus,,,,,The Nine Martyrs of Cyzicus,Notable commemoration,04-29.jpg
+3,04-30,fixed,4,"Apostle James, brother of St. John the Theologian",,,,,"Apostle James, brother of St. John the Theologian",Notable commemoration,04-30.jpg
+3,05-01,fixed,4,Prophet Jeremiah,,,,,Prophet Jeremiah,Notable commemoration,05-01.jpg
+3,05-02,fixed,4,Translation of the relics of St. Athanasius the Great,,,,,Translation of the relics of St. Athanasius the Great,Notable commemoration,05-02.jpg
+3,05-03,fixed,4,Martyrs Timothy and Maura,,,,,Martyrs Timothy and Maura,Notable commemoration,05-03.jpg
+3,05-04,fixed,4,Martyr Pelagia,,,,,Martyr Pelagia,Notable commemoration,05-04.jpg
+3,05-05,fixed,4,Great Martyr Irene,,,,,Great Martyr Irene,Notable commemoration,05-05.jpg
+3,05-06,fixed,4,Righteous Job the Long-suffering,,,,,Righteous Job the Long-suffering,Notable commemoration,05-06.jpg
+3,05-07,fixed,4,The Sign of the Precious Cross at Jerusalem,,,,,The Sign of the Precious Cross at Jerusalem,Notable commemoration,05-07.jpg
+3,05-09,fixed,4,Prophet Isaiah · Martyr Christopher,,,,,Prophet Isaiah · Martyr Christopher,Notable commemoration,05-09.jpg
+3,05-10,fixed,4,Apostle Simon the Zealot,,,,,Apostle Simon the Zealot,Notable commemoration,05-10.jpg
+3,05-12,fixed,4,St. Epiphanius of Cyprus · St. Germanus,,,,,St. Epiphanius of Cyprus · St. Germanus,Notable commemoration,05-12.jpg
+3,05-13,fixed,4,Martyr Glyceria,,,,,Martyr Glyceria,Notable commemoration,05-13.jpg
+3,05-14,fixed,4,Martyr Isidore of Chios,,,,,Martyr Isidore of Chios,Notable commemoration,05-14.jpg
+3,05-15,fixed,4,St. Pachomius the Great,,,,,St. Pachomius the Great,Notable commemoration,05-15.jpg
+3,05-16,fixed,4,St. Theodore the Sanctified,,,,,St. Theodore the Sanctified,Notable commemoration,05-16.jpg
+3,05-17,fixed,4,Apostles Andronicus and Junia,,,,,Apostles Andronicus and Junia,Notable commemoration,05-17.jpg
+3,05-18,fixed,4,"Martyrs Peter, Dionysius and companions",,,,,"Martyrs Peter, Dionysius and companions",Notable commemoration,05-18.jpg
+3,05-19,fixed,4,Hieromartyr Patrick of Prusa,,,,,Hieromartyr Patrick of Prusa,Notable commemoration,05-19.jpg
+3,05-20,fixed,4,Martyr Thalelaeus,,,,,Martyr Thalelaeus,Notable commemoration,05-20.jpg
+3,05-22,fixed,4,Martyr Basiliscus,,,,,Martyr Basiliscus,Notable commemoration,05-22.jpg
+3,05-23,fixed,4,St. Michael the Confessor,,,,,St. Michael the Confessor,Notable commemoration,05-23.jpg
+3,05-24,fixed,4,St. Symeon of the Wonderful Mountain,,,,,St. Symeon of the Wonderful Mountain,Notable commemoration,05-24.jpg
+3,05-25,fixed,4,Third Finding of the Head of the Forerunner,,,,,Third Finding of the Head of the Forerunner,Notable commemoration,05-25.jpg
+3,05-26,fixed,4,Apostle Carpus,,,,,Apostle Carpus,Notable commemoration,05-26.jpg
+3,05-27,fixed,4,Hieromartyr Therapon,,,,,Hieromartyr Therapon,Notable commemoration,05-27.jpg
+3,05-28,fixed,4,St. Nicetas of Chalcedon,,,,,St. Nicetas of Chalcedon,Notable commemoration,05-28.jpg
+3,05-29,fixed,4,Martyr Theodosia of Tyre,,,,,Martyr Theodosia of Tyre,Notable commemoration,05-29.jpg
+3,05-30,fixed,4,St. Isaac of Dalmatus,,,,,St. Isaac of Dalmatus,Notable commemoration,05-30.jpg
+3,05-31,fixed,4,Martyr Hermeas,,,,,Martyr Hermeas,Notable commemoration,05-31.jpg
+3,06-01,fixed,4,Martyr Justin the Philosopher,,,,,Martyr Justin the Philosopher,Notable commemoration,06-01.jpg
+3,06-02,fixed,4,St. Nicephorus of Constantinople,,,,,St. Nicephorus of Constantinople,Notable commemoration,06-02.jpg
+3,06-03,fixed,4,Martyr Lucillian and his companions,,,,,Martyr Lucillian and his companions,Notable commemoration,06-03.jpg
+3,06-04,fixed,4,St. Metrophanes of Constantinople,,,,,St. Metrophanes of Constantinople,Notable commemoration,06-04.jpg
+3,06-05,fixed,4,Hieromartyr Dorotheus of Tyre,,,,,Hieromartyr Dorotheus of Tyre,Notable commemoration,06-05.jpg
+3,06-06,fixed,4,St. Bessarion the Wonderworker · St. Hilarion the New,,,,,St. Bessarion the Wonderworker · St. Hilarion the New,Notable commemoration,06-06.jpg
+3,06-07,fixed,4,Hieromartyr Theodotus of Ancyra,,,,,Hieromartyr Theodotus of Ancyra,Notable commemoration,06-07.jpg
+3,06-08,fixed,4,Translation of the relics of Great Martyr Theodore,,,,,Translation of the relics of Great Martyr Theodore,Notable commemoration,06-08.jpg
+3,06-09,fixed,4,St. Cyril of Alexandria,,,,,St. Cyril of Alexandria,Notable commemoration,06-09.jpg
+3,06-10,fixed,4,Hieromartyr Timothy of Prussa,,,,,Hieromartyr Timothy of Prussa,Notable commemoration,06-10.jpg
+3,06-11,fixed,4,Apostles Bartholomew and Barnabas,,,,,Apostles Bartholomew and Barnabas,Notable commemoration,06-11.jpg
+3,06-12,fixed,4,St. Onuphrius the Great · St. Peter of Athos,,,,,St. Onuphrius the Great · St. Peter of Athos,Notable commemoration,06-12.jpg
+3,06-13,fixed,4,Martyr Aquilina,,,,,Martyr Aquilina,Notable commemoration,06-13.jpg
+3,06-14,fixed,4,Prophet Elisha,,,,,Prophet Elisha,Notable commemoration,06-14.jpg
+3,06-15,fixed,4,Prophet Amos,,,,,Prophet Amos,Notable commemoration,06-15.jpg
+3,06-16,fixed,4,St. Tychon of Amathus,,,,,St. Tychon of Amathus,Notable commemoration,06-16.jpg
+3,06-17,fixed,4,"Martyrs Manuel, Sabel and Ismael",,,,,"Martyrs Manuel, Sabel and Ismael",Notable commemoration,06-17.jpg
+3,06-18,fixed,4,Martyr Leontius,,,,,Martyr Leontius,Notable commemoration,06-18.jpg
+3,06-19,fixed,4,"Apostle Jude, brother of the Lord",,,,,"Apostle Jude, brother of the Lord",Notable commemoration,06-19.jpg
+3,06-20,fixed,4,Hieromartyr Methodius of Patara,,,,,Hieromartyr Methodius of Patara,Notable commemoration,06-20.jpg
+3,06-21,fixed,4,Martyr Julian of Tarsus,,,,,Martyr Julian of Tarsus,Notable commemoration,06-21.jpg
+3,06-22,fixed,4,Hieromartyr Eusebius of Samosata,,,,,Hieromartyr Eusebius of Samosata,Notable commemoration,06-22.jpg
+3,06-23,fixed,4,Martyr Agrippina,,,,,Martyr Agrippina,Notable commemoration,06-23.jpg
+3,06-25,fixed,4,Martyr Fevronia,,,,,Martyr Fevronia,Notable commemoration,06-25.jpg
+3,06-26,fixed,4,St. David of Thessalonica,,,,,St. David of Thessalonica,Notable commemoration,06-26.jpg
+3,06-27,fixed,4,St. Sampson the Hospitable,,,,,St. Sampson the Hospitable,Notable commemoration,06-27.jpg
+3,06-28,fixed,4,Translation of the relics of Ss. Cyrus and John,,,,,Translation of the relics of Ss. Cyrus and John,Notable commemoration,06-28.jpg
+3,07-01,fixed,4,Ss. Cosmas and Damian the Unmercenaries of Rome,,,,,Ss. Cosmas and Damian the Unmercenaries of Rome,Notable commemoration,07-01.jpg
+3,07-02,fixed,4,Deposition of the Robe of the Theotokos,,,,,Deposition of the Robe of the Theotokos,Notable commemoration,07-02.jpg
+3,07-03,fixed,4,Martyr Hyacinth,,,,,Martyr Hyacinth,Notable commemoration,07-03.jpg
+3,07-04,fixed,4,St. Andrew of Crete,,,,,St. Andrew of Crete,Notable commemoration,07-04.jpg
+3,07-05,fixed,4,St. Athanasius of Athos,,,,,St. Athanasius of Athos,Notable commemoration,07-05.jpg
+3,07-06,fixed,4,St. Sisoes the Great,,,,,St. Sisoes the Great,Notable commemoration,07-06.jpg
+3,07-07,fixed,4,Great Martyr Kyriaki · St. Thomas of Maleon,Ἁγίας Κυριακῆς,,,,Great Martyr Kyriaki · St. Thomas of Maleon,Notable commemoration,07-07.jpg
+3,07-08,fixed,4,Great Martyr Procopius,,,,,Great Martyr Procopius,Notable commemoration,07-08.jpg
+3,07-09,fixed,4,Hieromartyr Pancratius of Taormina,,,,,Hieromartyr Pancratius of Taormina,Notable commemoration,07-09.jpg
+3,07-10,fixed,4,The Forty-five Martyrs of Nicopolis,,,,,The Forty-five Martyrs of Nicopolis,Notable commemoration,07-10.jpg
+3,07-13,fixed,4,Synaxis of the Archangel Gabriel,,,,,Synaxis of the Archangel Gabriel,Notable commemoration,07-13.jpg
+3,07-14,fixed,4,Apostle Aquila,,,,,Apostle Aquila,Notable commemoration,07-14.jpg
+3,07-15,fixed,4,Martyrs Cyricus and Julitta,,,,,Martyrs Cyricus and Julitta,Notable commemoration,07-15.jpg
+3,07-16,fixed,4,Hieromartyr Athenogenes,,,,,Hieromartyr Athenogenes,Notable commemoration,07-16.jpg
+3,07-18,fixed,4,Martyr Emilian,,,,,Martyr Emilian,Notable commemoration,07-18.jpg
+3,07-19,fixed,4,"St. Macrina, sister of St. Basil · St. Dios",,,,,"St. Macrina, sister of St. Basil · St. Dios",Notable commemoration,07-19.jpg
+3,07-21,fixed,4,St. Symeon the Fool-for-Christ · St. John,,,,,St. Symeon the Fool-for-Christ · St. John,Notable commemoration,07-21.jpg
+3,07-23,fixed,4,Hieromartyr Phocas,,,,,Hieromartyr Phocas,Notable commemoration,07-23.jpg
+3,07-24,fixed,4,Great Martyr Christina,,,,,Great Martyr Christina,Notable commemoration,07-24.jpg
+3,07-28,fixed,4,"Apostles Prochorus, Nicanor, Timon and Parmenas",,,,,"Apostles Prochorus, Nicanor, Timon and Parmenas",Notable commemoration,07-28.jpg
+3,07-29,fixed,4,Martyr Callinicus,,,,,Martyr Callinicus,Notable commemoration,07-29.jpg
+3,07-30,fixed,4,Apostles Silas and Silvanus,,,,,Apostles Silas and Silvanus,Notable commemoration,07-30.jpg
+3,07-31,fixed,4,Righteous Eudocimus,,,,,Righteous Eudocimus,Notable commemoration,07-31.jpg
+3,08-01,fixed,4,Procession of the Precious Cross · The Seven Maccabees,,,,,Procession of the Precious Cross · The Seven Maccabees,Notable commemoration,08-01.jpg
+3,08-02,fixed,4,Translation of the relics of St. Stephen the Protomartyr,,,,,Translation of the relics of St. Stephen the Protomartyr,Notable commemoration,08-02.jpg
+3,08-03,fixed,4,"Ss. Isaac, Dalmatus and Faustus",,,,,"Ss. Isaac, Dalmatus and Faustus",Notable commemoration,08-03.jpg
+3,08-04,fixed,4,The Seven Youths of Ephesus,,,,,The Seven Youths of Ephesus,Notable commemoration,08-04.jpg
+3,08-05,fixed,4,Forefeast of the Transfiguration,,,,,Forefeast of the Transfiguration,Notable commemoration,08-05.jpg
+3,08-07,fixed,4,Martyr Dometius,,,,,Martyr Dometius,Notable commemoration,08-07.jpg
+3,08-08,fixed,4,St. Emilian the Confessor,,,,,St. Emilian the Confessor,Notable commemoration,08-08.jpg
+3,08-09,fixed,4,Apostle Matthias,,,,,Apostle Matthias,Notable commemoration,08-09.jpg
+3,08-10,fixed,4,Martyr Laurence the Archdeacon,,,,,Martyr Laurence the Archdeacon,Notable commemoration,08-10.jpg
+3,08-11,fixed,4,Martyr Euplus,,,,,Martyr Euplus,Notable commemoration,08-11.jpg
+3,08-12,fixed,4,Martyrs Photius and Anicetus,,,,,Martyrs Photius and Anicetus,Notable commemoration,08-12.jpg
+3,08-13,fixed,4,Leavetaking of the Transfiguration · St. Maximus,,,,,Leavetaking of the Transfiguration · St. Maximus,Notable commemoration,08-13.jpg
+3,08-14,fixed,4,Forefeast of the Dormition · Prophet Micah,,,,,Forefeast of the Dormition · Prophet Micah,Notable commemoration,08-14.jpg
+3,08-16,fixed,4,Translation of the Holy Napkin of Edessa,,,,,Translation of the Holy Napkin of Edessa,Notable commemoration,08-16.jpg
+3,08-17,fixed,4,Martyr Myron,,,,,Martyr Myron,Notable commemoration,08-17.jpg
+3,08-18,fixed,4,Martyrs Florus and Laurus,,,,,Martyrs Florus and Laurus,Notable commemoration,08-18.jpg
+3,08-19,fixed,4,Martyr Andrew the General,,,,,Martyr Andrew the General,Notable commemoration,08-19.jpg
+3,08-20,fixed,4,Prophet Samuel,,,,,Prophet Samuel,Notable commemoration,08-20.jpg
+3,08-21,fixed,4,Apostle Thaddaeus,,,,,Apostle Thaddaeus,Notable commemoration,08-21.jpg
+3,08-22,fixed,4,Martyr Agathonicus,,,,,Martyr Agathonicus,Notable commemoration,08-22.jpg
+3,08-23,fixed,4,Leavetaking of the Dormition,,,,,Leavetaking of the Dormition,Notable commemoration,08-23.jpg
+3,08-24,fixed,4,Hieromartyr Eutyches,,,,,Hieromartyr Eutyches,Notable commemoration,08-24.jpg
+3,08-25,fixed,4,Apostle Titus · Return of the relics of Apostle Bartholomew,,,,,Apostle Titus · Return of the relics of Apostle Bartholomew,Notable commemoration,08-25.jpg
+3,08-26,fixed,4,Martyrs Adrian and Natalia,,,,,Martyrs Adrian and Natalia,Notable commemoration,08-26.jpg
+3,08-27,fixed,4,St. Poemen the Great,,,,,St. Poemen the Great,Notable commemoration,08-27.jpg
+3,08-28,fixed,4,St. Moses the Ethiopian,,,,,St. Moses the Ethiopian,Notable commemoration,08-28.jpg
+3,08-30,fixed,4,"Ss. Alexander, John and Paul of Constantinople",,,,,"Ss. Alexander, John and Paul of Constantinople",Notable commemoration,08-30.jpg
+3,08-31,fixed,4,Deposition of the Sash of the Theotokos,,,,,Deposition of the Sash of the Theotokos,Notable commemoration,08-31.jpg
+3,09-01,fixed,4,The Ecclesiastical New Year · St. Symeon the Stylite,Ἀρχὴ τῆς Ἰνδίκτου,Начало индикта · церковное новолетие,,,The Ecclesiastical New Year · St. Symeon the Stylite,Notable commemoration,09-01.jpg
+3,09-02,fixed,4,Martyr Mamas · St. John the Faster,,,,,Martyr Mamas · St. John the Faster,Notable commemoration,09-02.jpg
+3,09-03,fixed,4,Hieromartyr Anthimus of Nicomedia,,,,,Hieromartyr Anthimus of Nicomedia,Notable commemoration,09-03.jpg
+3,09-04,fixed,4,Hieromartyr Babylas · Prophet Moses,,,,,Hieromartyr Babylas · Prophet Moses,Notable commemoration,09-04.jpg
+3,09-05,fixed,4,"Prophet Zachariah, father of the Forerunner",,,,,"Prophet Zachariah, father of the Forerunner",Notable commemoration,09-05.jpg
+3,09-06,fixed,4,The Miracle of the Archangel Michael at Colossae,,,,,The Miracle of the Archangel Michael at Colossae,Notable commemoration,09-06.jpg
+3,09-07,fixed,4,Forefeast of the Nativity of the Theotokos · Martyr Sozon,,,,,Forefeast of the Nativity of the Theotokos · Martyr Sozon,Notable commemoration,09-07.jpg
+3,09-09,fixed,4,Ss. Joachim and Anna,Ἰωακεὶμ καὶ Ἄννης,Праведных Иоакима и Анны,,,Ss. Joachim and Anna,Notable commemoration,09-09.jpg
+3,09-10,fixed,4,"Martyrs Menodora, Metrodora and Nymphodora",,,,,"Martyrs Menodora, Metrodora and Nymphodora",Notable commemoration,09-10.jpg
+3,09-11,fixed,4,St. Theodora of Alexandria,,,,,St. Theodora of Alexandria,Notable commemoration,09-11.jpg
+3,09-12,fixed,4,Leavetaking of the Nativity of the Theotokos,,,,,Leavetaking of the Nativity of the Theotokos,Notable commemoration,09-12.jpg
+3,09-13,fixed,4,Forefeast of the Elevation · Hieromartyr Cornelius,,,,,Forefeast of the Elevation · Hieromartyr Cornelius,Notable commemoration,09-13.jpg
+3,09-15,fixed,4,Great Martyr Nicetas,,,,,Great Martyr Nicetas,Notable commemoration,09-15.jpg
+3,09-16,fixed,4,Great Martyr Euphemia,,,,,Great Martyr Euphemia,Notable commemoration,09-16.jpg
+3,09-17,fixed,4,"Martyrs Sophia, Faith, Hope and Love",,,,,"Martyrs Sophia, Faith, Hope and Love",Notable commemoration,09-17.jpg
+3,09-18,fixed,4,St. Eumenius of Gortyna,,,,,St. Eumenius of Gortyna,Notable commemoration,09-18.jpg
+3,09-19,fixed,4,"Martyrs Trophimus, Sabbatius and Dorymedon",,,,,"Martyrs Trophimus, Sabbatius and Dorymedon",Notable commemoration,09-19.jpg
+3,09-20,fixed,4,Great Martyr Eustathius and his companions,,,,,Great Martyr Eustathius and his companions,Notable commemoration,09-20.jpg
+3,09-21,fixed,4,Leavetaking of the Elevation · Apostle Quadratus,,,,,Leavetaking of the Elevation · Apostle Quadratus,Notable commemoration,09-21.jpg
+3,09-22,fixed,4,Hieromartyr Phocas of Sinope,,,,,Hieromartyr Phocas of Sinope,Notable commemoration,09-22.jpg
+3,09-23,fixed,4,The Conception of St. John the Forerunner,,,,,The Conception of St. John the Forerunner,Notable commemoration,09-23.jpg
+3,09-24,fixed,4,Protomartyr and Equal to the Apostles Thekla,,,,,Protomartyr and Equal to the Apostles Thekla,Notable commemoration,09-24.jpg
+3,09-25,fixed,4,St. Euphrosyne of Alexandria,,,,,St. Euphrosyne of Alexandria,Notable commemoration,09-25.jpg
+3,09-27,fixed,4,Martyr Callistratus,,,,,Martyr Callistratus,Notable commemoration,09-27.jpg
+3,09-28,fixed,4,St. Chariton the Confessor,,,,,St. Chariton the Confessor,Notable commemoration,09-28.jpg
+3,09-29,fixed,4,St. Cyriacus the Hermit,,,,,St. Cyriacus the Hermit,Notable commemoration,09-29.jpg
+3,09-30,fixed,4,Hieromartyr Gregory of Armenia,,,,,Hieromartyr Gregory of Armenia,Notable commemoration,09-30.jpg
+3,10-01,fixed,4,St. Romanos the Melodist · Apostle Ananias,,,,,St. Romanos the Melodist · Apostle Ananias,Notable commemoration,10-01.jpg
+3,10-02,fixed,4,Hieromartyr Cyprian · Martyr Justina,,,,,Hieromartyr Cyprian · Martyr Justina,Notable commemoration,10-02.jpg
+3,10-04,fixed,4,Hieromartyr Hierotheus of Athens,,,,,Hieromartyr Hierotheus of Athens,Notable commemoration,10-04.jpg
+3,10-05,fixed,4,Martyr Charitina,,,,,Martyr Charitina,Notable commemoration,10-05.jpg
+3,10-07,fixed,4,Martyrs Sergius and Bacchus,,,,,Martyrs Sergius and Bacchus,Notable commemoration,10-07.jpg
+3,10-08,fixed,4,St. Pelagia,,,,,St. Pelagia,Notable commemoration,10-08.jpg
+3,10-09,fixed,4,"Apostle James, son of Alphaeus",,,,,"Apostle James, son of Alphaeus",Notable commemoration,10-09.jpg
+3,10-10,fixed,4,Martyrs Eulampius and Eulampia,,,,,Martyrs Eulampius and Eulampia,Notable commemoration,10-10.jpg
+3,10-11,fixed,4,Apostle Philip the Deacon,,,,,Apostle Philip the Deacon,Notable commemoration,10-11.jpg
+3,10-12,fixed,4,"Martyrs Probus, Tarachus and Andronicus",,,,,"Martyrs Probus, Tarachus and Andronicus",Notable commemoration,10-12.jpg
+3,10-13,fixed,4,Martyrs Carpus and Papylus,,,,,Martyrs Carpus and Papylus,Notable commemoration,10-13.jpg
+3,10-14,fixed,4,St. Parascheva of Epivates,,,,,St. Parascheva of Epivates,Notable commemoration,10-14.jpg
+3,10-15,fixed,4,Hieromartyr Lucian of Antioch,,,,,Hieromartyr Lucian of Antioch,Notable commemoration,10-15.jpg
+3,10-16,fixed,4,Martyr Longinus the Centurion,,,,,Martyr Longinus the Centurion,Notable commemoration,10-16.jpg
+3,10-17,fixed,4,Prophet Hosea,,,,,Prophet Hosea,Notable commemoration,10-17.jpg
+3,10-19,fixed,4,Prophet Joel · St. John of Kronstadt,,,,,Prophet Joel · St. John of Kronstadt,Notable commemoration,10-19.jpg
+3,10-21,fixed,4,St. Hilarion the Great,,,,,St. Hilarion the Great,Notable commemoration,10-21.jpg
+3,10-22,fixed,4,St. Abercius of Hierapolis,,,,,St. Abercius of Hierapolis,Notable commemoration,10-22.jpg
+3,10-24,fixed,4,Martyr Arethas and his companions,,,,,Martyr Arethas and his companions,Notable commemoration,10-24.jpg
+3,10-25,fixed,4,Martyrs Marcian and Martyrius,,,,,Martyrs Marcian and Martyrius,Notable commemoration,10-25.jpg
+3,10-27,fixed,4,Martyr Nestor of Thessalonica,,,,,Martyr Nestor of Thessalonica,Notable commemoration,10-27.jpg
+3,10-29,fixed,4,Martyr Anastasia the Roman,,,,,Martyr Anastasia the Roman,Notable commemoration,10-29.jpg
+3,10-30,fixed,4,Martyrs Zenobius and Zenobia,,,,,Martyrs Zenobius and Zenobia,Notable commemoration,10-30.jpg
+3,10-31,fixed,4,"Apostles Stachys, Apellas and companions",,,,,"Apostles Stachys, Apellas and companions",Notable commemoration,10-31.jpg
+3,11-01,fixed,4,Ss. Cosmas and Damian the Unmercenaries of Asia,,,,,Ss. Cosmas and Damian the Unmercenaries of Asia,Notable commemoration,11-01.jpg
+3,11-02,fixed,4,"Martyrs Acindynus, Pegasius and companions",,,,,"Martyrs Acindynus, Pegasius and companions",Notable commemoration,11-02.jpg
+3,11-03,fixed,4,Dedication of the Church of St. George at Lydda,,,,,Dedication of the Church of St. George at Lydda,Notable commemoration,11-03.jpg
+3,11-04,fixed,4,St. Joannicius the Great,,,,,St. Joannicius the Great,Notable commemoration,11-04.jpg
+3,11-05,fixed,4,Martyrs Galacteon and Episteme,,,,,Martyrs Galacteon and Episteme,Notable commemoration,11-05.jpg
+3,11-06,fixed,4,St. Paul the Confessor of Constantinople,,,,,St. Paul the Confessor of Constantinople,Notable commemoration,11-06.jpg
+3,11-07,fixed,4,The Thirty-three Martyrs of Melitene,,,,,The Thirty-three Martyrs of Melitene,Notable commemoration,11-07.jpg
+3,11-10,fixed,4,"Apostles Erastus, Olympas and Rodion",,,,,"Apostles Erastus, Olympas and Rodion",Notable commemoration,11-10.jpg
+3,11-11,fixed,4,Great Martyr Menas · St. Theodore the Studite,,,,,Great Martyr Menas · St. Theodore the Studite,Notable commemoration,11-11.jpg
+3,11-12,fixed,4,St. John the Merciful · St. Nilus,,,,,St. John the Merciful · St. Nilus,Notable commemoration,11-12.jpg
+3,11-14,fixed,4,Apostle Philip,,,,,Apostle Philip,Notable commemoration,11-14.jpg
+3,11-15,fixed,4,"Martyrs Gurias, Samonas and Abibus",,,,,"Martyrs Gurias, Samonas and Abibus",Notable commemoration,11-15.jpg
+3,11-17,fixed,4,St. Gregory the Wonderworker,,,,,St. Gregory the Wonderworker,Notable commemoration,11-17.jpg
+3,11-18,fixed,4,Martyr Plato,,,,,Martyr Plato,Notable commemoration,11-18.jpg
+3,11-19,fixed,4,Prophet Obadiah,,,,,Prophet Obadiah,Notable commemoration,11-19.jpg
+3,11-20,fixed,4,Forefeast of the Entrance · St. Gregory of Decapolis,,,,,Forefeast of the Entrance · St. Gregory of Decapolis,Notable commemoration,11-20.jpg
+3,11-22,fixed,4,St. Iakovos of Evia · Apostle Philemon,Ἁγίου Ἰακώβου,,,,St. Iakovos of Evia · Apostle Philemon,Notable commemoration,11-22.jpg
+3,11-23,fixed,4,St. Amphilochius of Iconium,,,,,St. Amphilochius of Iconium,Notable commemoration,11-23.jpg
+3,11-24,fixed,4,Hieromartyr Clement of Rome,,,,,Hieromartyr Clement of Rome,Notable commemoration,11-24.jpg
+3,11-26,fixed,4,St. Alypius the Stylite,,,,,St. Alypius the Stylite,Notable commemoration,11-26.jpg
+3,11-27,fixed,4,Great Martyr James the Persian,,,,,Great Martyr James the Persian,Notable commemoration,11-27.jpg
+3,11-28,fixed,4,St. Stephen the New,,,,,St. Stephen the New,Notable commemoration,11-28.jpg
+3,11-29,fixed,4,Martyr Paramonus,,,,,Martyr Paramonus,Notable commemoration,11-29.jpg
+3,12-01,fixed,4,Prophet Nahum · St. Philaret the Merciful,,,,,Prophet Nahum · St. Philaret the Merciful,Notable commemoration,12-01.jpg
+3,12-03,fixed,4,Prophet Zephaniah,,,,,Prophet Zephaniah,Notable commemoration,12-03.jpg
+3,12-07,fixed,4,St. Ambrose of Milan,,,,,St. Ambrose of Milan,Notable commemoration,12-07.jpg
+3,12-08,fixed,4,St. Patapios,,,,,St. Patapios,Notable commemoration,12-08.jpg
+3,12-09,fixed,4,The Conception of the Theotokos by St. Anna,,,,,The Conception of the Theotokos by St. Anna,Notable commemoration,12-09.jpg
+3,12-10,fixed,4,"Martyrs Menas, Hermogenes and Eugraphus",,,,,"Martyrs Menas, Hermogenes and Eugraphus",Notable commemoration,12-10.jpg
+3,12-11,fixed,4,St. Daniel the Stylite,,,,,St. Daniel the Stylite,Notable commemoration,12-11.jpg
+3,12-13,fixed,4,"Martyrs Eustratius, Auxentius and companions · St. Lucy",,,,,"Martyrs Eustratius, Auxentius and companions · St. Lucy",Notable commemoration,12-13.jpg
+3,12-14,fixed,4,"Martyrs Thyrsus, Leucius and Callinicus",,,,,"Martyrs Thyrsus, Leucius and Callinicus",Notable commemoration,12-14.jpg
+3,12-15,fixed,4,Hieromartyr Eleutherius,,,,,Hieromartyr Eleutherius,Notable commemoration,12-15.jpg
+3,12-16,fixed,4,Prophet Haggai,,,,,Prophet Haggai,Notable commemoration,12-16.jpg
+3,12-17,fixed,4,Prophet Daniel and the Three Holy Youths,,,,,Prophet Daniel and the Three Holy Youths,Notable commemoration,12-17.jpg
+3,12-18,fixed,4,Martyr Sebastian and his companions,,,,,Martyr Sebastian and his companions,Notable commemoration,12-18.jpg
+3,12-19,fixed,4,Martyr Boniface,,,,,Martyr Boniface,Notable commemoration,12-19.jpg
+3,12-20,fixed,4,Forefeast of the Nativity · Hieromartyr Ignatius the God-bearer,,,,,Forefeast of the Nativity · Hieromartyr Ignatius the God-bearer,Notable commemoration,12-20.jpg
+3,12-21,fixed,4,Martyr Juliana,,,,,Martyr Juliana,Notable commemoration,12-21.jpg
+3,12-22,fixed,4,Great Martyr Anastasia the Deliverer from Potions,,,,,Great Martyr Anastasia the Deliverer from Potions,Notable commemoration,12-22.jpg
+3,12-23,fixed,4,The Ten Martyrs of Crete,,,,,The Ten Martyrs of Crete,Notable commemoration,12-23.jpg
+3,12-28,fixed,4,The Twenty Thousand Martyrs of Nicomedia,,,,,The Twenty Thousand Martyrs of Nicomedia,Notable commemoration,12-28.jpg
+3,12-29,fixed,4,The Holy Innocents of Bethlehem,,,,,The Holy Innocents of Bethlehem,Notable commemoration,12-29.jpg
+3,12-30,fixed,4,Martyr Anysia,,,,,Martyr Anysia,Notable commemoration,12-30.jpg
+3,12-31,fixed,4,Leavetaking of the Nativity · St. Melania,,,,,Leavetaking of the Nativity · St. Melania,Notable commemoration,12-31.jpg
+3,P+014,movable,4,Sunday of the Myrrh-Bearing Women,Τῶν Μυροφόρων,Неделя жён-мироносиц,,,Sunday of the Myrrh-Bearing Women,Notable commemoration,Pp014.jpg
+3,P+021,movable,4,Sunday of the Paralytic,,Неделя о расслабленном,,,Sunday of the Paralytic,Notable commemoration,Pp021.jpg
+3,P+024,movable,4,Mid-Pentecost,Μεσοπεντηκοστή,Преполовение Пятидесятницы,,,Mid-Pentecost,Notable commemoration,Pp024.jpg
+3,P+028,movable,4,Sunday of the Samaritan Woman,,Неделя о самаряныне,,,Sunday of the Samaritan Woman,Notable commemoration,Pp028.jpg
+3,P+035,movable,4,Sunday of the Blind Man,,Неделя о слепом,,,Sunday of the Blind Man,Notable commemoration,Pp035.jpg
+3,P+042,movable,4,Sunday of the Fathers of the First Council,,Неделя святых отцов I Вселенского Собора,,,Sunday of the Fathers of the First Council,Notable commemoration,Pp042.jpg
+3,P+048,movable,4,Saturday of Souls before Pentecost,Ψυχοσάββατον,Троицкая родительская суббота,,,Saturday of Souls before Pentecost,Notable commemoration,Pp048.jpg
+3,P-014,movable,4,Sunday of St. Mary of Egypt,,Неделя прп. Марии Египетской,,,Sunday of St. Mary of Egypt,Notable commemoration,Pm014.jpg
+3,P-021,movable,4,Sunday of St. John Climacus,,Неделя прп. Иоанна Лествичника,,,Sunday of St. John Climacus,Notable commemoration,Pm021.jpg
+3,P-023,movable,4,Fourth Salutations to the Theotokos,Δ΄ Χαιρετισμοί,Четвёртые Похвалы Пресвятой Богородице,,,Fourth Salutations to the Theotokos,Notable commemoration,Pm023.jpg
+3,P-030,movable,4,Third Salutations to the Theotokos,Γ΄ Χαιρετισμοί,Третьи Похвалы Пресвятой Богородице,,,Third Salutations to the Theotokos,Notable commemoration,Pm030.jpg
+3,P-035,movable,4,Sunday of St. Gregory Palamas,,Неделя свт. Григория Паламы,,,Sunday of St. Gregory Palamas,Notable commemoration,Pm035.jpg
+3,P-037,movable,4,Second Salutations to the Theotokos,Β΄ Χαιρετισμοί,Вторые Похвалы Пресвятой Богородице,,,Second Salutations to the Theotokos,Notable commemoration,Pm037.jpg
+3,P-043,movable,4,Saturday of St. Theodore the Recruit,,Суббота вмч. Феодора Тирона,,,Saturday of St. Theodore the Recruit,Notable commemoration,Pm043.jpg
+3,P-044,movable,4,First Salutations to the Theotokos,Α΄ Χαιρετισμοί,Первые Похвалы Пресвятой Богородице,,,First Salutations to the Theotokos,Notable commemoration,Pm044.jpg
+3,P-049,movable,4,Forgiveness Sunday (Cheesefare),Τυρινή,Прощёное воскресенье,,,Forgiveness Sunday (Cheesefare),Notable commemoration,Pm049.jpg
+3,P-050,movable,4,Saturday of the Ascetics,,Суббота сырная,,,Saturday of the Ascetics,Notable commemoration,Pm050.jpg
+3,P-056,movable,4,Sunday of the Last Judgement (Meatfare),Ἀπόκρεω,Неделя о Страшном Суде,,,Sunday of the Last Judgement (Meatfare),Notable commemoration,Pm056.jpg
+3,P-057,movable,4,Saturday of Souls,Ψυχοσάββατον,Вселенская родительская суббота,,,Saturday of Souls,Notable commemoration,Pm057.jpg
+3,P-063,movable,4,Sunday of the Prodigal Son,,Неделя о блудном сыне,,,Sunday of the Prodigal Son,Notable commemoration,Pm063.jpg
+3,P-070,movable,4,Sunday of the Publican and the Pharisee,,Неделя о мытаре и фарисее,,,Sunday of the Publican and the Pharisee,Notable commemoration,Pm070.jpg

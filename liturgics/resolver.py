@@ -15,6 +15,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from .fasting import resolve_fast
+from .icons import icon_for
 from .i18n import (FAST_LABELS, LANGUAGES, SEASONS, fast_reason,
                     missing_languages)
 from .lectionary import readings_detail
@@ -92,8 +93,10 @@ def resolve_day(d: date) -> dict:
         "commemorations": commemorations,
         "patronal": any(c.get("patronal") for c in commemorations),
         "readings": readings_detail(d, offset),
+        # Filename plus provenance; the API layer makes it a URL, since
+        # this module knows nothing about how static files are served.
+        "icon": icon_for(d, offset),
         # filled by the Django layer:
-        "icon": None,
         "parish": {"services": [], "note": None},
     }
 

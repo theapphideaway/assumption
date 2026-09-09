@@ -66,6 +66,22 @@ Source: <https://github.com/brianglass/orthocal-python>
 MIT imposes no copyleft, so this carries none of the concerns attached to the
 Church Slavonic psalter above.
 
+## Festal icons
+
+Registered in `liturgics/data/icons.json`, served from `parish/static/icons/`.
+Every entry records a licence and a source, and a test fails the build if one
+does not — an icon whose origin nobody can name is one the parish cannot
+publish.
+
+**The Dormition of the Theotokos (15 August, the parish's patronal feast)** —
+by the hand of **Andreas Ritzos**, Cretan School, late fifteenth century.
+Public domain. Signed on the panel: ΧΕΙΡ ΑΝΔΡΕΟΥ ΡΙΤΖΟΥ.
+<https://commons.wikimedia.org/wiki/File:Dormition_of_Theotokos_Andreas_Ritzos.jpg>
+
+Longer term these should be photographs of the parish's own icons, which are
+legally unambiguous and make the app unmistakably this parish's. The two can
+coexist: each day's icon is a separate registry entry.
+
 ## Prayers
 
 Traditional received English, Greek and Church Slavonic, in the forms in

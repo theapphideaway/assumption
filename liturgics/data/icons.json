@@ -1,0 +1,10 @@
+{
+ "_comment": "Festal icons. Keys are month-day for fixed feasts and P+NNN paschal offsets for movable ones. `file` is served from parish/static/icons/. Every entry MUST carry a licence and a source: an icon whose origin nobody can name is one the parish cannot safely publish. Add entries with `manage.py add_feast_icon`.",
+ "08-15": {
+  "file": "08-15.jpg",
+  "license": "Public domain",
+  "credit": "Andreas Ritzos, Cretan School, late 15th century",
+  "source": "https://commons.wikimedia.org/wiki/File:Dormition_of_Theotokos_Andreas_Ritzos.jpg",
+  "subject": "The Dormition of the Theotokos (Koimesis)"
+ }
+}

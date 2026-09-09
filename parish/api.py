@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from datetime import date, datetime, timedelta
 
+from django.conf import settings
 from django.utils import timezone
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -35,9 +36,24 @@ def _services_for(d: date) -> list[dict]:
     ]
 
 
-def _day_payload(d: date, overrides: dict[date, DayOverride] | None = None) -> dict:
+def _absolute_icon(payload: dict, request) -> None:
+    """Turn the engine's icon filename into a URL the app can fetch.
+
+    Done here rather than in the engine: `liturgics` has no Django and no way to
+    know where static files live.
+    """
+    icon = payload.get("icon")
+    if not icon or not icon.get("file"):
+        return
+    path = f"{settings.STATIC_URL}icons/{icon['file']}"
+    icon["url"] = request.build_absolute_uri(path) if request else path
+
+
+def _day_payload(d: date, overrides: dict[date, DayOverride] | None = None,
+                 request=None) -> dict:
     """Engine output plus whatever Father has said about this day."""
     payload = resolve_day(d)
+    _absolute_icon(payload, request)
     payload["parish"]["services"] = _services_for(d)
 
     ov = (overrides or {}).get(d)
@@ -54,7 +70,7 @@ def _day_payload(d: date, overrides: dict[date, DayOverride] | None = None) -> d
 
 @api_view(["GET"])
 def today(request):
-    return Response(_day_payload(timezone.localdate()))
+    return Response(_day_payload(timezone.localdate(), request=request))
 
 
 @api_view(["GET"])
@@ -63,7 +79,7 @@ def day(request, iso_date: str):
         d = datetime.strptime(iso_date, "%Y-%m-%d").date()
     except ValueError:
         return Response({"detail": "Use YYYY-MM-DD."}, status=400)
-    return Response(_day_payload(d))
+    return Response(_day_payload(d, request=request))
 
 
 @api_view(["GET"])
@@ -84,7 +100,7 @@ def days(request):
     return Response({
         "start": start.isoformat(),
         "days": count,
-        "results": [_day_payload(d, overrides) for d in window],
+        "results": [_day_payload(d, overrides, request) for d in window],
     })
 
 

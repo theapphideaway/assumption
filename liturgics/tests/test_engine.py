@@ -450,3 +450,46 @@ class TestImportedLectionary(unittest.TestCase):
             for e in entries:
                 self.assertNotRegex(e["display"], r"\d\.\d",
                                     f"{e['display']} kept orthocal's dot form")
+
+
+class TestFestalIcons(unittest.TestCase):
+    """Icons carry provenance or they do not ship.
+
+    An icon whose origin nobody can name is one the parish cannot publish. The
+    licence check is not paperwork — it is the difference between a gift and a
+    liability.
+    """
+
+    def test_every_registered_icon_has_a_licence_and_source(self):
+        from liturgics.icons import registry
+        for key, entry in registry().items():
+            self.assertTrue(entry.get("file"), f"{key} has no file")
+            self.assertTrue(entry.get("license"), f"{key} has no licence")
+            self.assertTrue(entry.get("source"), f"{key} has no source")
+
+    def test_registered_files_exist_on_disk(self):
+        from pathlib import Path
+        import liturgics
+        from liturgics.icons import registry
+        root = Path(liturgics.__file__).resolve().parent.parent / "parish" / "static" / "icons"
+        for key, entry in registry().items():
+            self.assertTrue((root / entry["file"]).exists(),
+                            f"{key}: {entry['file']} is registered but missing")
+
+    def test_patronal_feast_has_an_icon(self):
+        from liturgics.icons import icon_for
+        icon = icon_for(date(2026, 8, 15), 125)
+        self.assertIsNotNone(icon, "the parish's own feast has no icon")
+        self.assertEqual(icon["key"], "08-15")
+
+    def test_a_day_without_an_icon_returns_none_rather_than_a_placeholder(self):
+        from liturgics.icons import icon_for
+        self.assertIsNone(icon_for(date(2026, 9, 9), 150))
+
+    def test_movable_icons_outrank_fixed_ones(self):
+        """Pascha keeps its own icon whatever fixed date it falls on."""
+        from liturgics.icons import icon_for, registry
+        if "P+000" not in registry():
+            self.skipTest("Pascha icon not yet registered")
+        icon = icon_for(pascha(2027), 0)
+        self.assertEqual(icon["key"], "P+000")
