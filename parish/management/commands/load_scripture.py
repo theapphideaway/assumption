@@ -8,16 +8,19 @@ worth having, both public domain:
     Brenton   the Septuagint in English. The correct Old Testament for
               Orthodox use, and the one the prayer documents assume for psalms.
 
-Accepts either of the two shapes these datasets usually come in:
+Formats vary by source, so the input shape is auto-detected:
 
-    [{"book_name": "John", "chapter": 1, "verse": 1, "text": "..."}, ...]
-    {"John": {"1": {"1": "...", "2": "..."}}}
+    JSON list    [{"book_name": "John", "chapter": 1, "verse": 1, "text": "…"}]
+    JSON dict    {"John": {"1": {"1": "…", "2": "…"}}}
+    Zefania XML  <XMLBIBLE><BIBLEBOOK bname="John"><CHAPTER cnumber="1">
+                 <VERS vnumber="1">…</VERS>  — what open-bibles ships.
 
-    manage.py load_scripture kjv.json --edition kjv
+    manage.py load_scripture rus-synodal.zefania.xml --edition synodal
 """
 
 import json
 import re
+import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
 
@@ -43,8 +46,13 @@ class Command(BaseCommand):
         if not src.exists():
             raise CommandError(f"No such file: {src}")
 
-        raw = json.loads(src.read_text(encoding="utf-8"))
         books: dict[str, dict] = defaultdict(lambda: defaultdict(dict))
+
+        if src.suffix.lower() in (".xml", ".zefania"):
+            self._zefania(src, books)
+            return self._write(books, opts["edition"])
+
+        raw = json.loads(src.read_text(encoding="utf-8"))
 
         if isinstance(raw, list):
             for row in raw:
@@ -62,7 +70,29 @@ class Command(BaseCommand):
         else:
             raise CommandError("Unrecognised JSON shape — see the docstring.")
 
-        out = DEST / opts["edition"]
+        return self._write(books, opts["edition"])
+
+    def _zefania(self, src: Path, books: dict) -> None:
+        """Zefania XML: BIBLEBOOK / CHAPTER / VERS.
+
+        Book names come from the bname attribute where present, falling back to
+        bnumber. Verse text can be split across child elements (notes, styling),
+        so text is gathered with itertext rather than .text alone — otherwise
+        verses silently truncate at the first inline tag.
+        """
+        root = ET.parse(src).getroot()
+        for book in root.iter("BIBLEBOOK"):
+            name = book.get("bname") or f"book{book.get('bnumber')}"
+            for chapter in book.iter("CHAPTER"):
+                cnum = chapter.get("cnumber")
+                for verse in chapter.iter("VERS"):
+                    vnum = verse.get("vnumber")
+                    text = " ".join(t.strip() for t in verse.itertext() if t.strip())
+                    if cnum and vnum and text:
+                        books[name][str(cnum)][str(vnum)] = text
+
+    def _write(self, books: dict, edition: str):
+        out = DEST / edition
         out.mkdir(parents=True, exist_ok=True)
         verses = 0
         for book, chapters in books.items():
@@ -72,8 +102,10 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.SUCCESS(
             f"{len(books)} books, {verses:,} verses -> {out}"))
-        self.stdout.write(
-            "Psalms are served under the numbering of the edition you loaded. "
-            "Prayer documents cite the LXX psalter and are converted on read; "
-            "if you loaded Brenton, its psalms are ALREADY LXX-numbered and "
-            "the conversion must be turned off for that edition.")
+        self.stdout.write(self.style.WARNING(
+            "\nCHECK THE PSALTER before trusting this edition. Open Psalm 50 "
+            "and Psalm 51. If 50 is the penitential psalm (\"Have mercy on me, "
+            "O God\"), the edition is Septuagint-numbered and belongs in "
+            "scripture.LXX_NATIVE. If 51 is, it is Masoretic and must NOT be "
+            "listed there. Getting this wrong does not error — it serves the "
+            "wrong psalm, every day, silently."))
