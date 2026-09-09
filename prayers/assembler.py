@@ -6,9 +6,13 @@ day. Morning prayers carry the troparion of the day; the Hours carry psalms.
 The same engine that resolves the feast fills those slots, which is why a rule
 is always correct without anyone maintaining it.
 
-Where a slot cannot be filled — a troparion whose text we do not have yet, a
-psalm before the scripture store is loaded — the block is DROPPED and recorded
-in `missing`. The app never renders an empty heading, and `missing` gives us a
+Prayer books and the Bible are separate domains. A `psalm` block inside a rule
+carries the text as the prayer book prints it; it never reads from the Bible
+store. A `scripture` block is an actual Bible citation and is the only thing
+that does.
+
+Where a slot cannot be filled — a troparion we do not have, a psalm not yet
+sourced from the prayer book — the block is DROPPED and recorded in `missing`. The app never renders an empty heading, and `missing` gives us a
 machine-readable list of exactly what content still needs sourcing.
 """
 
@@ -69,6 +73,18 @@ def _expand(blocks, day, scripture, missing, depth):
                     "type": "proper", "slot": b["slot"],
                     "for": day.get("title", ""),
                     "why": "no hymn text on file for this commemoration"})
+
+        elif kind == "psalm":
+            # Printed in the prayer book, not fetched from a Bible. Until the
+            # text is sourced per language this reports missing — it must never
+            # silently fall back to a Bible translation, which would put a
+            # different rendering of the psalm into someone's rule.
+            if b.get("text"):
+                out.append({"type": "psalm", "ref": b.get("ref", ""),
+                            "text": b["text"]})
+            else:
+                missing.append({"type": "psalm", "ref": b.get("ref", ""),
+                                "why": "prayer-book psalm text not yet sourced"})
 
         elif kind == "scripture":
             if scripture is None:

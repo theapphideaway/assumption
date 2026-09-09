@@ -27,9 +27,9 @@ from prayers.store import catalogue
 
 def _payload(d):
     day = resolve_day(d)
-    loaded = available()
+    loaded = set(available())
     editions = {lang: ed for lang, ed in EDITIONS.items() if ed in loaded}
-    scripture = trilingual_resolver(editions) if editions else None
+    scripture = trilingual_resolver(loaded=loaded) if loaded else None
 
     docs, missing = [], []
     for doc in catalogue().values():

@@ -17,11 +17,19 @@ than vanish — an old app build must never silently drop a line of a prayer.
     hymn       troparion, kontakion, apolytikion; carries `tone`
     include    splice in another document (the Trisagion, six times over)
     proper     a slot filled from the resolved day (troparion of the day)
-    scripture  a passage filled from the scripture store (psalms, the Gospel)
+    psalm      a psalm AS PRINTED IN THE PRAYER BOOK, carrying its own text
+    scripture  a Bible citation resolved from the scripture store
     silence    a marked pause
     dismissal  the closing
 
-`include`, `proper` and `scripture` are resolved on the SERVER. The clients
+PRAYER BOOKS AND THE BIBLE ARE SEPARATE DOMAINS. A молитвослов prints its
+psalms inline — you do not look them up in a Bible — so a psalm inside a
+prayer rule is a `psalm` block carrying its own text in each language, sourced
+from the prayer book. A `scripture` block is an actual Bible citation, used
+for the daily Gospel and for reading a passage on its own, and is the only
+block that touches the scripture store.
+
+`include`, `proper`, `psalm` and `scripture` are resolved on the SERVER. The clients
 receive a flat list of literal blocks and render it. This is the same rule as
 the calendar: nothing that could differ between two platforms is computed on
 either of them.
@@ -31,7 +39,7 @@ from __future__ import annotations
 
 LITERAL_TYPES = {"heading", "rubric", "para", "refrain", "hymn",
                  "silence", "dismissal"}
-RESOLVED_TYPES = {"include", "proper", "scripture"}
+RESOLVED_TYPES = {"include", "proper", "scripture", "psalm"}
 BLOCK_TYPES = LITERAL_TYPES | RESOLVED_TYPES
 
 # Time-of-day slots. The server reports a suggestion using the parish

@@ -17,19 +17,25 @@
    "doc": "trisagion"
   },
   {
-   "type": "scripture",
+   "type": "psalm",
    "ref": "Ps 53",
-   "numbering": "lxx"
+   "numbering": "lxx",
+   "text": {},
+   "source": "prayerbook"
   },
   {
-   "type": "scripture",
+   "type": "psalm",
    "ref": "Ps 54",
-   "numbering": "lxx"
+   "numbering": "lxx",
+   "text": {},
+   "source": "prayerbook"
   },
   {
-   "type": "scripture",
+   "type": "psalm",
    "ref": "Ps 90",
-   "numbering": "lxx"
+   "numbering": "lxx",
+   "text": {},
+   "source": "prayerbook"
   },
   {
    "type": "heading",

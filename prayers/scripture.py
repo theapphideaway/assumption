@@ -20,17 +20,18 @@ correct one; only English forces a compromise.
                                        Church of Constantinople. Public domain,
                                        and exactly what GOARCH reads.
         Rahlfs Septuagint (1935)       for the Old Testament.
-    ru  Синодальный перевод (1876)     the Russian Synodal translation, public
-                                       domain and the standard Russian Bible.
-        Елизаветинская Библия (1751)   Church Slavonic, LXX-based, what is
-                                       actually read aloud in Slavic churches.
-                                       ALREADY LXX-NUMBERED.
+    ru  Синодальный перевод (1876)     the standard Russian Bible, public
+                                       domain. Its psalter follows Slavonic/LXX
+                                       numbering — verify on load.
+
+Church Slavonic is NOT here. Slavonic belongs to the prayer books, which print
+their own psalms and never read from this store.
 
 PSALM NUMBERING. The Orthodox Psalter follows the Septuagint, which runs one
 behind the KJV/Masoretic for most of the book and disagrees about where several
 psalms divide. Every psalm reference in the prayer documents carries
 `"numbering": "lxx"`. Editions that are themselves LXX-numbered — Brenton, the
-Elizabeth Bible, Rahlfs — are listed in LXX_NATIVE below and are NOT converted;
+Synodal, Rahlfs — are listed in LXX_NATIVE below and are NOT converted;
 converting them would shift the psalm a second time. Getting this wrong does
 not error — it silently serves the wrong psalm.
 """
@@ -46,44 +47,84 @@ _DATA = Path(__file__).parent / "data" / "scripture"
 
 _REF = re.compile(r"^\s*((?:[1-3]\s+)?[A-Za-z]+)\s+(\d+)(?::([\d,\s\-]+))?\s*$")
 
-# One edition per content language. Override per parish if needed.
-EDITIONS: dict[str, str] = {"en": "web", "el": "patriarchal", "ru": "synodal"}
+# One Bible edition per language. The Bible is the Bible — prayer books are a
+# separate domain and never read from here.
+#
+#   ru is the SYNODAL translation (modern Russian). Church Slavonic belongs to
+#   the prayer books, not to Bible reading; a reader looking up a Gospel
+#   passage wants Russian they can read, not Slavonic.
+EDITIONS: dict[str, str] = {
+    "en": "web",
+    "el": "patriarchal",
+    "ru": "synodal",
+}
+
+# Optional Septuagint-based Old Testaments. Orthodox Old Testament reading
+# follows the LXX, so these are preferred for OT passages where loaded.
+OT_EDITIONS: dict[str, str] = {
+    "en": "brenton",
+    "el": "rahlfs",
+}
 
 # Editions whose psalms already follow Septuagint numbering. Converting these
-# would shift the psalm twice — the classic double-offset bug.
-LXX_NATIVE: frozenset[str] = frozenset({"brenton", "elizabeth", "rahlfs"})
-
+# would shift the psalm twice — the classic double-offset bug. VERIFY each on
+# load: the Russian Synodal psalter follows Slavonic/LXX numbering, so Псалом 50
+# should be the penitential psalm, but confirm against the file you ingest.
+LXX_NATIVE: frozenset[str] = frozenset(
+    {"brenton", "elizabeth", "rahlfs", "synodal"})
 
 # The Septuagint and Masoretic psalters do not merely differ by one — they
-# disagree about where several psalms divide, so some LXX psalms span two KJV
-# chapters and some KJV chapters cover two LXX psalms. A single integer cannot
-# express that, and returning one silently serves the wrong text.
+# disagree about where several psalms divide, so some LXX psalms span two
+# Masoretic chapters and some Masoretic chapters cover two LXX psalms. A single
+# integer cannot express that, and returning one silently serves wrong text.
 _LXX_IRREGULAR: dict[int, tuple[int, ...]] = {
-    9:   (9, 10),        # LXX 9 was split into KJV 9 and 10
+    9:   (9, 10),        # LXX 9 was split into Masoretic 9 and 10
     113: (114, 115),     # LXX 113 was split
-    114: (116,),         # KJV 116 covers LXX 114 and 115
+    114: (116,),         # Masoretic 116 covers LXX 114 and 115
     115: (116,),
-    146: (147,),         # KJV 147 covers LXX 146 and 147
+    146: (147,),         # Masoretic 147 covers LXX 146 and 147
     147: (147,),
 }
 
 
 def lxx_to_masoretic(psalm: int) -> tuple[int, ...]:
-    """Septuagint psalm number -> the KJV/Masoretic chapter(s) covering it.
+    """Septuagint psalm number -> the Masoretic chapter(s) covering it.
 
-    Returns a tuple because the mapping is not one-to-one. LXX 113 spans KJV
-    114 and 115; LXX 114 and 115 both fall inside KJV 116.
+    Returns a tuple because the mapping is not one-to-one. LXX 113 spans
+    Masoretic 114 and 115; LXX 114 and 115 both fall inside Masoretic 116.
     """
     if psalm in _LXX_IRREGULAR:
         return _LXX_IRREGULAR[psalm]
-    if 10 <= psalm <= 112:
-        return (psalm + 1,)
-    if 116 <= psalm <= 145:
+    if 10 <= psalm <= 112 or 116 <= psalm <= 145:
         return (psalm + 1,)
     return (psalm,)                   # 1-8 and 148-150 agree
 
 
-@lru_cache(maxsize=1)
+_OT_BOOKS = frozenset({
+    "gen", "genesis", "ex", "exodus", "lev", "leviticus", "num", "numbers",
+    "deut", "deuteronomy", "josh", "judg", "ruth", "kingdoms", "chron",
+    "ezra", "neh", "esther", "job", "ps", "psalm", "psalms", "prov",
+    "proverbs", "eccl", "song", "wisdom", "sirach", "isa", "isaiah", "jer",
+    "jeremiah", "lam", "ezek", "ezekiel", "dan", "daniel", "hos", "joel",
+    "amos", "obad", "jonah", "micah", "nahum", "hab", "zeph", "hag", "zech",
+    "mal", "tobit", "judith", "maccabees",
+})
+
+
+def _is_ot(ref: str) -> bool:
+    book = ref.strip().split()[0].lower() if ref.strip() else ""
+    return book.rstrip(".") in _OT_BOOKS
+
+
+def edition_for(lang: str, ref: str, loaded: set[str] | None = None) -> str | None:
+    """Which Bible edition serves this reference in this language."""
+    if _is_ot(ref):
+        ot = OT_EDITIONS.get(lang)
+        if ot and (loaded is None or ot in loaded):
+            return ot
+    return EDITIONS.get(lang)
+
+
 def available() -> list[str]:
     if not _DATA.exists():
         return []
@@ -146,20 +187,21 @@ def _verse_numbers(spec: str | None, chapter: dict) -> list[int]:
     return out
 
 
-def trilingual_resolver(editions: dict[str, str] | None = None):
-    """A callable for assembler.assemble(scripture=...) returning verses whose
-    text carries every language that has an edition loaded.
+def trilingual_resolver(languages=None, loaded: set[str] | None = None):
+    """A callable for assembler.assemble(scripture=...).
 
-    Verses are matched by number across editions. Where an edition is missing a
-    language it is simply absent from that verse's text — never filled in from
-    another language, for the same reason a missing prayer translation is shown
-    as missing.
+    Used for actual Bible citations — the daily Gospel, a reading looked up on
+    its own. Prayer rules do NOT come through here; their psalms are printed in
+    the prayer book itself.
     """
-    editions = editions or EDITIONS
+    languages = languages or list(EDITIONS)
 
     def _get(ref: str, numbering: str = "masoretic"):
         per_lang = {}
-        for lang, edition in editions.items():
+        for lang in languages:
+            edition = edition_for(lang, ref, loaded)
+            if not edition:
+                continue
             got = passage(ref, edition=edition, numbering=numbering)
             if got:
                 per_lang[lang] = {v["n"]: v["en"] for v in got}

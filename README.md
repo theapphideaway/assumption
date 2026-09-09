@@ -96,31 +96,39 @@ what people actually say aloud. A modern Russian translation is a different
 text and reads as a study aid rather than a rule. If the parish wants both,
 add a fourth language `ru_mod` rather than replacing this one.
 
-## Scripture editions
+## Prayer books and the Bible are separate
 
-Public domain in all three languages. For Greek and Russian the free option is
-also the ecclesiastically correct one — only English forces a compromise.
+Two independent content domains. Mixing them is the mistake to avoid.
 
-| | Edition | Note |
-|---|---|---|
-| **en** | World English Bible | Public domain, modern. Chosen over the KJV for readability. |
-| | Brenton's Septuagint | The LXX-based Old Testament — the correct OT for Orthodox use. Already LXX-numbered. |
-| **el** | Patriarchal Text of 1904 | The official ecclesiastical text of the Church of Constantinople. Exactly what GOARCH reads. |
-| | Rahlfs Septuagint | Old Testament. |
-| **ru** | Синодальный перевод (1876) | The standard Russian Bible, public domain. |
-| | Елизаветинская Библия (1751) | Church Slavonic, LXX-based, what is read aloud in Slavic churches. Already LXX-numbered. |
+**Prayer books** (`prayers/data/*.json`) are the молитвослов, the Horologion,
+the English prayer book. In Russian this means **Church Slavonic**. A prayer
+book prints its psalms inline — you do not look them up in a Bible — so a
+psalm inside a rule is a `psalm` block carrying its own text per language.
+Prayer documents never read from the scripture store, and a test enforces it.
 
-**The ESV and NKJV are copyrighted** and cannot be bundled. Crossway's ESV
-permissions cover quotation and an API behind a licence key, not distribution
-inside an app.
+**The Bible** (`prayers/data/scripture/`) serves actual citations: the daily
+Gospel, a passage read on its own. In Russian this is the **Synodal**
+translation — someone looking up a Gospel wants Russian they can read, not
+Slavonic. Only a `scripture` block touches this store.
+
+| | Bible | Old Testament | Prayer book |
+|---|---|---|---|
+| **en** | World English Bible | Brenton's Septuagint | English prayer book |
+| **el** | Patriarchal Text 1904 | Rahlfs Septuagint | Ὡρολόγιον |
+| **ru** | Синодальный перевод | Синодальный | **молитвослов** (Church Slavonic) |
+
+Orthodox Old Testament reading follows the Septuagint, so an LXX-based edition
+is preferred for OT passages where one is loaded. **The ESV and NKJV are
+copyrighted** and cannot be bundled; Crossway's ESV permissions cover
+quotation and a licence-key API, not distribution inside an app.
 
 ```bash
 ./venv/bin/python manage.py load_scripture web.json --edition web
 ```
 
-Editions listed in `scripture.LXX_NATIVE` (Brenton, the Elizabeth Bible,
-Rahlfs) are already Septuagint-numbered and are **not** converted on read.
-Converting them would shift the psalm a second time.
+Editions in `scripture.LXX_NATIVE` — Brenton, Rahlfs, and the Synodal psalter,
+which follows Slavonic/LXX numbering — are **not** renumbered on read.
+Converting an already-Septuagint-numbered edition shifts the psalm twice.
 
 ## Content gaps
 
@@ -134,8 +142,13 @@ app never renders an empty heading and we always know what is outstanding.
    permission from the Archdiocese or AGES for their lectionary.
 2. **Hymn texts.** The Menaion carries commemorations, not troparia, so every
    `proper` slot currently reports missing rather than showing a placeholder.
-3. **Scripture.** Nothing is bundled — see the table above for what to load.
-4. **Translations.** Greek and Slavonic cover the Great Feasts, the movable
+3. **Scripture. Nothing is bundled — not one verse.** The loader and reader
+   exist; the text does not. See the table above for what to obtain.
+4. **Prayer-book psalms.** The psalms in the Hours and Compline are `psalm`
+   blocks with empty text, reported missing. They must be sourced from a
+   public-domain prayer book per language — NOT filled from a Bible, which
+   would put a different rendering into someone's rule than the one they say.
+5. **Translations.** Greek and Slavonic cover the Great Feasts, the movable
    cycle and the invariable prayers. The long tail of the Menaion is
    English-only. `translation_report` has the exact numbers.
 

@@ -58,33 +58,43 @@ class TestAssembler(unittest.TestCase):
         self.assertNotIn("proper", [b["type"] for b in built["blocks"]])
         self.assertTrue(any(m["type"] == "proper" for m in built["missing"]))
 
-    def test_scripture_absent_is_reported_not_faked(self):
-        built = assemble("hour-sixth", self.day)
-        refs = [m["ref"] for m in built["missing"] if m["type"] == "scripture"]
-        self.assertEqual(refs, ["Ps 53", "Ps 54", "Ps 90"])
-        self.assertNotIn("scripture", [b["type"] for b in built["blocks"]])
+    def test_no_prayer_document_reads_from_the_bible(self):
+        """Prayer books and the Bible are separate domains. A молитвослов
+        prints its psalms inline; it does not cite a Bible. A `scripture`
+        block appearing inside a rule means that separation has been broken."""
+        for doc_id, doc in catalogue().items():
+            kinds = {b["type"] for b in doc["blocks"]}
+            self.assertNotIn("scripture", kinds,
+                             f"{doc_id} reads from the Bible store")
 
-    def test_scripture_present_is_spliced_in(self):
+    def test_prayerbook_psalms_are_reported_not_fetched(self):
+        """An unsourced psalm reports missing. It must never fall back to a
+        Bible translation, which would put a different rendering of the psalm
+        into someone's rule than the one their prayer book prints."""
+        built = assemble("hour-sixth", self.day)
+        refs = [m["ref"] for m in built["missing"] if m["type"] == "psalm"]
+        self.assertEqual(refs, ["Ps 53", "Ps 54", "Ps 90"])
+        self.assertNotIn("psalm", [b["type"] for b in built["blocks"]])
+
+    def test_psalms_are_not_affected_by_the_scripture_store(self):
+        """Even with a Bible loaded, prayer-book psalms stay missing until the
+        prayer-book text itself is sourced."""
         built = assemble("hour-sixth", self.day,
                          scripture=lambda ref, numbering="masoretic":
-                         [{"type": "verse", "n": 1, "en": f"[{ref}]"}])
-        verses = [b for b in built["blocks"] if b["type"] == "verse"]
-        self.assertEqual(len(verses), 3)
-        # The troparion of the day is still legitimately missing; scripture is not.
-        self.assertEqual([m for m in built["missing"] if m["type"] == "scripture"], [])
+                         [{"type": "verse", "n": 1, "text": {"en": "from a Bible"}}])
+        self.assertTrue(any(m["type"] == "psalm" for m in built["missing"]))
+        self.assertEqual([b for b in built["blocks"] if b["type"] == "verse"], [])
 
-    def test_lxx_numbering_reaches_the_scripture_resolver(self):
-        """Regression: the assembler used to call scripture(ref) without the
-        block's numbering, so every psalm in every prayer was looked up under
-        Masoretic numbers and came back one psalm off."""
-        seen = {}
-
-        def spy(ref, numbering="masoretic"):
-            seen[ref] = numbering
-            return [{"type": "verse", "n": 1, "en": ref}]
-
-        assemble("hour-sixth", self.day, scripture=spy)
-        self.assertEqual(seen, {"Ps 53": "lxx", "Ps 54": "lxx", "Ps 90": "lxx"})
+    def test_sourced_psalm_text_is_emitted(self):
+        from prayers.assembler import _expand
+        blocks = _expand(
+            [{"type": "psalm", "ref": "Ps 50", "numbering": "lxx",
+              "text": {"en": "Have mercy on me, O God",
+                       "ru": "Помилуй мя, Боже"}}],
+            self.day, None, [], 0)
+        self.assertEqual(blocks[0]["type"], "psalm")
+        self.assertEqual(blocks[0]["ref"], "Ps 50")
+        self.assertIn("ru", blocks[0]["text"])
 
     def test_slots(self):
         self.assertEqual(slot_for_hour(6), "morning")
@@ -188,3 +198,38 @@ class TestPrayerTranslations(unittest.TestCase):
                 t = b.get("text")
                 if t:
                     self.assertIn("en", t, f"{doc_id} block {i} has no English")
+
+
+class TestBibleSeparation(unittest.TestCase):
+    """The Bible store serves actual citations — the daily Gospel, a passage
+    read on its own. It is a different domain from the prayer books."""
+
+    def test_editions_are_one_per_language(self):
+        from prayers.scripture import EDITIONS
+        self.assertEqual(EDITIONS["ru"], "synodal",
+                         "Bible reading in Russian is Synodal, not Slavonic")
+        self.assertEqual(EDITIONS["en"], "web")
+        self.assertEqual(EDITIONS["el"], "patriarchal")
+
+    def test_old_testament_prefers_a_septuagint_edition(self):
+        from prayers.scripture import edition_for
+        loaded = {"web", "brenton", "patriarchal", "rahlfs", "synodal"}
+        self.assertEqual(edition_for("en", "Ps 50", loaded), "brenton")
+        self.assertEqual(edition_for("en", "Isaiah 7:14", loaded), "brenton")
+        self.assertEqual(edition_for("en", "John 1:1", loaded), "web")
+
+    def test_ot_edition_falls_back_when_not_loaded(self):
+        self.assertEqual(edition_for_web_only("en", "Ps 50"), "web")
+
+    def test_synodal_is_treated_as_lxx_numbered(self):
+        """Russian Bibles number the psalms after the Septuagint, so Псалом 50
+        is the penitential psalm. Renumbering it would shift it twice."""
+        from prayers.scripture import LXX_NATIVE
+        self.assertIn("synodal", LXX_NATIVE)
+        self.assertIn("brenton", LXX_NATIVE)
+        self.assertNotIn("web", LXX_NATIVE)
+
+
+def edition_for_web_only(lang, ref):
+    from prayers.scripture import edition_for
+    return edition_for(lang, ref, loaded={"web"})

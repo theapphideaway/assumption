@@ -18,22 +18,28 @@
    "doc": "trisagion"
   },
   {
-   "type": "scripture",
+   "type": "psalm",
    "ref": "Ps 50",
    "numbering": "lxx",
-   "heading": "Psalm 50"
+   "heading": "Psalm 50",
+   "text": {},
+   "source": "prayerbook"
   },
   {
-   "type": "scripture",
+   "type": "psalm",
    "ref": "Ps 69",
    "numbering": "lxx",
-   "heading": "Psalm 69"
+   "heading": "Psalm 69",
+   "text": {},
+   "source": "prayerbook"
   },
   {
-   "type": "scripture",
+   "type": "psalm",
    "ref": "Ps 142",
    "numbering": "lxx",
-   "heading": "Psalm 142"
+   "heading": "Psalm 142",
+   "text": {},
+   "source": "prayerbook"
   },
   {
    "type": "heading",
