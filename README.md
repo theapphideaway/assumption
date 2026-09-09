@@ -137,7 +137,7 @@ that can move or disappear.
 | `synodal` | open-bibles `rus-synodal.zefania.xml` | 66 | 31,352 | Masoretic-chaptered; **no deuterocanon** |
 | `patriarchal` | byztxt/greektext-antoniades | 27 (NT) | 7,956 | **Unaccented** |
 | `swete` | nathans/lxx-swete (First1KGreek) | 52 (OT) | 28,543 | **CC BY-SA — attribution required**; no Ecclesiastes |
-| `brenton` | — | — | — | no machine-readable format on eBible |
+| `brenton` | ebible.org `eng-Brenton_html.zip` | 53 (OT) | 28,828 | LXX-numbered; has Ecclesiastes and the full deuterocanon |
 
 ```bash
 ./venv/bin/python manage.py load_scripture ~/Downloads/rus-synodal.zefania.xml --edition synodal
@@ -191,8 +191,8 @@ app never renders an empty heading and we always know what is outstanding.
    | | Psalter | Status |
    |---|---|---|
    | `el` | Swete's Septuagint | **done** — the Horologion's psalms *are* the LXX |
-   | `en` | Brenton | needs Brenton loaded; the WEB is Masoretic and is refused |
-   | `ru` | Church Slavonic Psalter | needs the Elizabeth Bible; the Synodal is refused |
+   | `en` | Brenton | **done** — LXX-based, as an English Orthodox psalter is |
+   | `ru` | Church Slavonic Psalter | outstanding; the Synodal is refused |
 
    The refusals are deliberate and tested. A language without its psalter is
    left empty rather than borrowing from the nearest Bible.

@@ -382,3 +382,36 @@ class TestPrayerPsalters(unittest.TestCase):
                                 f"{doc_id}: {b.get('ref')} has no Greek text")
                 self.assertEqual(b.get("sources", {}).get("el"), "swete")
         self.assertEqual(found, 9, "three psalms in each of the three Hours")
+
+
+class TestBookAliasTable(unittest.TestCase):
+    """Guards a bug class that Python makes invisible.
+
+    A repeated KEY in a dict literal is not an error — the last wins and the
+    earlier entry vanishes. A second "DAN" entry once silently wiped out every
+    Daniel alias, so code_for('Daniel') returned None and any reference to
+    Daniel failed to resolve, in the app as well as in the loaders.
+    """
+
+    def test_no_duplicate_codes_in_the_alias_literal(self):
+        import re
+        from collections import Counter
+        import prayers.books as books_mod
+        from pathlib import Path
+        src = Path(books_mod.__file__).read_text(encoding="utf-8")
+        body = src[src.index("_ALIASES"):src.index("def _build_lookup")]
+        counts = Counter(re.findall(r'^\s*"([0-9A-Z]{3})":', body, re.M))
+        dupes = {k: n for k, n in counts.items() if n > 1}
+        self.assertEqual(dupes, {}, f"duplicate keys silently discard entries: {dupes}")
+
+    def test_every_code_round_trips(self):
+        from prayers.books import BY_NUMBER, code_for
+        for code in BY_NUMBER.values():
+            self.assertEqual(code_for(code.lower()), code, f"{code} lost its alias")
+
+    def test_common_english_names_resolve(self):
+        from prayers.books import code_for
+        for name, expected in (("Daniel", "DAN"), ("Psalms", "PSA"),
+                               ("John", "JHN"), ("Ecclesiastes", "ECC"),
+                               ("Sirach", "SIR"), ("1 Corinthians", "1CO")):
+            self.assertEqual(code_for(name), expected, f"{name} did not resolve")

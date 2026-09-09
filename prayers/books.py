@@ -63,7 +63,7 @@ _ALIASES: dict[str, tuple[str, ...]] = {
     "JER": ("jer", "jeremiah", "иеремия", "jeremias"),
     "LAM": ("lam", "lamentations", "плач", "threniseulamentationes", "threni"),
     "EZK": ("ezk", "ezek", "ezekiel", "иезекииль", "ezechiel"),
-    "DAN": ("dan", "daniel", "даниил"),
+    "DAN": ("dan", "daniel", "даниил", "dag", "danieltheodotionisversio"),
     "JOL": ("jol", "joel", "иоиль"),
     "AMO": ("amo", "amos", "амос"),
     "JON": ("jon", "jonah", "иона", "jonas"),
@@ -100,7 +100,7 @@ _ALIASES: dict[str, tuple[str, ...]] = {
     "2CH": ("2ch", "2chron", "2chronicles", "2паралипоменон", "paralipomenonii"),
     "EZR": ("ezr", "ezra", "ездры", "esdrasb"),
     "NEH": ("neh", "nehemiah", "неемии"),
-    "EST": ("est", "esther", "есфирь"),
+    "EST": ("est", "esther", "есфирь", "esg"),
     "HOS": ("hos", "hosea", "осия", "osee"),
     "OBA": ("oba", "obad", "obadiah", "авдия", "abdias"),
     "NAM": ("nam", "nah", "nahum", "наум"),
@@ -125,13 +125,28 @@ _ALIASES: dict[str, tuple[str, ...]] = {
     "LJE": ("lje", "letterofjeremiah", "epistulajeremiae"),
     "SUS": ("sus", "susanna", "susannatheodotionisversio"),
     "BEL": ("bel", "belandthedragon", "beletdracotheodotionisversio"),
-    "DAN": ("danieltheodotionisversio",),
     "MAN": ("man", "prayerofmanasseh", "молитваманассии"),
 }
 
-_LOOKUP: dict[str, str] = {
-    alias: code for code, aliases in _ALIASES.items() for alias in aliases
-}
+def _build_lookup() -> dict[str, str]:
+    """Flatten the alias table, refusing to let two codes claim one alias.
+
+    A duplicated KEY in the literal above is invisible — Python keeps the last
+    and silently discards the earlier entry, which once made every reference to
+    Daniel resolve to None. Duplicated VALUES are caught here; the duplicate-key
+    case is caught by a test that counts keys in the source.
+    """
+    out: dict[str, str] = {}
+    for code, aliases in _ALIASES.items():
+        for alias in aliases:
+            if alias in out and out[alias] != code:
+                raise ValueError(
+                    f"alias {alias!r} claimed by both {out[alias]} and {code}")
+            out[alias] = code
+    return out
+
+
+_LOOKUP: dict[str, str] = _build_lookup()
 
 
 def normalise(name: str) -> str:

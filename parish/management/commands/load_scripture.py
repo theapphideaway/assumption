@@ -17,7 +17,8 @@ Formats vary by source, so the input shape is auto-detected:
     Directory    one file per book, the filename naming the book. Two shapes
                  are handled: lines of "1:1 text…" (byztxt/greektext-antoniades)
                  JSON element lists (TehShrike/world-english-bible), and
-                 word-per-line "book.chapter.verse word" (nathans/lxx-swete).
+                 word-per-line "book.chapter.verse word" (nathans/lxx-swete),
+                 and eBible HTML, one file per chapter (Brenton).
 
     manage.py load_scripture rus-synodal.zefania.xml --edition synodal
 """
@@ -76,6 +77,9 @@ class Command(BaseCommand):
         if src.is_dir():
             if any(src.glob("*.json")):
                 self._element_dir(src, books)
+            elif any(src.glob("*.htm")):
+                self._ebible_html_dir(src, books)
+                return self._write(books, opts["edition"])
             elif self._is_word_per_line(src):
                 self._words_dir(src, books)
             else:
@@ -229,6 +233,49 @@ class Command(BaseCommand):
                 word = word.translate(self._HOMOGLYPHS)
                 existing = books[code][ch].get(v)
                 books[code][ch][v] = f"{existing} {word}" if existing else word
+
+    # eBible ships front matter and appendices alongside scripture. These are
+    # not books and must not be loaded as one.
+    _NOT_SCRIPTURE = {"FRT", "INT", "OTH", "BAK", "XXA", "XXB", "XXC",
+                      "GLO", "TDX", "NDX", "CNC"}
+
+    def _ebible_html_dir(self, src: Path, books: dict) -> None:
+        """eBible HTML: one file per chapter, named <BOOK><chapter>.htm.
+
+        Verses are marked by <span class="verse" id="Vn">n&#160;</span> and the
+        text runs until the next such span. Footnote and cross-reference markup
+        is stripped; a note left inline would read as scripture.
+        """
+        import html as _html
+
+        name_re = re.compile(r"^([A-Z0-9]{3})(\d+)\.htm$")
+        verse_re = re.compile(
+            r'<span class="verse" id="V(\d+)">.*?</span>(.*?)'
+            r'(?=<span class="verse" id="V\d+">|</div>|<div |\Z)', re.S)
+        note_re = re.compile(r'<span class="note.*?</span>|<a class="note.*?</a>'
+                             r'|<p class="f".*?</p>', re.S)
+        tag_re = re.compile(r"<[^>]+>")
+
+        for path in sorted(src.glob("*.htm")):
+            m = name_re.match(path.name)
+            if not m:
+                continue
+            book, chapter = m.group(1), str(int(m.group(2)))
+            if book in self._NOT_SCRIPTURE:
+                continue
+            code = code_for(book)
+            if not code:
+                raise CommandError(
+                    f"Unrecognised book code {book!r} in {path.name}. Add it to "
+                    "prayers/books.py or list it in _NOT_SCRIPTURE.")
+            raw = path.read_text(encoding="utf-8", errors="ignore")
+            body = raw[raw.find("<body"):]
+            body = note_re.sub(" ", body)
+            for vnum, chunk in verse_re.findall(body):
+                text = _html.unescape(tag_re.sub(" ", chunk))
+                text = " ".join(text.split())
+                if text:
+                    books[code][chapter][vnum] = text
 
     def _write(self, books: dict, edition: str):
         out = DEST / edition
