@@ -8,7 +8,9 @@
  "blocks": [
   {
    "type": "rubric",
-   "text": "Appointed for at midday. Five minutes, and unchanging — the easiest of all the hours to keep."
+   "text": {
+    "en": "Appointed for at midday. Five minutes, and unchanging — the easiest of all the hours to keep."
+   }
   },
   {
    "type": "include",
@@ -31,15 +33,23 @@
   },
   {
    "type": "heading",
-   "text": "Troparion of the Hour"
+   "text": {
+    "en": "Troparion of the Hour",
+    "el": "Τροπάριον τῆς Ὥρας",
+    "ru": "Тропарь часа"
+   }
   },
   {
    "type": "rubric",
-   "text": "Thrice, with prostrations:"
+   "text": {
+    "en": "Thrice, with prostrations:"
+   }
   },
   {
    "type": "para",
-   "en": "O Thou who on the sixth day and hour didst nail to the Cross the sin which rebellious Adam committed in Paradise: tear asunder also the bond of our iniquities, O Christ our God, and save us."
+   "text": {
+    "en": "O Thou who on the sixth day and hour didst nail to the Cross the sin which rebellious Adam committed in Paradise: tear asunder also the bond of our iniquities, O Christ our God, and save us."
+   }
   },
   {
    "type": "proper",
@@ -47,29 +57,51 @@
   },
   {
    "type": "heading",
-   "text": "Kontakion"
+   "text": {
+    "en": "Kontakion",
+    "el": "Κοντάκιον",
+    "ru": "Кондак"
+   }
   },
   {
    "type": "para",
-   "en": "O Jesus, who art Salvation itself, save us. Not for our works, but for Thy compassion alone, deliver us from the enemy who wars against us, and save Thy people, O Lord."
+   "text": {
+    "en": "O Jesus, who art Salvation itself, save us. Not for our works, but for Thy compassion alone, deliver us from the enemy who wars against us, and save Thy people, O Lord."
+   }
   },
   {
    "type": "refrain",
    "times": 40,
-   "en": "Lord, have mercy.",
-   "el": "Κύριε, ἐλέησον."
+   "text": {
+    "en": "Lord, have mercy.",
+    "el": "Κύριε, ἐλέησον.",
+    "ru": "Господи, помилуй."
+   }
   },
   {
    "type": "heading",
-   "text": "The Prayer of the Hours"
+   "text": {
+    "en": "The Prayer of the Hours",
+    "el": "Εὐχὴ τῶν Ὡρῶν",
+    "ru": "Молитва часов"
+   }
   },
   {
    "type": "para",
-   "en": "O Thou who at all times and at every hour, in heaven and on earth, art worshipped and glorified, O Christ our God, who art long-suffering and plenteous in mercy and compassion; who lovest the just and showest mercy upon the sinner: do Thou Thyself, O Master, receive our prayers at this present hour, and direct our lives according to Thy commandments."
+   "text": {
+    "en": "O Thou who at all times and at every hour, in heaven and on earth, art worshipped and glorified, O Christ our God, who art long-suffering and plenteous in mercy and compassion; who lovest the just and showest mercy upon the sinner: do Thou Thyself, O Master, receive our prayers at this present hour, and direct our lives according to Thy commandments."
+   }
   },
   {
    "type": "dismissal",
-   "en": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us and save us. Amen."
+   "text": {
+    "en": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us and save us. Amen.",
+    "ru": "Молитвами святых отец наших, Господи Иисусе Христе, Боже наш, помилуй нас. Аминь."
+   }
   }
- ]
+ ],
+ "title_text": {
+  "en": "The Sixth Hour",
+  "el": "Ὥρα Ἕκτη"
+ }
 }

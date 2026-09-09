@@ -8,85 +8,145 @@
  "blocks": [
   {
    "type": "para",
-   "en": "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
-   "el": "Εἰς τὸ ὄνομα τοῦ Πατρὸς καὶ τοῦ Υἱοῦ καὶ τοῦ Ἁγίου Πνεύματος. Ἀμήν."
+   "text": {
+    "en": "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
+    "el": "Εἰς τὸ ὄνομα τοῦ Πατρὸς καὶ τοῦ Υἱοῦ καὶ τοῦ Ἁγίου Πνεύματος. Ἀμήν.",
+    "ru": "Во имя Отца и Сына и Святаго Духа. Аминь."
+   }
   },
   {
    "type": "para",
-   "en": "Glory to Thee, our God, glory to Thee.",
-   "el": "Δόξα σοι ὁ Θεὸς ἡμῶν, δόξα σοι."
+   "text": {
+    "en": "Glory to Thee, our God, glory to Thee.",
+    "el": "Δόξα σοι ὁ Θεὸς ἡμῶν, δόξα σοι.",
+    "ru": "Слава Тебе, Боже наш, слава Тебе."
+   }
   },
   {
    "type": "para",
-   "en": "O Heavenly King, the Comforter, the Spirit of Truth, who art everywhere present and fillest all things, Treasury of good things and Giver of life: come and dwell in us, and cleanse us from every impurity, and save our souls, O Good One.",
-   "el": "Βασιλεῦ Οὐράνιε, Παράκλητε, τὸ Πνεῦμα τῆς ἀληθείας, ὁ πανταχοῦ παρὼν καὶ τὰ πάντα πληρῶν, ὁ θησαυρὸς τῶν ἀγαθῶν καὶ ζωῆς χορηγός, ἐλθὲ καὶ σκήνωσον ἐν ἡμῖν καὶ καθάρισον ἡμᾶς ἀπὸ πάσης κηλῖδος καὶ σῶσον, Ἀγαθέ, τὰς ψυχὰς ἡμῶν."
+   "text": {
+    "en": "O Heavenly King, the Comforter, the Spirit of Truth, who art everywhere present and fillest all things, Treasury of good things and Giver of life: come and dwell in us, and cleanse us from every impurity, and save our souls, O Good One.",
+    "el": "Βασιλεῦ Οὐράνιε, Παράκλητε, τὸ Πνεῦμα τῆς ἀληθείας, ὁ πανταχοῦ παρὼν καὶ τὰ πάντα πληρῶν, ὁ θησαυρὸς τῶν ἀγαθῶν καὶ ζωῆς χορηγός, ἐλθὲ καὶ σκήνωσον ἐν ἡμῖν καὶ καθάρισον ἡμᾶς ἀπὸ πάσης κηλῖδος καὶ σῶσον, Ἀγαθέ, τὰς ψυχὰς ἡμῶν.",
+    "ru": "Царю Небесный, Утешителю, Душе истины, Иже везде сый и вся исполняяй, Сокровище благих и жизни Подателю, прииди и вселися в ны, и очисти ны от всякия скверны, и спаси, Блаже, души наша."
+   }
   },
   {
    "type": "rubric",
-   "text": "Thrice:"
+   "text": {
+    "en": "Thrice:",
+    "el": "Τρίς:",
+    "ru": "Трижды:"
+   }
   },
   {
    "type": "refrain",
    "times": 3,
-   "en": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
-   "el": "Ἅγιος ὁ Θεός, Ἅγιος Ἰσχυρός, Ἅγιος Ἀθάνατος, ἐλέησον ἡμᾶς."
+   "text": {
+    "en": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
+    "el": "Ἅγιος ὁ Θεός, Ἅγιος Ἰσχυρός, Ἅγιος Ἀθάνατος, ἐλέησον ἡμᾶς.",
+    "ru": "Святый Боже, Святый Крепкий, Святый Безсмертный, помилуй нас."
+   }
   },
   {
    "type": "para",
-   "en": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
-   "el": "Δόξα Πατρὶ καὶ Υἱῷ καὶ Ἁγίῳ Πνεύματι, καὶ νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν."
+   "text": {
+    "en": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+    "el": "Δόξα Πατρὶ καὶ Υἱῷ καὶ Ἁγίῳ Πνεύματι, καὶ νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν.",
+    "ru": "Слава Отцу и Сыну и Святому Духу, и ныне и присно и во веки веков. Аминь."
+   }
   },
   {
    "type": "para",
-   "en": "All-holy Trinity, have mercy on us. Lord, cleanse us from our sins. Master, pardon our iniquities. Holy One, visit and heal our infirmities, for Thy name's sake.",
-   "el": "Παναγία Τριάς, ἐλέησον ἡμᾶς. Κύριε, ἱλάσθητι ταῖς ἁμαρτίαις ἡμῶν. Δέσποτα, συγχώρησον τὰς ἀνομίας ἡμῖν. Ἅγιε, ἐπίσκεψαι καὶ ἴασαι τὰς ἀσθενείας ἡμῶν, ἕνεκεν τοῦ ὀνόματός σου."
+   "text": {
+    "en": "All-holy Trinity, have mercy on us. Lord, cleanse us from our sins. Master, pardon our iniquities. Holy One, visit and heal our infirmities, for Thy name's sake.",
+    "el": "Παναγία Τριάς, ἐλέησον ἡμᾶς. Κύριε, ἱλάσθητι ταῖς ἁμαρτίαις ἡμῶν. Δέσποτα, συγχώρησον τὰς ἀνομίας ἡμῖν. Ἅγιε, ἐπίσκεψαι καὶ ἴασαι τὰς ἀσθενείας ἡμῶν, ἕνεκεν τοῦ ὀνόματός σου.",
+    "ru": "Пресвятая Троице, помилуй нас; Господи, очисти грехи наша; Владыко, прости беззакония наша; Святый, посети и исцели немощи наша, имене Твоего ради."
+   }
   },
   {
    "type": "refrain",
    "times": 3,
-   "en": "Lord, have mercy.",
-   "el": "Κύριε, ἐλέησον."
+   "text": {
+    "en": "Lord, have mercy.",
+    "el": "Κύριε, ἐλέησον.",
+    "ru": "Господи, помилуй."
+   }
   },
   {
    "type": "para",
-   "en": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen."
+   "text": {
+    "en": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+    "el": "Δόξα Πατρὶ καὶ Υἱῷ καὶ Ἁγίῳ Πνεύματι, καὶ νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν.",
+    "ru": "Слава Отцу и Сыну и Святому Духу, и ныне и присно и во веки веков. Аминь."
+   }
   },
   {
    "type": "heading",
-   "text": "The Lord's Prayer"
+   "text": {
+    "en": "The Lord's Prayer",
+    "el": "Ἡ Κυριακὴ Προσευχή",
+    "ru": "Молитва Господня"
+   }
   },
   {
    "type": "para",
-   "en": "Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation, but deliver us from the evil one.",
-   "el": "Πάτερ ἡμῶν ὁ ἐν τοῖς οὐρανοῖς, ἁγιασθήτω τὸ ὄνομά σου· ἐλθέτω ἡ βασιλεία σου· γενηθήτω τὸ θέλημά σου, ὡς ἐν οὐρανῷ καὶ ἐπὶ τῆς γῆς. Τὸν ἄρτον ἡμῶν τὸν ἐπιούσιον δὸς ἡμῖν σήμερον· καὶ ἄφες ἡμῖν τὰ ὀφειλήματα ἡμῶν, ὡς καὶ ἡμεῖς ἀφίεμεν τοῖς ὀφειλέταις ἡμῶν· καὶ μὴ εἰσενέγκῃς ἡμᾶς εἰς πειρασμόν, ἀλλὰ ῥῦσαι ἡμᾶς ἀπὸ τοῦ πονηροῦ."
+   "text": {
+    "en": "Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation, but deliver us from the evil one.",
+    "el": "Πάτερ ἡμῶν ὁ ἐν τοῖς οὐρανοῖς, ἁγιασθήτω τὸ ὄνομά σου· ἐλθέτω ἡ βασιλεία σου· γενηθήτω τὸ θέλημά σου, ὡς ἐν οὐρανῷ καὶ ἐπὶ τῆς γῆς. Τὸν ἄρτον ἡμῶν τὸν ἐπιούσιον δὸς ἡμῖν σήμερον· καὶ ἄφες ἡμῖν τὰ ὀφειλήματα ἡμῶν, ὡς καὶ ἡμεῖς ἀφίεμεν τοῖς ὀφειλέταις ἡμῶν· καὶ μὴ εἰσενέγκῃς ἡμᾶς εἰς πειρασμόν, ἀλλὰ ῥῦσαι ἡμᾶς ἀπὸ τοῦ πονηροῦ.",
+    "ru": "Отче наш, Иже еси на небесех! Да святится имя Твое, да приидет Царствие Твое, да будет воля Твоя, яко на небеси и на земли. Хлеб наш насущный даждь нам днесь; и остави нам долги наша, якоже и мы оставляем должником нашим; и не введи нас во искушение, но избави нас от лукаваго."
+   }
   },
   {
    "type": "rubric",
-   "text": "If a priest is present, he says: For Thine is the kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages."
+   "text": {
+    "en": "If a priest is present, he says: For Thine is the kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages."
+   }
   },
   {
    "type": "para",
-   "en": "Amen."
+   "text": {
+    "en": "Amen.",
+    "el": "Ἀμήν.",
+    "ru": "Аминь."
+   }
   },
   {
    "type": "refrain",
    "times": 12,
-   "en": "Lord, have mercy.",
-   "el": "Κύριε, ἐλέησον."
+   "text": {
+    "en": "Lord, have mercy.",
+    "el": "Κύριε, ἐλέησον.",
+    "ru": "Господи, помилуй."
+   }
   },
   {
    "type": "para",
-   "en": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen."
+   "text": {
+    "en": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+    "el": "Δόξα Πατρὶ καὶ Υἱῷ καὶ Ἁγίῳ Πνεύματι, καὶ νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν.",
+    "ru": "Слава Отцу и Сыну и Святому Духу, и ныне и присно и во веки веков. Аминь."
+   }
   },
   {
    "type": "rubric",
-   "text": "Thrice:"
+   "text": {
+    "en": "Thrice:",
+    "el": "Τρίς:",
+    "ru": "Трижды:"
+   }
   },
   {
    "type": "refrain",
    "times": 3,
-   "en": "O come, let us worship God our King. O come, let us worship and fall down before Christ, our King and our God. O come, let us worship and fall down before Christ Himself, our King and our God.",
-   "el": "Δεῦτε προσκυνήσωμεν καὶ προσπέσωμεν τῷ Βασιλεῖ ἡμῶν Θεῷ."
+   "text": {
+    "en": "O come, let us worship God our King. O come, let us worship and fall down before Christ, our King and our God. O come, let us worship and fall down before Christ Himself, our King and our God.",
+    "el": "Δεῦτε προσκυνήσωμεν καὶ προσπέσωμεν τῷ Βασιλεῖ ἡμῶν Θεῷ.",
+    "ru": "Приидите, поклонимся Цареви нашему Богу. Приидите, поклонимся и припадем Христу, Цареви нашему Богу. Приидите, поклонимся и припадем Самому Христу, Цареви и Богу нашему."
+   }
   }
- ]
+ ],
+ "title_text": {
+  "en": "The Trisagion Prayers",
+  "el": "Τρισάγιον"
+ }
 }

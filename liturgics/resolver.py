@@ -15,6 +15,8 @@ from functools import lru_cache
 from pathlib import Path
 
 from .fasting import resolve_fast
+from .i18n import (FAST_LABELS, LANGUAGES, SEASONS, fast_reason,
+                    missing_languages)
 from .lectionary import readings_for
 from .movable import eothinon_for, movable_day, season_for, tone_for
 from .paschalion import gregorian_to_julian, reference_pascha
@@ -42,16 +44,22 @@ def resolve_day(d: date) -> dict:
     # still listed. Movable wins ties — Pascha outranks anything fixed.
     commemorations = []
     if moving:
-        commemorations.append({"title": moving[0], "rank": moving[1],
-                               "greek": moving[2], "kind": "movable"})
+        title = {"en": moving[0]}
+        if moving[2]:
+            title["el"] = moving[2]
+        if len(moving) > 3 and moving[3]:
+            title["ru"] = moving[3]
+        commemorations.append({"title": title, "rank": moving[1],
+                               "kind": "movable"})
     if fixed:
-        commemorations.append({"title": fixed["title"], "rank": fixed["rank"],
-                               "greek": fixed.get("greek", ""), "kind": "fixed",
+        commemorations.append({"title": dict(fixed["title"]),
+                               "rank": fixed["rank"], "kind": "fixed",
                                "patronal": fixed.get("patronal", False)})
     commemorations.sort(key=lambda c: c["rank"])
 
     rank = commemorations[0]["rank"] if commemorations else 6
-    title = commemorations[0]["title"] if commemorations else season.label
+    title = (commemorations[0]["title"] if commemorations
+             else dict(SEASONS[season.key]))
     color = season.color
     if commemorations and commemorations[0]["kind"] == "fixed":
         color = (fixed or {}).get("color", color)
@@ -59,19 +67,28 @@ def resolve_day(d: date) -> dict:
     jy, jm, jd = gregorian_to_julian(d)
     fast = resolve_fast(d, offset, rank=rank)
 
+    # Language gaps are reported, never papered over with English. A reader
+    # who prays in Slavonic should see that a text is missing, not quietly
+    # receive a different language and assume that is all there is.
+    gaps = {"title": missing_languages(title)} if missing_languages(title) else {}
+
     return {
         "date": d.isoformat(),
         "julian": f"{jy:04d}-{jm:02d}-{jd:02d}",
         "pascha": pascha_date.isoformat(),
         "pascha_offset": offset,
-        "season": {"key": season.key, "label": season.label,
-                   "greek": season.greek, "color": color},
+        "languages": list(LANGUAGES),
+        "season": {"key": season.key, "label": dict(SEASONS[season.key]),
+                   "color": color},
         "title": title,
         "rank": rank,
         "tone": tone_for(d),
         "eothinon": eothinon_for(d),
-        "fast": {"level": fast.level, "label": fast.label,
-                 "reason": fast.reason, "is_fast": fast.is_fast},
+        "fast": {"level": fast.level,
+                 "label": dict(FAST_LABELS[fast.level]),
+                 "reason": fast_reason(fast.reason),
+                 "is_fast": fast.is_fast},
+        "translation_gaps": gaps,
         "commemorations": commemorations,
         "patronal": any(c.get("patronal") for c in commemorations),
         "readings": readings_for(d, offset),

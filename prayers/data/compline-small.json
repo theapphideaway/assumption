@@ -9,7 +9,9 @@
  "blocks": [
   {
    "type": "rubric",
-   "text": "This is an abbreviated Small Compline. The full order includes the Canon to the Theotokos, which is not yet on file."
+   "text": {
+    "en": "This is an abbreviated Small Compline. The full order includes the Canon to the Theotokos, which is not yet on file."
+   }
   },
   {
    "type": "include",
@@ -35,54 +37,96 @@
   },
   {
    "type": "heading",
-   "text": "The Symbol of Faith"
+   "text": {
+    "en": "The Symbol of Faith",
+    "el": "Τὸ Σύμβολον τῆς Πίστεως",
+    "ru": "Символ веры"
+   }
   },
   {
    "type": "rubric",
-   "text": "Said as at Morning Prayers."
+   "text": {
+    "en": "Said as at Morning Prayers."
+   }
   },
   {
    "type": "para",
-   "en": "It is truly meet to bless thee, O Theotokos, ever-blessed and most pure, and the Mother of our God. More honourable than the Cherubim, and beyond compare more glorious than the Seraphim: without corruption thou gavest birth to God the Word. True Theotokos, we magnify thee."
+   "text": {
+    "en": "It is truly meet to bless thee, O Theotokos, ever-blessed and most pure, and the Mother of our God. More honourable than the Cherubim, and beyond compare more glorious than the Seraphim: without corruption thou gavest birth to God the Word. True Theotokos, we magnify thee.",
+    "el": "Ἄξιόν ἐστιν ὡς ἀληθῶς μακαρίζειν σε τὴν Θεοτόκον, τὴν ἀειμακάριστον καὶ παναμώμητον καὶ μητέρα τοῦ Θεοῦ ἡμῶν. Τὴν τιμιωτέραν τῶν Χερουβεὶμ καὶ ἐνδοξοτέραν ἀσυγκρίτως τῶν Σεραφείμ, τὴν ἀδιαφθόρως Θεὸν Λόγον τεκοῦσαν, τὴν ὄντως Θεοτόκον, σὲ μεγαλύνομεν.",
+    "ru": "Достойно есть яко воистинну блажити Тя, Богородицу, Присноблаженную и Пренепорочную и Матерь Бога нашего. Честнейшую Херувим и славнейшую без сравнения Серафим, без истления Бога Слова рождшую, сущую Богородицу Тя величаем."
+   }
   },
   {
    "type": "refrain",
    "times": 40,
-   "en": "Lord, have mercy.",
-   "el": "Κύριε, ἐλέησον."
+   "text": {
+    "en": "Lord, have mercy.",
+    "el": "Κύριε, ἐλέησον.",
+    "ru": "Господи, помилуй."
+   }
   },
   {
    "type": "heading",
-   "text": "The Prayer of the Hours"
+   "text": {
+    "en": "The Prayer of the Hours",
+    "el": "Εὐχὴ τῶν Ὡρῶν",
+    "ru": "Молитва часов"
+   }
   },
   {
    "type": "para",
-   "en": "O Thou who at all times and at every hour, in heaven and on earth, art worshipped and glorified, O Christ our God, who art long-suffering and plenteous in mercy and compassion; who lovest the just and showest mercy upon the sinner: do Thou Thyself, O Master, receive our prayers at this present hour, and direct our lives according to Thy commandments."
+   "text": {
+    "en": "O Thou who at all times and at every hour, in heaven and on earth, art worshipped and glorified, O Christ our God, who art long-suffering and plenteous in mercy and compassion; who lovest the just and showest mercy upon the sinner: do Thou Thyself, O Master, receive our prayers at this present hour, and direct our lives according to Thy commandments."
+   }
   },
   {
    "type": "heading",
-   "text": "The Prayer of St. Ephraim"
+   "text": {
+    "en": "The Prayer of St. Ephraim",
+    "el": "Εὐχὴ Ἁγίου Ἐφραίμ",
+    "ru": "Молитва прп. Ефрема Сирина"
+   }
   },
   {
    "type": "rubric",
-   "text": "During Great Lent, with prostrations:"
+   "text": {
+    "en": "During Great Lent, with prostrations:"
+   }
   },
   {
    "type": "para",
-   "en": "O Lord and Master of my life, take from me the spirit of sloth, despair, lust of power, and idle talk. But grant rather the spirit of chastity, humility, patience, and love to Thy servant. Yea, O Lord and King, grant me to see my own transgressions, and not to judge my brother, for blessed art Thou unto the ages of ages. Amen.",
-   "el": "Κύριε καὶ Δέσποτα τῆς ζωῆς μου, πνεῦμα ἀργίας, περιεργίας, φιλαρχίας καὶ ἀργολογίας μή μοι δῷς."
+   "text": {
+    "en": "O Lord and Master of my life, take from me the spirit of sloth, despair, lust of power, and idle talk. But grant rather the spirit of chastity, humility, patience, and love to Thy servant. Yea, O Lord and King, grant me to see my own transgressions, and not to judge my brother, for blessed art Thou unto the ages of ages. Amen.",
+    "el": "Κύριε καὶ Δέσποτα τῆς ζωῆς μου, πνεῦμα ἀργίας, περιεργίας, φιλαρχίας καὶ ἀργολογίας μή μοι δῷς.",
+    "ru": "Господи и Владыко живота моего, дух праздности, уныния, любоначалия и празднословия не даждь ми. Дух же целомудрия, смиренномудрия, терпения и любве даруй ми, рабу Твоему. Ей, Господи Царю, даруй ми зрети моя прегрешения и не осуждати брата моего, яко благословен еси во веки веков. Аминь."
+   }
   },
   {
    "type": "heading",
-   "text": "Prayer of Forgiveness"
+   "text": {
+    "en": "Prayer of Forgiveness",
+    "el": "Εὐχὴ Συγχωρήσεως",
+    "ru": "Молитва о прощении"
+   }
   },
   {
    "type": "para",
-   "en": "Forgive, remit, and pardon, O God, our offences, both voluntary and involuntary, in deed and word, in knowledge and ignorance, by day and by night, in mind and thought: forgive us all things, for Thou art good and lovest mankind."
+   "text": {
+    "en": "Forgive, remit, and pardon, O God, our offences, both voluntary and involuntary, in deed and word, in knowledge and ignorance, by day and by night, in mind and thought: forgive us all things, for Thou art good and lovest mankind.",
+    "ru": "Ослаби, остави, прости, Боже, прегрешения наша, вольная и невольная, яже в слове и в деле, яже в ведении и не в ведении, яже во дни и в нощи, яже во уме и помышлении: вся нам прости, яко благ и Человеколюбец."
+   }
   },
   {
    "type": "dismissal",
-   "en": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us and save us. Amen."
+   "text": {
+    "en": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us and save us. Amen.",
+    "ru": "Молитвами святых отец наших, Господи Иисусе Христе, Боже наш, помилуй нас. Аминь."
+   }
   }
- ]
+ ],
+ "title_text": {
+  "en": "Small Compline",
+  "el": "Μικρὸν Ἀπόδειπνον"
+ }
 }

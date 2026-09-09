@@ -72,6 +72,56 @@ Grep for `NEEDS_CONFIRMATION`. Current list:
   ./venv/bin/python manage.py menaion_review --month 8
   ```
 
+## Three content languages
+
+English, Greek and Slavonic are **peers**, not a base language with two
+translations bolted on. The parish has ethnic Greeks and ethnic Russians, and
+people keep a prayer rule in the language they actually pray in. Every
+user-facing string is a `{"en":…, "el":…, "ru":…}` object; the API returns all
+three on every response so a reader can switch mid-prayer without a round trip.
+
+**Nothing falls back to English silently.** A missing translation is reported
+as missing — in `translation_gaps` on a day, and in the `missing` array on a
+prayer. If English quietly stood in for Slavonic, nobody would ever notice the
+gap and it would never get filled.
+
+```bash
+./venv/bin/python manage.py translation_report
+./venv/bin/python manage.py translation_report --lang ru --missing
+```
+
+**One open question for Ian.** The `ru` field currently holds **Church
+Slavonic set in the civil alphabet**, which is what a молитвослов prints and
+what people actually say aloud. A modern Russian translation is a different
+text and reads as a study aid rather than a rule. If the parish wants both,
+add a fourth language `ru_mod` rather than replacing this one.
+
+## Scripture editions
+
+Public domain in all three languages. For Greek and Russian the free option is
+also the ecclesiastically correct one — only English forces a compromise.
+
+| | Edition | Note |
+|---|---|---|
+| **en** | World English Bible | Public domain, modern. Chosen over the KJV for readability. |
+| | Brenton's Septuagint | The LXX-based Old Testament — the correct OT for Orthodox use. Already LXX-numbered. |
+| **el** | Patriarchal Text of 1904 | The official ecclesiastical text of the Church of Constantinople. Exactly what GOARCH reads. |
+| | Rahlfs Septuagint | Old Testament. |
+| **ru** | Синодальный перевод (1876) | The standard Russian Bible, public domain. |
+| | Елизаветинская Библия (1751) | Church Slavonic, LXX-based, what is read aloud in Slavic churches. Already LXX-numbered. |
+
+**The ESV and NKJV are copyrighted** and cannot be bundled. Crossway's ESV
+permissions cover quotation and an API behind a licence key, not distribution
+inside an app.
+
+```bash
+./venv/bin/python manage.py load_scripture web.json --edition web
+```
+
+Editions listed in `scripture.LXX_NATIVE` (Brenton, the Elizabeth Bible,
+Rahlfs) are already Septuagint-numbered and are **not** converted on read.
+Converting them would shift the psalm a second time.
+
 ## Content gaps
 
 The API reports these in a `missing` array on every prayer response, so the
@@ -84,8 +134,10 @@ app never renders an empty heading and we always know what is outstanding.
    permission from the Archdiocese or AGES for their lectionary.
 2. **Hymn texts.** The Menaion carries commemorations, not troparia, so every
    `proper` slot currently reports missing rather than showing a placeholder.
-3. **Scripture.** Nothing is bundled. `manage.py load_scripture <file>`
-   ingests a public-domain edition (KJV, and Brenton for the Septuagint).
+3. **Scripture.** Nothing is bundled — see the table above for what to load.
+4. **Translations.** Greek and Slavonic cover the Great Feasts, the movable
+   cycle and the invariable prayers. The long tail of the Menaion is
+   English-only. `translation_report` has the exact numbers.
 
 **Psalm numbering is a live hazard.** The Orthodox Psalter follows the
 Septuagint, which runs one behind the KJV for most of the book and disagrees

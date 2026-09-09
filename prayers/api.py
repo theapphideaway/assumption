@@ -21,14 +21,15 @@ from rest_framework.response import Response
 from liturgics.resolver import resolve_day
 from prayers.assembler import assemble
 from prayers.blocks import SLOTS, slot_for_hour
-from prayers.scripture import available, resolver as scripture_resolver
+from prayers.scripture import EDITIONS, available, trilingual_resolver
 from prayers.store import catalogue
 
 
 def _payload(d):
     day = resolve_day(d)
-    editions = available()
-    scripture = scripture_resolver(editions[0]) if editions else None
+    loaded = available()
+    editions = {lang: ed for lang, ed in EDITIONS.items() if ed in loaded}
+    scripture = trilingual_resolver(editions) if editions else None
 
     docs, missing = [], []
     for doc in catalogue().values():

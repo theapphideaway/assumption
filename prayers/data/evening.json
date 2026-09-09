@@ -12,54 +12,96 @@
   },
   {
    "type": "heading",
-   "text": "The Prayer of St. Macarius the Great"
+   "text": {
+    "en": "The Prayer of St. Macarius the Great",
+    "el": "Εὐχὴ Ἁγίου Μακαρίου",
+    "ru": "Молитва прп. Макария Великого"
+   }
   },
   {
    "type": "para",
-   "en": "O Eternal God, King of all creation, who hast granted me to arrive at this hour: forgive me the sins which I have committed this day in deed, word and thought. Cleanse, O Lord, my humble soul of every defilement of flesh and spirit. And grant me, O Lord, to pass through the sleep of this night in peace, that rising from my lowly bed I may please Thy most holy name all the days of my life."
+   "text": {
+    "en": "O Eternal God, King of all creation, who hast granted me to arrive at this hour: forgive me the sins which I have committed this day in deed, word and thought. Cleanse, O Lord, my humble soul of every defilement of flesh and spirit. And grant me, O Lord, to pass through the sleep of this night in peace, that rising from my lowly bed I may please Thy most holy name all the days of my life."
+   }
   },
   {
    "type": "heading",
-   "text": "The Prayer of St. Antiochus"
+   "text": {
+    "en": "The Prayer of St. Antiochus",
+    "el": "Εὐχὴ Ἁγίου Ἀντιόχου",
+    "ru": "Молитва прп. Антиоха"
+   }
   },
   {
    "type": "para",
-   "en": "And grant unto us, O Master, as we go to sleep, rest of body and soul; and preserve us from the gloomy slumber of sin, and from every dark and nocturnal pleasure. Quell the promptings of the passions; quench the fiery darts of the evil one which are craftily directed against us; still the rebellions of our flesh, and put far from us every earthly and material thought."
+   "text": {
+    "en": "And grant unto us, O Master, as we go to sleep, rest of body and soul; and preserve us from the gloomy slumber of sin, and from every dark and nocturnal pleasure. Quell the promptings of the passions; quench the fiery darts of the evil one which are craftily directed against us; still the rebellions of our flesh, and put far from us every earthly and material thought."
+   }
   },
   {
    "type": "heading",
-   "text": "The Examination of Conscience"
+   "text": {
+    "en": "The Examination of Conscience",
+    "el": "Ἐξέτασις Συνειδήσεως",
+    "ru": "Испытание совести"
+   }
   },
   {
    "type": "rubric",
-   "text": "Call to mind the day now ending, and what in it needs forgiveness. Take your time."
+   "text": {
+    "en": "Call to mind the day now ending, and what in it needs forgiveness. Take your time."
+   }
   },
   {
    "type": "silence"
   },
   {
    "type": "para",
-   "en": "Forgive, O Lord, all those who hate me and wrong me. Do good to those who do good. Grant to my brethren and kinsmen their requests that are unto salvation, and life everlasting. Visit those who are in infirmity, and grant them healing. Direct those at sea. Travel with those who journey. Help those in need."
+   "text": {
+    "en": "Forgive, O Lord, all those who hate me and wrong me. Do good to those who do good. Grant to my brethren and kinsmen their requests that are unto salvation, and life everlasting. Visit those who are in infirmity, and grant them healing. Direct those at sea. Travel with those who journey. Help those in need."
+   }
   },
   {
    "type": "heading",
-   "text": "The Prayer of St. Ioannikios"
+   "text": {
+    "en": "The Prayer of St. Ioannikios",
+    "el": "Εὐχὴ Ἁγίου Ἰωαννικίου",
+    "ru": "Молитва прп. Иоанникия"
+   }
   },
   {
    "type": "para",
-   "en": "The Father is my hope; the Son is my refuge; the Holy Spirit is my protection. O Holy Trinity, glory to Thee."
+   "text": {
+    "en": "The Father is my hope; the Son is my refuge; the Holy Spirit is my protection. O Holy Trinity, glory to Thee.",
+    "el": "Ἡ ἐλπίς μου ὁ Πατήρ, καταφυγή μου ὁ Υἱός, σκέπη μου τὸ Πνεῦμα τὸ Ἅγιον· Τριὰς Ἁγία, δόξα σοι.",
+    "ru": "Упование мое Отец, прибежище мое Сын, покров мой Дух Святый: Троице Святая, слава Тебе."
+   }
   },
   {
    "type": "heading",
-   "text": "The Dismissal"
+   "text": {
+    "en": "The Dismissal",
+    "el": "Ἀπόλυσις",
+    "ru": "Отпуст"
+   }
   },
   {
    "type": "para",
-   "en": "Into Thy hands, O Lord Jesus Christ my God, I commit my spirit. Do Thou bless me, do Thou have mercy on me, and grant me life eternal. Amen."
+   "text": {
+    "en": "Into Thy hands, O Lord Jesus Christ my God, I commit my spirit. Do Thou bless me, do Thou have mercy on me, and grant me life eternal. Amen.",
+    "ru": "В руце Твои, Господи Иисусе Христе, Боже мой, предаю дух мой: Ты же мя благослови, Ты мя помилуй и живот вечный даруй ми. Аминь."
+   }
   },
   {
    "type": "dismissal",
-   "en": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us and save us. Amen."
+   "text": {
+    "en": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us and save us. Amen.",
+    "ru": "Молитвами святых отец наших, Господи Иисусе Христе, Боже наш, помилуй нас. Аминь."
+   }
   }
- ]
+ ],
+ "title_text": {
+  "en": "Evening Prayers",
+  "el": "Ἑσπεριναὶ Προσευχαί"
+ }
 }

@@ -26,8 +26,7 @@ def _services_for(d: date) -> list[dict]:
         date__isnull=True, weekday=d.weekday())
     return [
         {
-            "title": s.title,
-            "greek": s.greek,
+            "title": {"en": s.title, **({"el": s.greek} if s.greek else {})},
             "time": s.start_time.strftime("%H:%M"),
             "location": s.location.name if s.location else None,
             "note": s.note,

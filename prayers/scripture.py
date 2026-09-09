@@ -5,18 +5,34 @@ Passages live as JSON per book under `data/scripture/<edition>/`, not in the
 database: they never change, they benefit from version control, and keeping
 them as files lets the whole prayers package stay pure Python.
 
-Nothing ships in the repo yet. `manage.py load_scripture` ingests a
-public-domain edition:
+Nothing ships in the repo yet. `manage.py load_scripture` ingests an edition
+per language. For Greek and Russian the free option is also the ecclesiastically
+correct one; only English forces a compromise.
 
-    KJV        — New Testament and Old Testament. Public domain.
-    Brenton    — the Septuagint in English. Public domain, and the correct
-                 Old Testament for Orthodox use.
+    en  World English Bible (WEB)      public domain, modern English. Chosen
+                                       over the KJV for readability. The ESV
+                                       and NKJV are copyrighted and cannot be
+                                       bundled at any price we can justify.
+        Brenton's Septuagint           public domain; the LXX-based Old
+                                       Testament, which is the correct OT for
+                                       Orthodox use. ALREADY LXX-NUMBERED.
+    el  Patriarchal Text of 1904       the official ecclesiastical text of the
+                                       Church of Constantinople. Public domain,
+                                       and exactly what GOARCH reads.
+        Rahlfs Septuagint (1935)       for the Old Testament.
+    ru  Синодальный перевод (1876)     the Russian Synodal translation, public
+                                       domain and the standard Russian Bible.
+        Елизаветинская Библия (1751)   Church Slavonic, LXX-based, what is
+                                       actually read aloud in Slavic churches.
+                                       ALREADY LXX-NUMBERED.
 
 PSALM NUMBERING. The Orthodox Psalter follows the Septuagint, which runs one
-behind the KJV/Masoretic for most of the book (LXX 50 = KJV 51). Every psalm
-reference in the prayer documents carries `"numbering": "lxx"`, and this module
-converts when reading from a Masoretic-numbered edition. Getting this wrong
-does not error — it silently serves the wrong psalm.
+behind the KJV/Masoretic for most of the book and disagrees about where several
+psalms divide. Every psalm reference in the prayer documents carries
+`"numbering": "lxx"`. Editions that are themselves LXX-numbered — Brenton, the
+Elizabeth Bible, Rahlfs — are listed in LXX_NATIVE below and are NOT converted;
+converting them would shift the psalm a second time. Getting this wrong does
+not error — it silently serves the wrong psalm.
 """
 
 from __future__ import annotations
@@ -29,6 +45,13 @@ from pathlib import Path
 _DATA = Path(__file__).parent / "data" / "scripture"
 
 _REF = re.compile(r"^\s*((?:[1-3]\s+)?[A-Za-z]+)\s+(\d+)(?::([\d,\s\-]+))?\s*$")
+
+# One edition per content language. Override per parish if needed.
+EDITIONS: dict[str, str] = {"en": "web", "el": "patriarchal", "ru": "synodal"}
+
+# Editions whose psalms already follow Septuagint numbering. Converting these
+# would shift the psalm twice — the classic double-offset bug.
+LXX_NATIVE: frozenset[str] = frozenset({"brenton", "elizabeth", "rahlfs"})
 
 
 # The Septuagint and Masoretic psalters do not merely differ by one — they
@@ -87,9 +110,9 @@ def passage(ref: str, edition: str = "kjv", numbering: str = "masoretic"):
         return None
     book, chapter, verses = m.group(1), int(m.group(2)), m.group(3)
 
-    chapters = (lxx_to_masoretic(chapter)
-                if numbering == "lxx" and book.lower().startswith("ps")
-                else (chapter,))
+    convert = (numbering == "lxx" and book.lower().startswith("ps")
+               and edition not in LXX_NATIVE)
+    chapters = lxx_to_masoretic(chapter) if convert else (chapter,)
 
     data = _book(edition, book)
     if not data:
@@ -123,8 +146,28 @@ def _verse_numbers(spec: str | None, chapter: dict) -> list[int]:
     return out
 
 
-def resolver(edition: str = "kjv"):
-    """A callable for assembler.assemble(scripture=...)."""
+def trilingual_resolver(editions: dict[str, str] | None = None):
+    """A callable for assembler.assemble(scripture=...) returning verses whose
+    text carries every language that has an edition loaded.
+
+    Verses are matched by number across editions. Where an edition is missing a
+    language it is simply absent from that verse's text — never filled in from
+    another language, for the same reason a missing prayer translation is shown
+    as missing.
+    """
+    editions = editions or EDITIONS
+
     def _get(ref: str, numbering: str = "masoretic"):
-        return passage(ref, edition=edition, numbering=numbering)
+        per_lang = {}
+        for lang, edition in editions.items():
+            got = passage(ref, edition=edition, numbering=numbering)
+            if got:
+                per_lang[lang] = {v["n"]: v["en"] for v in got}
+        if not per_lang:
+            return None
+        numbers = sorted({n for verses in per_lang.values() for n in verses})
+        return [{"type": "verse", "n": n,
+                 "text": {lang: verses[n] for lang, verses in per_lang.items()
+                          if n in verses}}
+                for n in numbers]
     return _get

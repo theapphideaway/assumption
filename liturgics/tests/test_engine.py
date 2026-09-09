@@ -148,13 +148,13 @@ class TestResolver(unittest.TestCase):
     def test_patronal_feast_is_flagged(self):
         r = resolve_day(date(2026, 8, 15))
         self.assertTrue(r["patronal"])
-        self.assertEqual(r["title"], "The Dormition of the Theotokos")
+        self.assertEqual(r["title"]["en"], "The Dormition of the Theotokos")
         self.assertEqual(r["season"]["color"], "lapis")
 
     def test_pascha_outranks_any_fixed_feast(self):
         r = resolve_day(pascha(2027))
         self.assertEqual(r["rank"], 1)
-        self.assertEqual(r["title"], "Great and Holy Pascha")
+        self.assertEqual(r["title"]["en"], "Great and Holy Pascha")
 
     def test_shape_is_stable(self):
         r = resolve_day(date(2026, 9, 9))
@@ -205,15 +205,17 @@ class TestMenaionCoverage(unittest.TestCase):
     def test_every_day_of_a_year_has_a_title(self):
         d = date(2027, 1, 1)
         while d.year == 2027:
-            self.assertTrue(resolve_day(d)["title"], f"no title for {d}")
+            self.assertTrue(resolve_day(d)["title"].get("en"), f"no title for {d}")
             d += timedelta(days=1)
 
     def test_leap_day_resolves(self):
-        self.assertIn("Cassian", resolve_day(date(2028, 2, 29))["title"])
+        self.assertIn("Cassian", resolve_day(date(2028, 2, 29))["title"]["en"])
 
     def test_patronal_feast_survived_the_merge(self):
         from liturgics.resolver import menaion
         self.assertTrue(menaion()["08-15"]["patronal"])
+        self.assertEqual(menaion()["08-15"]["title"]["ru"],
+                         "Успение Пресвятой Богородицы")
         self.assertEqual(menaion()["08-15"]["color"], "lapis")
 
 
@@ -252,3 +254,43 @@ class TestApostlesFastWindow(unittest.TestCase):
                 d = date(year, month, 15)
                 self.assertNotIn("Apostles", self._fast(d).reason,
                                  f"{d} wrongly inside the Apostles' Fast")
+
+
+class TestTrilingual(unittest.TestCase):
+    """English, Greek and Slavonic are peers.
+
+    The parish has ethnic Greeks and ethnic Russians, and people keep a rule in
+    the language they actually pray in. A missing translation must be visible,
+    never silently replaced by English — otherwise nobody ever fills it in.
+    """
+
+    def test_every_season_and_fast_label_is_complete(self):
+        from liturgics.i18n import FAST_LABELS, SEASONS, missing_languages
+        for key, t in {**SEASONS, **FAST_LABELS}.items():
+            self.assertEqual(missing_languages(t), [], f"{key} incomplete")
+
+    def test_great_feasts_carry_all_three(self):
+        from liturgics.i18n import missing_languages
+        from liturgics.resolver import menaion
+        for key in ("12-25", "01-06", "08-15", "09-08", "11-21", "03-25",
+                    "08-06", "09-14", "02-02"):
+            self.assertEqual(missing_languages(menaion()[key]["title"]), [],
+                             f"Great Feast {key} is not fully translated")
+
+    def test_pascha_and_the_movable_greats_carry_all_three(self):
+        from liturgics.i18n import missing_languages
+        for off in (0, -7, -48, 39, 49, -2):
+            d = pascha(2027) + timedelta(days=off)
+            self.assertEqual(missing_languages(resolve_day(d)["title"]), [],
+                             f"movable offset {off} is not fully translated")
+
+    def test_english_is_never_used_as_a_silent_fallback(self):
+        """A day with no Slavonic title reports the gap rather than echoing
+        the English string into the ru field."""
+        r = resolve_day(date(2026, 3, 16))       # Martyr Sabinus, English only
+        self.assertNotIn("ru", r["title"])
+        self.assertIn("ru", r["translation_gaps"]["title"])
+
+    def test_response_declares_its_languages(self):
+        self.assertEqual(resolve_day(date(2027, 1, 1))["languages"],
+                         ["en", "el", "ru"])

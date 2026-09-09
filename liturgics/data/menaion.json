@@ -4,1547 +4,2334 @@
   "coverage": "All 366 days including 29 February.",
   "provenance": "Authored from general knowledge of the Orthodox calendar, NOT transcribed from an authoritative source. The Great Feasts and well-known commemorations are reliable; the long tail of minor martyrs is where errors will be. Nothing here has been checked against a published GOARCH calendar.",
   "review": "Entries with \"c\": true need Father's attention first — Greek/Slavic divergences and recently glorified saints. Run `manage.py menaion_review` for the checklist.",
-  "rank": "2 Great Feast · 3 major · 4 notable. Rank 1 is Pascha, movable only."
+  "rank": "2 Great Feast · 3 major · 4 notable. Rank 1 is Pascha, movable only.",
+  "languages": "Titles are trilingual objects. English is complete; Greek and Russian cover the Great Feasts and major commemorations. The long tail is English-only and is reported by `manage.py translation_report`. English is NOT a fallback — a missing language is shown as missing so it gets filled, not hidden."
  },
  "01-01": {
-  "title": "The Circumcision of Christ · St. Basil the Great",
-  "rank": 3,
-  "greek": "Μ. Βασιλείου"
+  "title": {
+   "en": "The Circumcision of Christ · St. Basil the Great",
+   "el": "Ἡ Περιτομὴ τοῦ Χριστοῦ · Μ. Βασιλείου",
+   "ru": "Обрезание Господне · свт. Василия Великого"
+  },
+  "rank": 3
  },
  "01-02": {
-  "title": "St. Seraphim of Sarov · St. Sylvester of Rome",
+  "title": {
+   "en": "St. Seraphim of Sarov · St. Sylvester of Rome"
+  },
   "rank": 4
  },
  "01-03": {
-  "title": "Prophet Malachi · Martyr Gordius",
+  "title": {
+   "en": "Prophet Malachi · Martyr Gordius"
+  },
   "rank": 4
  },
  "01-04": {
-  "title": "Synaxis of the Seventy Apostles",
+  "title": {
+   "en": "Synaxis of the Seventy Apostles"
+  },
   "rank": 4
  },
  "01-05": {
-  "title": "Eve of Theophany · Martyrs Theopemptus and Theonas",
+  "title": {
+   "en": "Eve of Theophany · Martyrs Theopemptus and Theonas"
+  },
   "rank": 4
  },
  "01-06": {
-  "title": "The Theophany of the Lord",
+  "title": {
+   "en": "The Theophany of the Lord",
+   "el": "Τὰ Θεοφάνεια",
+   "ru": "Богоявление · Крещение Господне"
+  },
   "rank": 2,
-  "greek": "Θεοφάνεια",
   "color": "gold"
  },
  "01-07": {
-  "title": "Synaxis of St. John the Forerunner",
+  "title": {
+   "en": "Synaxis of St. John the Forerunner",
+   "el": "Σύναξις Ἰωάννου Προδρόμου",
+   "ru": "Собор Иоанна Предтечи"
+  },
   "rank": 3
  },
  "01-08": {
-  "title": "St. George the Chozebite · St. Domnica",
+  "title": {
+   "en": "St. George the Chozebite · St. Domnica"
+  },
   "rank": 4
  },
  "01-09": {
-  "title": "Martyr Polyeuctus",
+  "title": {
+   "en": "Martyr Polyeuctus"
+  },
   "rank": 4
  },
  "01-10": {
-  "title": "St. Gregory of Nyssa · St. Dometian",
+  "title": {
+   "en": "St. Gregory of Nyssa · St. Dometian"
+  },
   "rank": 4
  },
  "01-11": {
-  "title": "St. Theodosius the Cenobiarch",
+  "title": {
+   "en": "St. Theodosius the Cenobiarch"
+  },
   "rank": 4
  },
  "01-12": {
-  "title": "Martyr Tatiana",
+  "title": {
+   "en": "Martyr Tatiana"
+  },
   "rank": 4
  },
  "01-13": {
-  "title": "Martyrs Hermylus and Stratonicus",
+  "title": {
+   "en": "Martyrs Hermylus and Stratonicus"
+  },
   "rank": 4
  },
  "01-14": {
-  "title": "The Fathers slain at Sinai and Raithu",
+  "title": {
+   "en": "The Fathers slain at Sinai and Raithu"
+  },
   "rank": 4
  },
  "01-15": {
-  "title": "St. Paul of Thebes · St. John Kalyvites",
+  "title": {
+   "en": "St. Paul of Thebes · St. John Kalyvites"
+  },
   "rank": 4
  },
  "01-16": {
-  "title": "Veneration of the Chains of the Apostle Peter",
+  "title": {
+   "en": "Veneration of the Chains of the Apostle Peter"
+  },
   "rank": 4
  },
  "01-17": {
-  "title": "St. Anthony the Great",
-  "rank": 3,
-  "greek": "Ἁγίου Ἀντωνίου"
+  "title": {
+   "en": "St. Anthony the Great",
+   "el": "Ἁγίου Ἀντωνίου τοῦ Μεγάλου",
+   "ru": "Прп. Антония Великого"
+  },
+  "rank": 3
  },
  "01-18": {
-  "title": "Ss. Athanasius and Cyril of Alexandria",
+  "title": {
+   "en": "Ss. Athanasius and Cyril of Alexandria"
+  },
   "rank": 3
  },
  "01-19": {
-  "title": "St. Macarius the Great",
+  "title": {
+   "en": "St. Macarius the Great"
+  },
   "rank": 4
  },
  "01-20": {
-  "title": "St. Euthymius the Great",
+  "title": {
+   "en": "St. Euthymius the Great"
+  },
   "rank": 3
  },
  "01-21": {
-  "title": "St. Maximus the Confessor",
+  "title": {
+   "en": "St. Maximus the Confessor"
+  },
   "rank": 4
  },
  "01-22": {
-  "title": "Apostle Timothy",
+  "title": {
+   "en": "Apostle Timothy"
+  },
   "rank": 4
  },
  "01-23": {
-  "title": "Hieromartyr Clement of Ancyra",
+  "title": {
+   "en": "Hieromartyr Clement of Ancyra"
+  },
   "rank": 4
  },
  "01-24": {
-  "title": "St. Xenia of Rome",
+  "title": {
+   "en": "St. Xenia of Rome"
+  },
   "rank": 4
  },
  "01-25": {
-  "title": "St. Gregory the Theologian",
-  "rank": 3,
-  "greek": "Γρηγορίου τοῦ Θεολόγου"
+  "title": {
+   "en": "St. Gregory the Theologian",
+   "el": "Γρηγορίου τοῦ Θεολόγου",
+   "ru": "Свт. Григория Богослова"
+  },
+  "rank": 3
  },
  "01-26": {
-  "title": "St. Xenophon and his companions",
+  "title": {
+   "en": "St. Xenophon and his companions"
+  },
   "rank": 4
  },
  "01-27": {
-  "title": "Translation of the relics of St. John Chrysostom",
+  "title": {
+   "en": "Translation of the relics of St. John Chrysostom"
+  },
   "rank": 4
  },
  "01-28": {
-  "title": "St. Ephraim the Syrian",
+  "title": {
+   "en": "St. Ephraim the Syrian"
+  },
   "rank": 4
  },
  "01-29": {
-  "title": "Translation of the relics of Hieromartyr Ignatius",
+  "title": {
+   "en": "Translation of the relics of Hieromartyr Ignatius"
+  },
   "rank": 4
  },
  "01-30": {
-  "title": "The Three Hierarchs",
-  "rank": 3,
-  "greek": "Τριῶν Ἱεραρχῶν"
+  "title": {
+   "en": "The Three Hierarchs",
+   "el": "Τῶν Τριῶν Ἱεραρχῶν",
+   "ru": "Собор трёх святителей"
+  },
+  "rank": 3
  },
  "01-31": {
-  "title": "Ss. Cyrus and John the Unmercenaries",
+  "title": {
+   "en": "Ss. Cyrus and John the Unmercenaries"
+  },
   "rank": 4
  },
  "02-01": {
-  "title": "Forefeast of the Meeting · Martyr Tryphon",
+  "title": {
+   "en": "Forefeast of the Meeting · Martyr Tryphon"
+  },
   "rank": 4
  },
  "02-02": {
-  "title": "The Meeting of the Lord in the Temple",
+  "title": {
+   "en": "The Meeting of the Lord in the Temple",
+   "el": "Ἡ Ὑπαπαντὴ τοῦ Κυρίου",
+   "ru": "Сретение Господне"
+  },
   "rank": 2,
-  "greek": "Ὑπαπαντή",
   "color": "gold"
  },
  "02-03": {
-  "title": "St. Symeon the God-Receiver and Anna the Prophetess",
+  "title": {
+   "en": "St. Symeon the God-Receiver and Anna the Prophetess"
+  },
   "rank": 4
  },
  "02-04": {
-  "title": "St. Isidore of Pelusium",
+  "title": {
+   "en": "St. Isidore of Pelusium"
+  },
   "rank": 4
  },
  "02-05": {
-  "title": "Martyr Agatha",
+  "title": {
+   "en": "Martyr Agatha"
+  },
   "rank": 4
  },
  "02-06": {
-  "title": "St. Photios the Great, Patriarch of Constantinople",
+  "title": {
+   "en": "St. Photios the Great, Patriarch of Constantinople"
+  },
   "rank": 3
  },
  "02-07": {
-  "title": "St. Parthenius of Lampsacus · St. Luke of Steiris",
+  "title": {
+   "en": "St. Parthenius of Lampsacus · St. Luke of Steiris"
+  },
   "rank": 4
  },
  "02-08": {
-  "title": "Great Martyr Theodore the Commander",
+  "title": {
+   "en": "Great Martyr Theodore the Commander"
+  },
   "rank": 4
  },
  "02-09": {
-  "title": "Leavetaking of the Meeting · Martyr Nicephorus",
+  "title": {
+   "en": "Leavetaking of the Meeting · Martyr Nicephorus"
+  },
   "rank": 4
  },
  "02-10": {
-  "title": "Hieromartyr Charalampus",
+  "title": {
+   "en": "Hieromartyr Charalampus",
+   "el": "Ἁγίου Χαραλάμπους"
+  },
   "rank": 3,
-  "greek": "Ἁγίου Χαραλάμπους",
   "color": "cinnabar"
  },
  "02-11": {
-  "title": "Hieromartyr Blaise of Sebaste",
+  "title": {
+   "en": "Hieromartyr Blaise of Sebaste"
+  },
   "rank": 4
  },
  "02-12": {
-  "title": "St. Meletius of Antioch",
+  "title": {
+   "en": "St. Meletius of Antioch"
+  },
   "rank": 4
  },
  "02-13": {
-  "title": "St. Martinian",
+  "title": {
+   "en": "St. Martinian"
+  },
   "rank": 4
  },
  "02-14": {
-  "title": "St. Auxentius · St. Cyril, Equal to the Apostles",
+  "title": {
+   "en": "St. Auxentius · St. Cyril, Equal to the Apostles"
+  },
   "rank": 4
  },
  "02-15": {
-  "title": "Apostle Onesimus",
+  "title": {
+   "en": "Apostle Onesimus"
+  },
   "rank": 4
  },
  "02-16": {
-  "title": "Martyrs Pamphilus and Porphyrius",
+  "title": {
+   "en": "Martyrs Pamphilus and Porphyrius"
+  },
   "rank": 4
  },
  "02-17": {
-  "title": "Great Martyr Theodore the Recruit",
+  "title": {
+   "en": "Great Martyr Theodore the Recruit"
+  },
   "rank": 3
  },
  "02-18": {
-  "title": "St. Leo the Great, Pope of Rome",
+  "title": {
+   "en": "St. Leo the Great, Pope of Rome"
+  },
   "rank": 4
  },
  "02-19": {
-  "title": "Apostle Archippus",
+  "title": {
+   "en": "Apostle Archippus"
+  },
   "rank": 4
  },
  "02-20": {
-  "title": "St. Leo, Bishop of Catania",
+  "title": {
+   "en": "St. Leo, Bishop of Catania"
+  },
   "rank": 4
  },
  "02-21": {
-  "title": "St. Timothy of Symbola",
+  "title": {
+   "en": "St. Timothy of Symbola"
+  },
   "rank": 4
  },
  "02-22": {
-  "title": "Finding of the relics of the Martyrs at Eugenios",
+  "title": {
+   "en": "Finding of the relics of the Martyrs at Eugenios"
+  },
   "rank": 4
  },
  "02-23": {
-  "title": "Hieromartyr Polycarp of Smyrna",
+  "title": {
+   "en": "Hieromartyr Polycarp of Smyrna"
+  },
   "rank": 4
  },
  "02-24": {
-  "title": "First and Second Finding of the Head of the Forerunner",
+  "title": {
+   "en": "First and Second Finding of the Head of the Forerunner"
+  },
   "rank": 3
  },
  "02-25": {
-  "title": "St. Tarasius, Patriarch of Constantinople",
+  "title": {
+   "en": "St. Tarasius, Patriarch of Constantinople"
+  },
   "rank": 4
  },
  "02-26": {
-  "title": "St. Porphyrius of Gaza",
+  "title": {
+   "en": "St. Porphyrius of Gaza"
+  },
   "rank": 4
  },
  "02-27": {
-  "title": "St. Procopius the Confessor",
+  "title": {
+   "en": "St. Procopius the Confessor"
+  },
   "rank": 4
  },
  "02-28": {
-  "title": "St. Basil the Confessor",
+  "title": {
+   "en": "St. Basil the Confessor"
+  },
   "rank": 4
  },
  "02-29": {
-  "title": "St. John Cassian the Roman",
+  "title": {
+   "en": "St. John Cassian the Roman"
+  },
   "rank": 4,
   "c": true
  },
  "03-01": {
-  "title": "Martyr Eudocia",
+  "title": {
+   "en": "Martyr Eudocia"
+  },
   "rank": 4
  },
  "03-02": {
-  "title": "Hieromartyr Theodotus of Cyrenia",
+  "title": {
+   "en": "Hieromartyr Theodotus of Cyrenia"
+  },
   "rank": 4
  },
  "03-03": {
-  "title": "Martyrs Eutropius, Cleonicus and Basiliscus",
+  "title": {
+   "en": "Martyrs Eutropius, Cleonicus and Basiliscus"
+  },
   "rank": 4
  },
  "03-04": {
-  "title": "St. Gerasimus of the Jordan",
+  "title": {
+   "en": "St. Gerasimus of the Jordan"
+  },
   "rank": 4
  },
  "03-05": {
-  "title": "Martyr Conon",
+  "title": {
+   "en": "Martyr Conon"
+  },
   "rank": 4
  },
  "03-06": {
-  "title": "The Forty-two Martyrs of Amorion",
+  "title": {
+   "en": "The Forty-two Martyrs of Amorion"
+  },
   "rank": 4
  },
  "03-07": {
-  "title": "The Hieromartyrs of Cherson",
+  "title": {
+   "en": "The Hieromartyrs of Cherson"
+  },
   "rank": 4
  },
  "03-08": {
-  "title": "St. Theophylact of Nicomedia",
+  "title": {
+   "en": "St. Theophylact of Nicomedia"
+  },
   "rank": 4
  },
  "03-09": {
-  "title": "The Forty Martyrs of Sebaste",
+  "title": {
+   "en": "The Forty Martyrs of Sebaste",
+   "el": "Τῶν Ἁγίων Τεσσαράκοντα Μαρτύρων",
+   "ru": "40 мучеников Севастийских"
+  },
   "rank": 3,
-  "greek": "Τεσσαράκοντα Μαρτύρων",
   "color": "cinnabar"
  },
  "03-10": {
-  "title": "Martyr Codratus",
+  "title": {
+   "en": "Martyr Codratus"
+  },
   "rank": 4
  },
  "03-11": {
-  "title": "St. Sophronius of Jerusalem",
+  "title": {
+   "en": "St. Sophronius of Jerusalem"
+  },
   "rank": 4
  },
  "03-12": {
-  "title": "St. Theophanes the Confessor",
+  "title": {
+   "en": "St. Theophanes the Confessor"
+  },
   "rank": 4
  },
  "03-13": {
-  "title": "Translation of the relics of St. Nicephorus",
+  "title": {
+   "en": "Translation of the relics of St. Nicephorus"
+  },
   "rank": 4
  },
  "03-14": {
-  "title": "St. Benedict of Nursia",
+  "title": {
+   "en": "St. Benedict of Nursia"
+  },
   "rank": 4
  },
  "03-15": {
-  "title": "Martyr Agapius and his companions",
+  "title": {
+   "en": "Martyr Agapius and his companions"
+  },
   "rank": 4
  },
  "03-16": {
-  "title": "Martyr Sabinus",
+  "title": {
+   "en": "Martyr Sabinus"
+  },
   "rank": 4
  },
  "03-17": {
-  "title": "St. Alexis the Man of God",
+  "title": {
+   "en": "St. Alexis the Man of God"
+  },
   "rank": 4
  },
  "03-18": {
-  "title": "St. Cyril of Jerusalem",
+  "title": {
+   "en": "St. Cyril of Jerusalem"
+  },
   "rank": 4
  },
  "03-19": {
-  "title": "Martyrs Chrysanthus and Daria",
+  "title": {
+   "en": "Martyrs Chrysanthus and Daria"
+  },
   "rank": 4
  },
  "03-20": {
-  "title": "The Fathers slain at the Monastery of St. Sabbas",
+  "title": {
+   "en": "The Fathers slain at the Monastery of St. Sabbas"
+  },
   "rank": 4
  },
  "03-21": {
-  "title": "St. James the Confessor",
+  "title": {
+   "en": "St. James the Confessor"
+  },
   "rank": 4
  },
  "03-22": {
-  "title": "Hieromartyr Basil of Ancyra",
+  "title": {
+   "en": "Hieromartyr Basil of Ancyra"
+  },
   "rank": 4
  },
  "03-23": {
-  "title": "Martyr Nicon and his disciples",
+  "title": {
+   "en": "Martyr Nicon and his disciples"
+  },
   "rank": 4
  },
  "03-24": {
-  "title": "Forefeast of the Annunciation",
+  "title": {
+   "en": "Forefeast of the Annunciation"
+  },
   "rank": 4
  },
  "03-25": {
-  "title": "The Annunciation of the Theotokos",
+  "title": {
+   "en": "The Annunciation of the Theotokos",
+   "el": "Ὁ Εὐαγγελισμὸς τῆς Θεοτόκου",
+   "ru": "Благовещение Пресвятой Богородицы"
+  },
   "rank": 2,
-  "greek": "Εὐαγγελισμός",
   "color": "lapis"
  },
  "03-26": {
-  "title": "Synaxis of the Archangel Gabriel",
+  "title": {
+   "en": "Synaxis of the Archangel Gabriel"
+  },
   "rank": 4
  },
  "03-27": {
-  "title": "Martyr Matrona of Thessalonica",
+  "title": {
+   "en": "Martyr Matrona of Thessalonica"
+  },
   "rank": 4
  },
  "03-28": {
-  "title": "St. Hilarion the New",
+  "title": {
+   "en": "St. Hilarion the New"
+  },
   "rank": 4
  },
  "03-29": {
-  "title": "St. Mark of Arethusa",
+  "title": {
+   "en": "St. Mark of Arethusa"
+  },
   "rank": 4
  },
  "03-30": {
-  "title": "St. John Climacus",
+  "title": {
+   "en": "St. John Climacus"
+  },
   "rank": 3
  },
  "03-31": {
-  "title": "St. Hypatius of Gangra",
+  "title": {
+   "en": "St. Hypatius of Gangra"
+  },
   "rank": 4
  },
  "04-01": {
-  "title": "St. Mary of Egypt",
+  "title": {
+   "en": "St. Mary of Egypt"
+  },
   "rank": 3
  },
  "04-02": {
-  "title": "St. Titus the Wonderworker",
+  "title": {
+   "en": "St. Titus the Wonderworker"
+  },
   "rank": 4
  },
  "04-03": {
-  "title": "St. Nicetas the Confessor",
+  "title": {
+   "en": "St. Nicetas the Confessor"
+  },
   "rank": 4
  },
  "04-04": {
-  "title": "St. George of Maleon · St. Joseph the Hymnographer",
+  "title": {
+   "en": "St. George of Maleon · St. Joseph the Hymnographer"
+  },
   "rank": 4
  },
  "04-05": {
-  "title": "Martyrs Claudius, Diodore and companions",
+  "title": {
+   "en": "Martyrs Claudius, Diodore and companions"
+  },
   "rank": 4
  },
  "04-06": {
-  "title": "St. Eutychius of Constantinople",
+  "title": {
+   "en": "St. Eutychius of Constantinople"
+  },
   "rank": 4
  },
  "04-07": {
-  "title": "St. George of Mytilene",
+  "title": {
+   "en": "St. George of Mytilene"
+  },
   "rank": 4
  },
  "04-08": {
-  "title": "Apostles Herodion, Agabus and Rufus",
+  "title": {
+   "en": "Apostles Herodion, Agabus and Rufus"
+  },
   "rank": 4
  },
  "04-09": {
-  "title": "Martyr Eupsychius",
+  "title": {
+   "en": "Martyr Eupsychius"
+  },
   "rank": 4
  },
  "04-10": {
-  "title": "Martyr Terence and his companions",
+  "title": {
+   "en": "Martyr Terence and his companions"
+  },
   "rank": 4
  },
  "04-11": {
-  "title": "Hieromartyr Antipas of Pergamum",
+  "title": {
+   "en": "Hieromartyr Antipas of Pergamum"
+  },
   "rank": 4
  },
  "04-12": {
-  "title": "St. Basil of Parium",
+  "title": {
+   "en": "St. Basil of Parium"
+  },
   "rank": 4
  },
  "04-13": {
-  "title": "Hieromartyr Artemon",
+  "title": {
+   "en": "Hieromartyr Artemon"
+  },
   "rank": 4
  },
  "04-14": {
-  "title": "St. Martin the Confessor, Pope of Rome",
+  "title": {
+   "en": "St. Martin the Confessor, Pope of Rome"
+  },
   "rank": 4
  },
  "04-15": {
-  "title": "Apostle Aristarchus",
+  "title": {
+   "en": "Apostle Aristarchus"
+  },
   "rank": 4
  },
  "04-16": {
-  "title": "Martyrs Agape, Irene and Chionia",
+  "title": {
+   "en": "Martyrs Agape, Irene and Chionia"
+  },
   "rank": 4
  },
  "04-17": {
-  "title": "Hieromartyr Symeon of Persia",
+  "title": {
+   "en": "Hieromartyr Symeon of Persia"
+  },
   "rank": 4
  },
  "04-18": {
-  "title": "St. John, disciple of St. Gregory of Decapolis",
+  "title": {
+   "en": "St. John, disciple of St. Gregory of Decapolis"
+  },
   "rank": 4
  },
  "04-19": {
-  "title": "St. Paphnutius the Hieromartyr",
+  "title": {
+   "en": "St. Paphnutius the Hieromartyr"
+  },
   "rank": 4
  },
  "04-20": {
-  "title": "St. Theodore Trichinas",
+  "title": {
+   "en": "St. Theodore Trichinas"
+  },
   "rank": 4
  },
  "04-21": {
-  "title": "Hieromartyr Januarius",
+  "title": {
+   "en": "Hieromartyr Januarius"
+  },
   "rank": 4
  },
  "04-22": {
-  "title": "St. Theodore the Sykeote",
+  "title": {
+   "en": "St. Theodore the Sykeote"
+  },
   "rank": 4
  },
  "04-23": {
-  "title": "Great Martyr George the Trophy-Bearer",
+  "title": {
+   "en": "Great Martyr George the Trophy-Bearer",
+   "el": "Ἁγίου Γεωργίου τοῦ Τροπαιοφόρου",
+   "ru": "Вмч. Георгия Победоносца"
+  },
   "rank": 3,
-  "greek": "Ἁγίου Γεωργίου",
   "color": "cinnabar"
  },
  "04-24": {
-  "title": "St. Elizabeth the Wonderworker",
+  "title": {
+   "en": "St. Elizabeth the Wonderworker"
+  },
   "rank": 4
  },
  "04-25": {
-  "title": "Apostle and Evangelist Mark",
+  "title": {
+   "en": "Apostle and Evangelist Mark"
+  },
   "rank": 3
  },
  "04-26": {
-  "title": "Hieromartyr Basil of Amasea",
+  "title": {
+   "en": "Hieromartyr Basil of Amasea"
+  },
   "rank": 4
  },
  "04-27": {
-  "title": "Hieromartyr Symeon, kinsman of the Lord",
+  "title": {
+   "en": "Hieromartyr Symeon, kinsman of the Lord"
+  },
   "rank": 4
  },
  "04-28": {
-  "title": "Apostles Jason and Sosipater",
+  "title": {
+   "en": "Apostles Jason and Sosipater"
+  },
   "rank": 4
  },
  "04-29": {
-  "title": "The Nine Martyrs of Cyzicus",
+  "title": {
+   "en": "The Nine Martyrs of Cyzicus"
+  },
   "rank": 4
  },
  "04-30": {
-  "title": "Apostle James, brother of St. John the Theologian",
+  "title": {
+   "en": "Apostle James, brother of St. John the Theologian"
+  },
   "rank": 4
  },
  "05-01": {
-  "title": "Prophet Jeremiah",
+  "title": {
+   "en": "Prophet Jeremiah"
+  },
   "rank": 4
  },
  "05-02": {
-  "title": "Translation of the relics of St. Athanasius the Great",
+  "title": {
+   "en": "Translation of the relics of St. Athanasius the Great"
+  },
   "rank": 4
  },
  "05-03": {
-  "title": "Martyrs Timothy and Maura",
+  "title": {
+   "en": "Martyrs Timothy and Maura"
+  },
   "rank": 4
  },
  "05-04": {
-  "title": "Martyr Pelagia",
+  "title": {
+   "en": "Martyr Pelagia"
+  },
   "rank": 4
  },
  "05-05": {
-  "title": "Great Martyr Irene",
+  "title": {
+   "en": "Great Martyr Irene"
+  },
   "rank": 4
  },
  "05-06": {
-  "title": "Righteous Job the Long-suffering",
+  "title": {
+   "en": "Righteous Job the Long-suffering"
+  },
   "rank": 4
  },
  "05-07": {
-  "title": "The Sign of the Precious Cross at Jerusalem",
+  "title": {
+   "en": "The Sign of the Precious Cross at Jerusalem"
+  },
   "rank": 4
  },
  "05-08": {
-  "title": "Apostle and Evangelist John the Theologian",
-  "rank": 3,
-  "greek": "Ἰωάννου τοῦ Θεολόγου"
+  "title": {
+   "en": "Apostle and Evangelist John the Theologian",
+   "el": "Ἰωάννου τοῦ Θεολόγου",
+   "ru": "Апостола Иоанна Богослова"
+  },
+  "rank": 3
  },
  "05-09": {
-  "title": "Prophet Isaiah · Martyr Christopher",
+  "title": {
+   "en": "Prophet Isaiah · Martyr Christopher"
+  },
   "rank": 4
  },
  "05-10": {
-  "title": "Apostle Simon the Zealot",
+  "title": {
+   "en": "Apostle Simon the Zealot"
+  },
   "rank": 4
  },
  "05-11": {
-  "title": "Ss. Cyril and Methodius, Equals to the Apostles",
+  "title": {
+   "en": "Ss. Cyril and Methodius, Equals to the Apostles",
+   "el": "Κυρίλλου καὶ Μεθοδίου",
+   "ru": "Равноапп. Кирилла и Мефодия"
+  },
   "rank": 3
  },
  "05-12": {
-  "title": "St. Epiphanius of Cyprus · St. Germanus",
+  "title": {
+   "en": "St. Epiphanius of Cyprus · St. Germanus"
+  },
   "rank": 4
  },
  "05-13": {
-  "title": "Martyr Glyceria",
+  "title": {
+   "en": "Martyr Glyceria"
+  },
   "rank": 4
  },
  "05-14": {
-  "title": "Martyr Isidore of Chios",
+  "title": {
+   "en": "Martyr Isidore of Chios"
+  },
   "rank": 4
  },
  "05-15": {
-  "title": "St. Pachomius the Great",
+  "title": {
+   "en": "St. Pachomius the Great"
+  },
   "rank": 4
  },
  "05-16": {
-  "title": "St. Theodore the Sanctified",
+  "title": {
+   "en": "St. Theodore the Sanctified"
+  },
   "rank": 4
  },
  "05-17": {
-  "title": "Apostles Andronicus and Junia",
+  "title": {
+   "en": "Apostles Andronicus and Junia"
+  },
   "rank": 4
  },
  "05-18": {
-  "title": "Martyrs Peter, Dionysius and companions",
+  "title": {
+   "en": "Martyrs Peter, Dionysius and companions"
+  },
   "rank": 4
  },
  "05-19": {
-  "title": "Hieromartyr Patrick of Prusa",
+  "title": {
+   "en": "Hieromartyr Patrick of Prusa"
+  },
   "rank": 4
  },
  "05-20": {
-  "title": "Martyr Thalelaeus",
+  "title": {
+   "en": "Martyr Thalelaeus"
+  },
   "rank": 4
  },
  "05-21": {
-  "title": "Ss. Constantine and Helen, Equals to the Apostles",
-  "rank": 3,
-  "greek": "Κωνσταντίνου καὶ Ἑλένης"
+  "title": {
+   "en": "Ss. Constantine and Helen, Equals to the Apostles",
+   "el": "Κωνσταντίνου καὶ Ἑλένης",
+   "ru": "Равноапп. Константина и Елены"
+  },
+  "rank": 3
  },
  "05-22": {
-  "title": "Martyr Basiliscus",
+  "title": {
+   "en": "Martyr Basiliscus"
+  },
   "rank": 4
  },
  "05-23": {
-  "title": "St. Michael the Confessor",
+  "title": {
+   "en": "St. Michael the Confessor"
+  },
   "rank": 4
  },
  "05-24": {
-  "title": "St. Symeon of the Wonderful Mountain",
+  "title": {
+   "en": "St. Symeon of the Wonderful Mountain"
+  },
   "rank": 4
  },
  "05-25": {
-  "title": "Third Finding of the Head of the Forerunner",
+  "title": {
+   "en": "Third Finding of the Head of the Forerunner"
+  },
   "rank": 4
  },
  "05-26": {
-  "title": "Apostle Carpus",
+  "title": {
+   "en": "Apostle Carpus"
+  },
   "rank": 4
  },
  "05-27": {
-  "title": "Hieromartyr Therapon",
+  "title": {
+   "en": "Hieromartyr Therapon"
+  },
   "rank": 4
  },
  "05-28": {
-  "title": "St. Nicetas of Chalcedon",
+  "title": {
+   "en": "St. Nicetas of Chalcedon"
+  },
   "rank": 4
  },
  "05-29": {
-  "title": "Martyr Theodosia of Tyre",
+  "title": {
+   "en": "Martyr Theodosia of Tyre"
+  },
   "rank": 4
  },
  "05-30": {
-  "title": "St. Isaac of Dalmatus",
+  "title": {
+   "en": "St. Isaac of Dalmatus"
+  },
   "rank": 4
  },
  "05-31": {
-  "title": "Martyr Hermeas",
+  "title": {
+   "en": "Martyr Hermeas"
+  },
   "rank": 4
  },
  "06-01": {
-  "title": "Martyr Justin the Philosopher",
+  "title": {
+   "en": "Martyr Justin the Philosopher"
+  },
   "rank": 4
  },
  "06-02": {
-  "title": "St. Nicephorus of Constantinople",
+  "title": {
+   "en": "St. Nicephorus of Constantinople"
+  },
   "rank": 4
  },
  "06-03": {
-  "title": "Martyr Lucillian and his companions",
+  "title": {
+   "en": "Martyr Lucillian and his companions"
+  },
   "rank": 4
  },
  "06-04": {
-  "title": "St. Metrophanes of Constantinople",
+  "title": {
+   "en": "St. Metrophanes of Constantinople"
+  },
   "rank": 4
  },
  "06-05": {
-  "title": "Hieromartyr Dorotheus of Tyre",
+  "title": {
+   "en": "Hieromartyr Dorotheus of Tyre"
+  },
   "rank": 4
  },
  "06-06": {
-  "title": "St. Bessarion the Wonderworker · St. Hilarion the New",
+  "title": {
+   "en": "St. Bessarion the Wonderworker · St. Hilarion the New"
+  },
   "rank": 4
  },
  "06-07": {
-  "title": "Hieromartyr Theodotus of Ancyra",
+  "title": {
+   "en": "Hieromartyr Theodotus of Ancyra"
+  },
   "rank": 4
  },
  "06-08": {
-  "title": "Translation of the relics of Great Martyr Theodore",
+  "title": {
+   "en": "Translation of the relics of Great Martyr Theodore"
+  },
   "rank": 4
  },
  "06-09": {
-  "title": "St. Cyril of Alexandria",
+  "title": {
+   "en": "St. Cyril of Alexandria"
+  },
   "rank": 4
  },
  "06-10": {
-  "title": "Hieromartyr Timothy of Prussa",
+  "title": {
+   "en": "Hieromartyr Timothy of Prussa"
+  },
   "rank": 4
  },
  "06-11": {
-  "title": "Apostles Bartholomew and Barnabas",
+  "title": {
+   "en": "Apostles Bartholomew and Barnabas"
+  },
   "rank": 4
  },
  "06-12": {
-  "title": "St. Onuphrius the Great · St. Peter of Athos",
+  "title": {
+   "en": "St. Onuphrius the Great · St. Peter of Athos"
+  },
   "rank": 4
  },
  "06-13": {
-  "title": "Martyr Aquilina",
+  "title": {
+   "en": "Martyr Aquilina"
+  },
   "rank": 4
  },
  "06-14": {
-  "title": "Prophet Elisha",
+  "title": {
+   "en": "Prophet Elisha"
+  },
   "rank": 4
  },
  "06-15": {
-  "title": "Prophet Amos",
+  "title": {
+   "en": "Prophet Amos"
+  },
   "rank": 4
  },
  "06-16": {
-  "title": "St. Tychon of Amathus",
+  "title": {
+   "en": "St. Tychon of Amathus"
+  },
   "rank": 4
  },
  "06-17": {
-  "title": "Martyrs Manuel, Sabel and Ismael",
+  "title": {
+   "en": "Martyrs Manuel, Sabel and Ismael"
+  },
   "rank": 4
  },
  "06-18": {
-  "title": "Martyr Leontius",
+  "title": {
+   "en": "Martyr Leontius"
+  },
   "rank": 4
  },
  "06-19": {
-  "title": "Apostle Jude, brother of the Lord",
+  "title": {
+   "en": "Apostle Jude, brother of the Lord"
+  },
   "rank": 4
  },
  "06-20": {
-  "title": "Hieromartyr Methodius of Patara",
+  "title": {
+   "en": "Hieromartyr Methodius of Patara"
+  },
   "rank": 4
  },
  "06-21": {
-  "title": "Martyr Julian of Tarsus",
+  "title": {
+   "en": "Martyr Julian of Tarsus"
+  },
   "rank": 4
  },
  "06-22": {
-  "title": "Hieromartyr Eusebius of Samosata",
+  "title": {
+   "en": "Hieromartyr Eusebius of Samosata"
+  },
   "rank": 4
  },
  "06-23": {
-  "title": "Martyr Agrippina",
+  "title": {
+   "en": "Martyr Agrippina"
+  },
   "rank": 4
  },
  "06-24": {
-  "title": "The Nativity of St. John the Forerunner",
-  "rank": 3,
-  "greek": "Γενέθλιον Προδρόμου"
+  "title": {
+   "en": "The Nativity of St. John the Forerunner",
+   "el": "Τὸ Γενέθλιον τοῦ Προδρόμου",
+   "ru": "Рождество Иоанна Предтечи"
+  },
+  "rank": 3
  },
  "06-25": {
-  "title": "Martyr Fevronia",
+  "title": {
+   "en": "Martyr Fevronia"
+  },
   "rank": 4
  },
  "06-26": {
-  "title": "St. David of Thessalonica",
+  "title": {
+   "en": "St. David of Thessalonica"
+  },
   "rank": 4
  },
  "06-27": {
-  "title": "St. Sampson the Hospitable",
+  "title": {
+   "en": "St. Sampson the Hospitable"
+  },
   "rank": 4
  },
  "06-28": {
-  "title": "Translation of the relics of Ss. Cyrus and John",
+  "title": {
+   "en": "Translation of the relics of Ss. Cyrus and John"
+  },
   "rank": 4
  },
  "06-29": {
-  "title": "Ss. Peter and Paul, the Chief Apostles",
-  "rank": 3,
-  "greek": "Πέτρου καὶ Παύλου"
+  "title": {
+   "en": "Ss. Peter and Paul, the Chief Apostles",
+   "el": "Πέτρου καὶ Παύλου",
+   "ru": "Первоверховных апп. Петра и Павла"
+  },
+  "rank": 3
  },
  "06-30": {
-  "title": "Synaxis of the Twelve Apostles",
+  "title": {
+   "en": "Synaxis of the Twelve Apostles",
+   "el": "Σύναξις τῶν Δώδεκα Ἀποστόλων",
+   "ru": "Собор двенадцати апостолов"
+  },
   "rank": 3
  },
  "07-01": {
-  "title": "Ss. Cosmas and Damian the Unmercenaries of Rome",
+  "title": {
+   "en": "Ss. Cosmas and Damian the Unmercenaries of Rome"
+  },
   "rank": 4
  },
  "07-02": {
-  "title": "Deposition of the Robe of the Theotokos",
+  "title": {
+   "en": "Deposition of the Robe of the Theotokos"
+  },
   "rank": 4,
   "color": "lapis"
  },
  "07-03": {
-  "title": "Martyr Hyacinth",
+  "title": {
+   "en": "Martyr Hyacinth"
+  },
   "rank": 4
  },
  "07-04": {
-  "title": "St. Andrew of Crete",
+  "title": {
+   "en": "St. Andrew of Crete"
+  },
   "rank": 4
  },
  "07-05": {
-  "title": "St. Athanasius of Athos",
+  "title": {
+   "en": "St. Athanasius of Athos"
+  },
   "rank": 4
  },
  "07-06": {
-  "title": "St. Sisoes the Great",
+  "title": {
+   "en": "St. Sisoes the Great"
+  },
   "rank": 4
  },
  "07-07": {
-  "title": "Great Martyr Kyriaki · St. Thomas of Maleon",
+  "title": {
+   "en": "Great Martyr Kyriaki · St. Thomas of Maleon",
+   "el": "Ἁγίας Κυριακῆς"
+  },
   "rank": 4,
-  "greek": "Ἁγίας Κυριακῆς",
   "color": "cinnabar"
  },
  "07-08": {
-  "title": "Great Martyr Procopius",
+  "title": {
+   "en": "Great Martyr Procopius"
+  },
   "rank": 4
  },
  "07-09": {
-  "title": "Hieromartyr Pancratius of Taormina",
+  "title": {
+   "en": "Hieromartyr Pancratius of Taormina"
+  },
   "rank": 4
  },
  "07-10": {
-  "title": "The Forty-five Martyrs of Nicopolis",
+  "title": {
+   "en": "The Forty-five Martyrs of Nicopolis"
+  },
   "rank": 4
  },
  "07-11": {
-  "title": "Great Martyr Euphemia · St. Olga",
+  "title": {
+   "en": "Great Martyr Euphemia · St. Olga"
+  },
   "rank": 3
  },
  "07-12": {
-  "title": "St. Paisios of Mount Athos · Martyrs Proclus and Hilary",
+  "title": {
+   "en": "St. Paisios of Mount Athos · Martyrs Proclus and Hilary",
+   "el": "Ἁγίου Παϊσίου"
+  },
   "rank": 3,
-  "greek": "Ἁγίου Παϊσίου",
   "c": true
  },
  "07-13": {
-  "title": "Synaxis of the Archangel Gabriel",
+  "title": {
+   "en": "Synaxis of the Archangel Gabriel"
+  },
   "rank": 4
  },
  "07-14": {
-  "title": "Apostle Aquila",
+  "title": {
+   "en": "Apostle Aquila"
+  },
   "rank": 4
  },
  "07-15": {
-  "title": "Martyrs Cyricus and Julitta",
+  "title": {
+   "en": "Martyrs Cyricus and Julitta"
+  },
   "rank": 4
  },
  "07-16": {
-  "title": "Hieromartyr Athenogenes",
+  "title": {
+   "en": "Hieromartyr Athenogenes"
+  },
   "rank": 4
  },
  "07-17": {
-  "title": "Great Martyr Marina",
+  "title": {
+   "en": "Great Martyr Marina",
+   "el": "Ἁγίας Μαρίνης"
+  },
   "rank": 3,
-  "greek": "Ἁγίας Μαρίνης",
   "color": "cinnabar"
  },
  "07-18": {
-  "title": "Martyr Emilian",
+  "title": {
+   "en": "Martyr Emilian"
+  },
   "rank": 4
  },
  "07-19": {
-  "title": "St. Macrina, sister of St. Basil · St. Dios",
+  "title": {
+   "en": "St. Macrina, sister of St. Basil · St. Dios"
+  },
   "rank": 4
  },
  "07-20": {
-  "title": "The Prophet Elias",
-  "rank": 3,
-  "greek": "Προφήτου Ἠλιού"
+  "title": {
+   "en": "The Prophet Elias",
+   "el": "Προφήτου Ἠλιοὺ τοῦ Θεσβίτου",
+   "ru": "Пророка Илии"
+  },
+  "rank": 3
  },
  "07-21": {
-  "title": "St. Symeon the Fool-for-Christ · St. John",
+  "title": {
+   "en": "St. Symeon the Fool-for-Christ · St. John"
+  },
   "rank": 4
  },
  "07-22": {
-  "title": "St. Mary Magdalene, Equal to the Apostles",
-  "rank": 3,
-  "greek": "Ἁγίας Μαρίας Μαγδαληνῆς"
+  "title": {
+   "en": "St. Mary Magdalene, Equal to the Apostles",
+   "el": "Ἁγίας Μαρίας τῆς Μαγδαληνῆς",
+   "ru": "Равноап. Марии Магдалины"
+  },
+  "rank": 3
  },
  "07-23": {
-  "title": "Hieromartyr Phocas",
+  "title": {
+   "en": "Hieromartyr Phocas"
+  },
   "rank": 4
  },
  "07-24": {
-  "title": "Great Martyr Christina",
+  "title": {
+   "en": "Great Martyr Christina"
+  },
   "rank": 4
  },
  "07-25": {
-  "title": "The Dormition of St. Anna",
-  "rank": 3,
-  "greek": "Κοίμησις Ἁγίας Ἄννης"
+  "title": {
+   "en": "The Dormition of St. Anna",
+   "el": "Κοίμησις Ἁγίας Ἄννης"
+  },
+  "rank": 3
  },
  "07-26": {
-  "title": "St. Paraskevi the Righteous Martyr",
+  "title": {
+   "en": "St. Paraskevi the Righteous Martyr",
+   "el": "Ἁγίας Παρασκευῆς"
+  },
   "rank": 3,
-  "greek": "Ἁγίας Παρασκευῆς",
   "color": "cinnabar"
  },
  "07-27": {
-  "title": "Great Martyr and Healer Panteleimon",
+  "title": {
+   "en": "Great Martyr and Healer Panteleimon",
+   "el": "Ἁγίου Παντελεήμονος",
+   "ru": "Вмч. и целителя Пантелеимона"
+  },
   "rank": 3,
-  "greek": "Ἁγίου Παντελεήμονος",
   "color": "cinnabar"
  },
  "07-28": {
-  "title": "Apostles Prochorus, Nicanor, Timon and Parmenas",
+  "title": {
+   "en": "Apostles Prochorus, Nicanor, Timon and Parmenas"
+  },
   "rank": 4
  },
  "07-29": {
-  "title": "Martyr Callinicus",
+  "title": {
+   "en": "Martyr Callinicus"
+  },
   "rank": 4
  },
  "07-30": {
-  "title": "Apostles Silas and Silvanus",
+  "title": {
+   "en": "Apostles Silas and Silvanus"
+  },
   "rank": 4
  },
  "07-31": {
-  "title": "Righteous Eudocimus",
+  "title": {
+   "en": "Righteous Eudocimus"
+  },
   "rank": 4
  },
  "08-01": {
-  "title": "Procession of the Precious Cross · The Seven Maccabees",
+  "title": {
+   "en": "Procession of the Precious Cross · The Seven Maccabees"
+  },
   "rank": 4
  },
  "08-02": {
-  "title": "Translation of the relics of St. Stephen the Protomartyr",
+  "title": {
+   "en": "Translation of the relics of St. Stephen the Protomartyr"
+  },
   "rank": 4
  },
  "08-03": {
-  "title": "Ss. Isaac, Dalmatus and Faustus",
+  "title": {
+   "en": "Ss. Isaac, Dalmatus and Faustus"
+  },
   "rank": 4
  },
  "08-04": {
-  "title": "The Seven Youths of Ephesus",
+  "title": {
+   "en": "The Seven Youths of Ephesus"
+  },
   "rank": 4
  },
  "08-05": {
-  "title": "Forefeast of the Transfiguration",
+  "title": {
+   "en": "Forefeast of the Transfiguration"
+  },
   "rank": 4
  },
  "08-06": {
-  "title": "The Transfiguration of the Lord",
+  "title": {
+   "en": "The Transfiguration of the Lord",
+   "el": "Ἡ Μεταμόρφωσις τοῦ Σωτῆρος",
+   "ru": "Преображение Господне"
+  },
   "rank": 2,
-  "greek": "Μεταμόρφωσις",
   "color": "gold"
  },
  "08-07": {
-  "title": "Martyr Dometius",
+  "title": {
+   "en": "Martyr Dometius"
+  },
   "rank": 4
  },
  "08-08": {
-  "title": "St. Emilian the Confessor",
+  "title": {
+   "en": "St. Emilian the Confessor"
+  },
   "rank": 4
  },
  "08-09": {
-  "title": "Apostle Matthias",
+  "title": {
+   "en": "Apostle Matthias"
+  },
   "rank": 4
  },
  "08-10": {
-  "title": "Martyr Laurence the Archdeacon",
+  "title": {
+   "en": "Martyr Laurence the Archdeacon"
+  },
   "rank": 4
  },
  "08-11": {
-  "title": "Martyr Euplus",
+  "title": {
+   "en": "Martyr Euplus"
+  },
   "rank": 4
  },
  "08-12": {
-  "title": "Martyrs Photius and Anicetus",
+  "title": {
+   "en": "Martyrs Photius and Anicetus"
+  },
   "rank": 4
  },
  "08-13": {
-  "title": "Leavetaking of the Transfiguration · St. Maximus",
+  "title": {
+   "en": "Leavetaking of the Transfiguration · St. Maximus"
+  },
   "rank": 4
  },
  "08-14": {
-  "title": "Forefeast of the Dormition · Prophet Micah",
+  "title": {
+   "en": "Forefeast of the Dormition · Prophet Micah"
+  },
   "rank": 4
  },
  "08-15": {
-  "title": "The Dormition of the Theotokos",
+  "title": {
+   "en": "The Dormition of the Theotokos",
+   "el": "Ἡ Κοίμησις τῆς Θεοτόκου",
+   "ru": "Успение Пресвятой Богородицы"
+  },
   "rank": 2,
-  "greek": "Ἡ Κοίμησις τῆς Θεοτόκου",
   "color": "lapis",
   "patronal": true
  },
  "08-16": {
-  "title": "Translation of the Holy Napkin of Edessa",
+  "title": {
+   "en": "Translation of the Holy Napkin of Edessa"
+  },
   "rank": 4
  },
  "08-17": {
-  "title": "Martyr Myron",
+  "title": {
+   "en": "Martyr Myron"
+  },
   "rank": 4
  },
  "08-18": {
-  "title": "Martyrs Florus and Laurus",
+  "title": {
+   "en": "Martyrs Florus and Laurus"
+  },
   "rank": 4
  },
  "08-19": {
-  "title": "Martyr Andrew the General",
+  "title": {
+   "en": "Martyr Andrew the General"
+  },
   "rank": 4
  },
  "08-20": {
-  "title": "Prophet Samuel",
+  "title": {
+   "en": "Prophet Samuel"
+  },
   "rank": 4
  },
  "08-21": {
-  "title": "Apostle Thaddaeus",
+  "title": {
+   "en": "Apostle Thaddaeus"
+  },
   "rank": 4
  },
  "08-22": {
-  "title": "Martyr Agathonicus",
+  "title": {
+   "en": "Martyr Agathonicus"
+  },
   "rank": 4
  },
  "08-23": {
-  "title": "Leavetaking of the Dormition",
+  "title": {
+   "en": "Leavetaking of the Dormition"
+  },
   "rank": 4
  },
  "08-24": {
-  "title": "Hieromartyr Eutyches",
+  "title": {
+   "en": "Hieromartyr Eutyches"
+  },
   "rank": 4
  },
  "08-25": {
-  "title": "Apostle Titus · Return of the relics of Apostle Bartholomew",
+  "title": {
+   "en": "Apostle Titus · Return of the relics of Apostle Bartholomew"
+  },
   "rank": 4
  },
  "08-26": {
-  "title": "Martyrs Adrian and Natalia",
+  "title": {
+   "en": "Martyrs Adrian and Natalia"
+  },
   "rank": 4
  },
  "08-27": {
-  "title": "St. Poemen the Great",
+  "title": {
+   "en": "St. Poemen the Great"
+  },
   "rank": 4
  },
  "08-28": {
-  "title": "St. Moses the Ethiopian",
+  "title": {
+   "en": "St. Moses the Ethiopian"
+  },
   "rank": 4
  },
  "08-29": {
-  "title": "The Beheading of St. John the Forerunner",
+  "title": {
+   "en": "The Beheading of St. John the Forerunner",
+   "el": "Ἡ Ἀποτομὴ τοῦ Προδρόμου",
+   "ru": "Усекновение главы Иоанна Предтечи"
+  },
   "rank": 3,
-  "greek": "Ἀποτομὴ Προδρόμου",
   "color": "cinnabar"
  },
  "08-30": {
-  "title": "Ss. Alexander, John and Paul of Constantinople",
+  "title": {
+   "en": "Ss. Alexander, John and Paul of Constantinople"
+  },
   "rank": 4
  },
  "08-31": {
-  "title": "Deposition of the Sash of the Theotokos",
+  "title": {
+   "en": "Deposition of the Sash of the Theotokos"
+  },
   "rank": 4,
   "color": "lapis"
  },
  "09-01": {
-  "title": "The Ecclesiastical New Year · St. Symeon the Stylite",
-  "rank": 4,
-  "greek": "Ἀρχὴ τῆς Ἰνδίκτου"
+  "title": {
+   "en": "The Ecclesiastical New Year · St. Symeon the Stylite",
+   "el": "Ἀρχὴ τῆς Ἰνδίκτου",
+   "ru": "Начало индикта · церковное новолетие"
+  },
+  "rank": 4
  },
  "09-02": {
-  "title": "Martyr Mamas · St. John the Faster",
+  "title": {
+   "en": "Martyr Mamas · St. John the Faster"
+  },
   "rank": 4
  },
  "09-03": {
-  "title": "Hieromartyr Anthimus of Nicomedia",
+  "title": {
+   "en": "Hieromartyr Anthimus of Nicomedia"
+  },
   "rank": 4
  },
  "09-04": {
-  "title": "Hieromartyr Babylas · Prophet Moses",
+  "title": {
+   "en": "Hieromartyr Babylas · Prophet Moses"
+  },
   "rank": 4
  },
  "09-05": {
-  "title": "Prophet Zachariah, father of the Forerunner",
+  "title": {
+   "en": "Prophet Zachariah, father of the Forerunner"
+  },
   "rank": 4
  },
  "09-06": {
-  "title": "The Miracle of the Archangel Michael at Colossae",
+  "title": {
+   "en": "The Miracle of the Archangel Michael at Colossae"
+  },
   "rank": 4
  },
  "09-07": {
-  "title": "Forefeast of the Nativity of the Theotokos · Martyr Sozon",
+  "title": {
+   "en": "Forefeast of the Nativity of the Theotokos · Martyr Sozon"
+  },
   "rank": 4
  },
  "09-08": {
-  "title": "The Nativity of the Theotokos",
+  "title": {
+   "en": "The Nativity of the Theotokos",
+   "el": "Τὸ Γενέθλιον τῆς Θεοτόκου",
+   "ru": "Рождество Пресвятой Богородицы"
+  },
   "rank": 2,
-  "greek": "Γενέθλιον τῆς Θεοτόκου",
   "color": "lapis"
  },
  "09-09": {
-  "title": "Ss. Joachim and Anna",
+  "title": {
+   "en": "Ss. Joachim and Anna",
+   "el": "Ἰωακεὶμ καὶ Ἄννης",
+   "ru": "Праведных Иоакима и Анны"
+  },
   "rank": 4
  },
  "09-10": {
-  "title": "Martyrs Menodora, Metrodora and Nymphodora",
+  "title": {
+   "en": "Martyrs Menodora, Metrodora and Nymphodora"
+  },
   "rank": 4
  },
  "09-11": {
-  "title": "St. Theodora of Alexandria",
+  "title": {
+   "en": "St. Theodora of Alexandria"
+  },
   "rank": 4
  },
  "09-12": {
-  "title": "Leavetaking of the Nativity of the Theotokos",
+  "title": {
+   "en": "Leavetaking of the Nativity of the Theotokos"
+  },
   "rank": 4
  },
  "09-13": {
-  "title": "Forefeast of the Elevation · Hieromartyr Cornelius",
+  "title": {
+   "en": "Forefeast of the Elevation · Hieromartyr Cornelius"
+  },
   "rank": 4
  },
  "09-14": {
-  "title": "The Universal Elevation of the Precious Cross",
+  "title": {
+   "en": "The Universal Elevation of the Precious Cross",
+   "el": "Ἡ Ὕψωσις τοῦ Τιμίου Σταυροῦ",
+   "ru": "Воздвижение Креста Господня"
+  },
   "rank": 2,
-  "greek": "Ὕψωσις τοῦ Σταυροῦ",
   "color": "cinnabar"
  },
  "09-15": {
-  "title": "Great Martyr Nicetas",
+  "title": {
+   "en": "Great Martyr Nicetas"
+  },
   "rank": 4
  },
  "09-16": {
-  "title": "Great Martyr Euphemia",
+  "title": {
+   "en": "Great Martyr Euphemia"
+  },
   "rank": 4
  },
  "09-17": {
-  "title": "Martyrs Sophia, Faith, Hope and Love",
+  "title": {
+   "en": "Martyrs Sophia, Faith, Hope and Love"
+  },
   "rank": 4
  },
  "09-18": {
-  "title": "St. Eumenius of Gortyna",
+  "title": {
+   "en": "St. Eumenius of Gortyna"
+  },
   "rank": 4
  },
  "09-19": {
-  "title": "Martyrs Trophimus, Sabbatius and Dorymedon",
+  "title": {
+   "en": "Martyrs Trophimus, Sabbatius and Dorymedon"
+  },
   "rank": 4
  },
  "09-20": {
-  "title": "Great Martyr Eustathius and his companions",
+  "title": {
+   "en": "Great Martyr Eustathius and his companions"
+  },
   "rank": 4
  },
  "09-21": {
-  "title": "Leavetaking of the Elevation · Apostle Quadratus",
+  "title": {
+   "en": "Leavetaking of the Elevation · Apostle Quadratus"
+  },
   "rank": 4
  },
  "09-22": {
-  "title": "Hieromartyr Phocas of Sinope",
+  "title": {
+   "en": "Hieromartyr Phocas of Sinope"
+  },
   "rank": 4
  },
  "09-23": {
-  "title": "The Conception of St. John the Forerunner",
+  "title": {
+   "en": "The Conception of St. John the Forerunner"
+  },
   "rank": 4
  },
  "09-24": {
-  "title": "Protomartyr and Equal to the Apostles Thekla",
+  "title": {
+   "en": "Protomartyr and Equal to the Apostles Thekla"
+  },
   "rank": 4
  },
  "09-25": {
-  "title": "St. Euphrosyne of Alexandria",
+  "title": {
+   "en": "St. Euphrosyne of Alexandria"
+  },
   "rank": 4
  },
  "09-26": {
-  "title": "The Repose of St. John the Theologian",
+  "title": {
+   "en": "The Repose of St. John the Theologian",
+   "el": "Ἡ Μετάστασις Ἰωάννου τοῦ Θεολόγου",
+   "ru": "Преставление ап. Иоанна Богослова"
+  },
   "rank": 3,
   "color": "gold"
  },
  "09-27": {
-  "title": "Martyr Callistratus",
+  "title": {
+   "en": "Martyr Callistratus"
+  },
   "rank": 4
  },
  "09-28": {
-  "title": "St. Chariton the Confessor",
+  "title": {
+   "en": "St. Chariton the Confessor"
+  },
   "rank": 4
  },
  "09-29": {
-  "title": "St. Cyriacus the Hermit",
+  "title": {
+   "en": "St. Cyriacus the Hermit"
+  },
   "rank": 4
  },
  "09-30": {
-  "title": "Hieromartyr Gregory of Armenia",
+  "title": {
+   "en": "Hieromartyr Gregory of Armenia"
+  },
   "rank": 4
  },
  "10-01": {
-  "title": "St. Romanos the Melodist · Apostle Ananias",
+  "title": {
+   "en": "St. Romanos the Melodist · Apostle Ananias"
+  },
   "rank": 4,
   "c": true
  },
  "10-02": {
-  "title": "Hieromartyr Cyprian · Martyr Justina",
+  "title": {
+   "en": "Hieromartyr Cyprian · Martyr Justina"
+  },
   "rank": 4
  },
  "10-03": {
-  "title": "Hieromartyr Dionysius the Areopagite",
+  "title": {
+   "en": "Hieromartyr Dionysius the Areopagite"
+  },
   "rank": 3
  },
  "10-04": {
-  "title": "Hieromartyr Hierotheus of Athens",
+  "title": {
+   "en": "Hieromartyr Hierotheus of Athens"
+  },
   "rank": 4
  },
  "10-05": {
-  "title": "Martyr Charitina",
+  "title": {
+   "en": "Martyr Charitina"
+  },
   "rank": 4
  },
  "10-06": {
-  "title": "Apostle Thomas",
+  "title": {
+   "en": "Apostle Thomas"
+  },
   "rank": 3
  },
  "10-07": {
-  "title": "Martyrs Sergius and Bacchus",
+  "title": {
+   "en": "Martyrs Sergius and Bacchus"
+  },
   "rank": 4
  },
  "10-08": {
-  "title": "St. Pelagia",
+  "title": {
+   "en": "St. Pelagia"
+  },
   "rank": 4
  },
  "10-09": {
-  "title": "Apostle James, son of Alphaeus",
+  "title": {
+   "en": "Apostle James, son of Alphaeus"
+  },
   "rank": 4
  },
  "10-10": {
-  "title": "Martyrs Eulampius and Eulampia",
+  "title": {
+   "en": "Martyrs Eulampius and Eulampia"
+  },
   "rank": 4
  },
  "10-11": {
-  "title": "Apostle Philip the Deacon",
+  "title": {
+   "en": "Apostle Philip the Deacon"
+  },
   "rank": 4
  },
  "10-12": {
-  "title": "Martyrs Probus, Tarachus and Andronicus",
+  "title": {
+   "en": "Martyrs Probus, Tarachus and Andronicus"
+  },
   "rank": 4
  },
  "10-13": {
-  "title": "Martyrs Carpus and Papylus",
+  "title": {
+   "en": "Martyrs Carpus and Papylus"
+  },
   "rank": 4
  },
  "10-14": {
-  "title": "St. Parascheva of Epivates",
+  "title": {
+   "en": "St. Parascheva of Epivates"
+  },
   "rank": 4
  },
  "10-15": {
-  "title": "Hieromartyr Lucian of Antioch",
+  "title": {
+   "en": "Hieromartyr Lucian of Antioch"
+  },
   "rank": 4
  },
  "10-16": {
-  "title": "Martyr Longinus the Centurion",
+  "title": {
+   "en": "Martyr Longinus the Centurion"
+  },
   "rank": 4
  },
  "10-17": {
-  "title": "Prophet Hosea",
+  "title": {
+   "en": "Prophet Hosea"
+  },
   "rank": 4
  },
  "10-18": {
-  "title": "Apostle and Evangelist Luke",
+  "title": {
+   "en": "Apostle and Evangelist Luke",
+   "el": "Λουκᾶ τοῦ Εὐαγγελιστοῦ",
+   "ru": "Апостола и евангелиста Луки"
+  },
   "rank": 3
  },
  "10-19": {
-  "title": "Prophet Joel · St. John of Kronstadt",
+  "title": {
+   "en": "Prophet Joel · St. John of Kronstadt"
+  },
   "rank": 4
  },
  "10-20": {
-  "title": "Great Martyr Artemius · St. Gerasimos of Kephalonia",
+  "title": {
+   "en": "Great Martyr Artemius · St. Gerasimos of Kephalonia"
+  },
   "rank": 3
  },
  "10-21": {
-  "title": "St. Hilarion the Great",
+  "title": {
+   "en": "St. Hilarion the Great"
+  },
   "rank": 4
  },
  "10-22": {
-  "title": "St. Abercius of Hierapolis",
+  "title": {
+   "en": "St. Abercius of Hierapolis"
+  },
   "rank": 4
  },
  "10-23": {
-  "title": "Apostle James, the Brother of the Lord",
+  "title": {
+   "en": "Apostle James, the Brother of the Lord"
+  },
   "rank": 3
  },
  "10-24": {
-  "title": "Martyr Arethas and his companions",
+  "title": {
+   "en": "Martyr Arethas and his companions"
+  },
   "rank": 4
  },
  "10-25": {
-  "title": "Martyrs Marcian and Martyrius",
+  "title": {
+   "en": "Martyrs Marcian and Martyrius"
+  },
   "rank": 4
  },
  "10-26": {
-  "title": "St. Demetrios the Myrrh-Streamer",
+  "title": {
+   "en": "St. Demetrios the Myrrh-Streamer",
+   "el": "Ἁγίου Δημητρίου τοῦ Μυροβλύτου",
+   "ru": "Вмч. Димитрия Солунского"
+  },
   "rank": 3,
-  "greek": "Ἁγίου Δημητρίου",
   "color": "cinnabar"
  },
  "10-27": {
-  "title": "Martyr Nestor of Thessalonica",
+  "title": {
+   "en": "Martyr Nestor of Thessalonica"
+  },
   "rank": 4
  },
  "10-28": {
-  "title": "The Holy Protection of the Theotokos",
+  "title": {
+   "en": "The Holy Protection of the Theotokos",
+   "el": "Ἡ Ἁγία Σκέπη τῆς Θεοτόκου",
+   "ru": "Покров Пресвятой Богородицы"
+  },
   "rank": 3,
-  "greek": "Ἁγία Σκέπη",
   "color": "lapis",
   "c": true
  },
  "10-29": {
-  "title": "Martyr Anastasia the Roman",
+  "title": {
+   "en": "Martyr Anastasia the Roman"
+  },
   "rank": 4
  },
  "10-30": {
-  "title": "Martyrs Zenobius and Zenobia",
+  "title": {
+   "en": "Martyrs Zenobius and Zenobia"
+  },
   "rank": 4
  },
  "10-31": {
-  "title": "Apostles Stachys, Apellas and companions",
+  "title": {
+   "en": "Apostles Stachys, Apellas and companions"
+  },
   "rank": 4
  },
  "11-01": {
-  "title": "Ss. Cosmas and Damian the Unmercenaries of Asia",
+  "title": {
+   "en": "Ss. Cosmas and Damian the Unmercenaries of Asia"
+  },
   "rank": 4
  },
  "11-02": {
-  "title": "Martyrs Acindynus, Pegasius and companions",
+  "title": {
+   "en": "Martyrs Acindynus, Pegasius and companions"
+  },
   "rank": 4
  },
  "11-03": {
-  "title": "Dedication of the Church of St. George at Lydda",
+  "title": {
+   "en": "Dedication of the Church of St. George at Lydda"
+  },
   "rank": 4
  },
  "11-04": {
-  "title": "St. Joannicius the Great",
+  "title": {
+   "en": "St. Joannicius the Great"
+  },
   "rank": 4
  },
  "11-05": {
-  "title": "Martyrs Galacteon and Episteme",
+  "title": {
+   "en": "Martyrs Galacteon and Episteme"
+  },
   "rank": 4
  },
  "11-06": {
-  "title": "St. Paul the Confessor of Constantinople",
+  "title": {
+   "en": "St. Paul the Confessor of Constantinople"
+  },
   "rank": 4
  },
  "11-07": {
-  "title": "The Thirty-three Martyrs of Melitene",
+  "title": {
+   "en": "The Thirty-three Martyrs of Melitene"
+  },
   "rank": 4
  },
  "11-08": {
-  "title": "Synaxis of the Archangels Michael and Gabriel",
-  "rank": 3,
-  "greek": "Τῶν Ταξιαρχῶν"
+  "title": {
+   "en": "Synaxis of the Archangels Michael and Gabriel",
+   "el": "Σύναξις τῶν Ἀρχαγγέλων",
+   "ru": "Собор Архистратига Михаила"
+  },
+  "rank": 3
  },
  "11-09": {
-  "title": "St. Nectarios of Aegina",
-  "rank": 3,
-  "greek": "Ἁγίου Νεκταρίου"
+  "title": {
+   "en": "St. Nectarios of Aegina",
+   "el": "Ἁγίου Νεκταρίου Αἰγίνης",
+   "ru": "Свт. Нектария Эгинского"
+  },
+  "rank": 3
  },
  "11-10": {
-  "title": "Apostles Erastus, Olympas and Rodion",
+  "title": {
+   "en": "Apostles Erastus, Olympas and Rodion"
+  },
   "rank": 4
  },
  "11-11": {
-  "title": "Great Martyr Menas · St. Theodore the Studite",
+  "title": {
+   "en": "Great Martyr Menas · St. Theodore the Studite"
+  },
   "rank": 4,
   "color": "cinnabar"
  },
  "11-12": {
-  "title": "St. John the Merciful · St. Nilus",
+  "title": {
+   "en": "St. John the Merciful · St. Nilus"
+  },
   "rank": 4
  },
  "11-13": {
-  "title": "St. John Chrysostom",
-  "rank": 3,
-  "greek": "Ἰωάννου τοῦ Χρυσοστόμου"
+  "title": {
+   "en": "St. John Chrysostom",
+   "el": "Ἰωάννου τοῦ Χρυσοστόμου",
+   "ru": "Свт. Иоанна Златоуста"
+  },
+  "rank": 3
  },
  "11-14": {
-  "title": "Apostle Philip",
+  "title": {
+   "en": "Apostle Philip"
+  },
   "rank": 4
  },
  "11-15": {
-  "title": "Martyrs Gurias, Samonas and Abibus",
+  "title": {
+   "en": "Martyrs Gurias, Samonas and Abibus"
+  },
   "rank": 4
  },
  "11-16": {
-  "title": "Apostle and Evangelist Matthew",
+  "title": {
+   "en": "Apostle and Evangelist Matthew",
+   "el": "Ματθαίου τοῦ Εὐαγγελιστοῦ",
+   "ru": "Апостола и евангелиста Матфея"
+  },
   "rank": 3
  },
  "11-17": {
-  "title": "St. Gregory the Wonderworker",
+  "title": {
+   "en": "St. Gregory the Wonderworker"
+  },
   "rank": 4
  },
  "11-18": {
-  "title": "Martyr Plato",
+  "title": {
+   "en": "Martyr Plato"
+  },
   "rank": 4
  },
  "11-19": {
-  "title": "Prophet Obadiah",
+  "title": {
+   "en": "Prophet Obadiah"
+  },
   "rank": 4
  },
  "11-20": {
-  "title": "Forefeast of the Entrance · St. Gregory of Decapolis",
+  "title": {
+   "en": "Forefeast of the Entrance · St. Gregory of Decapolis"
+  },
   "rank": 4
  },
  "11-21": {
-  "title": "The Entrance of the Theotokos into the Temple",
+  "title": {
+   "en": "The Entrance of the Theotokos into the Temple",
+   "el": "Τὰ Εἰσόδια τῆς Θεοτόκου",
+   "ru": "Введение во храм Пресвятой Богородицы"
+  },
   "rank": 2,
-  "greek": "Τὰ Εἰσόδια",
   "color": "lapis"
  },
  "11-22": {
-  "title": "St. Iakovos of Evia · Apostle Philemon",
+  "title": {
+   "en": "St. Iakovos of Evia · Apostle Philemon",
+   "el": "Ἁγίου Ἰακώβου"
+  },
   "rank": 4,
-  "greek": "Ἁγίου Ἰακώβου",
   "c": true
  },
  "11-23": {
-  "title": "St. Amphilochius of Iconium",
+  "title": {
+   "en": "St. Amphilochius of Iconium"
+  },
   "rank": 4
  },
  "11-24": {
-  "title": "Hieromartyr Clement of Rome",
+  "title": {
+   "en": "Hieromartyr Clement of Rome"
+  },
   "rank": 4
  },
  "11-25": {
-  "title": "Great Martyr Catherine · Great Martyr Mercurius",
+  "title": {
+   "en": "Great Martyr Catherine · Great Martyr Mercurius",
+   "el": "Ἁγίας Αἰκατερίνης",
+   "ru": "Вмц. Екатерины"
+  },
   "rank": 3,
-  "greek": "Ἁγίας Αἰκατερίνης",
   "color": "cinnabar",
   "c": true
  },
  "11-26": {
-  "title": "St. Alypius the Stylite",
+  "title": {
+   "en": "St. Alypius the Stylite"
+  },
   "rank": 4
  },
  "11-27": {
-  "title": "Great Martyr James the Persian",
+  "title": {
+   "en": "Great Martyr James the Persian"
+  },
   "rank": 4
  },
  "11-28": {
-  "title": "St. Stephen the New",
+  "title": {
+   "en": "St. Stephen the New"
+  },
   "rank": 4
  },
  "11-29": {
-  "title": "Martyr Paramonus",
+  "title": {
+   "en": "Martyr Paramonus"
+  },
   "rank": 4
  },
  "11-30": {
-  "title": "Apostle Andrew the First-Called",
-  "rank": 3,
-  "greek": "Ἀνδρέου τοῦ Πρωτοκλήτου"
+  "title": {
+   "en": "Apostle Andrew the First-Called",
+   "el": "Ἀνδρέου τοῦ Πρωτοκλήτου",
+   "ru": "Апостола Андрея Первозванного"
+  },
+  "rank": 3
  },
  "12-01": {
-  "title": "Prophet Nahum · St. Philaret the Merciful",
+  "title": {
+   "en": "Prophet Nahum · St. Philaret the Merciful"
+  },
   "rank": 4
  },
  "12-02": {
-  "title": "St. Porphyrios of Kafsokalyvia · Prophet Habakkuk",
+  "title": {
+   "en": "St. Porphyrios of Kafsokalyvia · Prophet Habakkuk",
+   "el": "Ἁγίου Πορφυρίου"
+  },
   "rank": 3,
-  "greek": "Ἁγίου Πορφυρίου",
   "c": true
  },
  "12-03": {
-  "title": "Prophet Zephaniah",
+  "title": {
+   "en": "Prophet Zephaniah"
+  },
   "rank": 4
  },
  "12-04": {
-  "title": "Great Martyr Barbara · St. John of Damascus",
+  "title": {
+   "en": "Great Martyr Barbara · St. John of Damascus",
+   "el": "Ἁγίας Βαρβάρας",
+   "ru": "Вмц. Варвары"
+  },
   "rank": 3,
-  "greek": "Ἁγίας Βαρβάρας",
   "color": "cinnabar"
  },
  "12-05": {
-  "title": "St. Savvas the Sanctified",
+  "title": {
+   "en": "St. Savvas the Sanctified",
+   "el": "Ἁγίου Σάββα τοῦ Ἡγιασμένου",
+   "ru": "Прп. Саввы Освященного"
+  },
   "rank": 3
  },
  "12-06": {
-  "title": "St. Nicholas of Myra",
-  "rank": 3,
-  "greek": "Ἁγίου Νικολάου"
+  "title": {
+   "en": "St. Nicholas of Myra",
+   "el": "Ἁγίου Νικολάου Μύρων",
+   "ru": "Свт. Николая Чудотворца"
+  },
+  "rank": 3
  },
  "12-07": {
-  "title": "St. Ambrose of Milan",
+  "title": {
+   "en": "St. Ambrose of Milan"
+  },
   "rank": 4
  },
  "12-08": {
-  "title": "St. Patapios",
+  "title": {
+   "en": "St. Patapios"
+  },
   "rank": 4
  },
  "12-09": {
-  "title": "The Conception of the Theotokos by St. Anna",
+  "title": {
+   "en": "The Conception of the Theotokos by St. Anna"
+  },
   "rank": 4,
   "color": "lapis"
  },
  "12-10": {
-  "title": "Martyrs Menas, Hermogenes and Eugraphus",
+  "title": {
+   "en": "Martyrs Menas, Hermogenes and Eugraphus"
+  },
   "rank": 4
  },
  "12-11": {
-  "title": "St. Daniel the Stylite",
+  "title": {
+   "en": "St. Daniel the Stylite"
+  },
   "rank": 4
  },
  "12-12": {
-  "title": "St. Spyridon of Trimythous",
-  "rank": 3,
-  "greek": "Ἁγίου Σπυρίδωνος"
+  "title": {
+   "en": "St. Spyridon of Trimythous",
+   "el": "Ἁγίου Σπυρίδωνος",
+   "ru": "Свт. Спиридона Тримифунтского"
+  },
+  "rank": 3
  },
  "12-13": {
-  "title": "Martyrs Eustratius, Auxentius and companions · St. Lucy",
+  "title": {
+   "en": "Martyrs Eustratius, Auxentius and companions · St. Lucy"
+  },
   "rank": 4
  },
  "12-14": {
-  "title": "Martyrs Thyrsus, Leucius and Callinicus",
+  "title": {
+   "en": "Martyrs Thyrsus, Leucius and Callinicus"
+  },
   "rank": 4
  },
  "12-15": {
-  "title": "Hieromartyr Eleutherius",
+  "title": {
+   "en": "Hieromartyr Eleutherius"
+  },
   "rank": 4
  },
  "12-16": {
-  "title": "Prophet Haggai",
+  "title": {
+   "en": "Prophet Haggai"
+  },
   "rank": 4
  },
  "12-17": {
-  "title": "Prophet Daniel and the Three Holy Youths",
+  "title": {
+   "en": "Prophet Daniel and the Three Holy Youths"
+  },
   "rank": 4
  },
  "12-18": {
-  "title": "Martyr Sebastian and his companions",
+  "title": {
+   "en": "Martyr Sebastian and his companions"
+  },
   "rank": 4
  },
  "12-19": {
-  "title": "Martyr Boniface",
+  "title": {
+   "en": "Martyr Boniface"
+  },
   "rank": 4
  },
  "12-20": {
-  "title": "Forefeast of the Nativity · Hieromartyr Ignatius the God-bearer",
+  "title": {
+   "en": "Forefeast of the Nativity · Hieromartyr Ignatius the God-bearer"
+  },
   "rank": 4
  },
  "12-21": {
-  "title": "Martyr Juliana",
+  "title": {
+   "en": "Martyr Juliana"
+  },
   "rank": 4
  },
  "12-22": {
-  "title": "Great Martyr Anastasia the Deliverer from Potions",
+  "title": {
+   "en": "Great Martyr Anastasia the Deliverer from Potions"
+  },
   "rank": 4,
   "color": "cinnabar"
  },
  "12-23": {
-  "title": "The Ten Martyrs of Crete",
+  "title": {
+   "en": "The Ten Martyrs of Crete"
+  },
   "rank": 4
  },
  "12-24": {
-  "title": "Eve of the Nativity · Martyr Eugenia",
+  "title": {
+   "en": "Eve of the Nativity · Martyr Eugenia"
+  },
   "rank": 3
  },
  "12-25": {
-  "title": "The Nativity of Christ",
+  "title": {
+   "en": "The Nativity of Christ",
+   "el": "Ἡ Γέννησις τοῦ Χριστοῦ",
+   "ru": "Рождество Христово"
+  },
   "rank": 2,
-  "greek": "Χριστούγεννα",
   "color": "gold"
  },
  "12-26": {
-  "title": "Synaxis of the Theotokos",
+  "title": {
+   "en": "Synaxis of the Theotokos",
+   "el": "Ἡ Σύναξις τῆς Θεοτόκου",
+   "ru": "Собор Пресвятой Богородицы"
+  },
   "rank": 3
  },
  "12-27": {
-  "title": "St. Stephen the Protomartyr",
+  "title": {
+   "en": "St. Stephen the Protomartyr",
+   "el": "Στεφάνου τοῦ Πρωτομάρτυρος",
+   "ru": "Первомч. архидиакона Стефана"
+  },
   "rank": 3
  },
  "12-28": {
-  "title": "The Twenty Thousand Martyrs of Nicomedia",
+  "title": {
+   "en": "The Twenty Thousand Martyrs of Nicomedia"
+  },
   "rank": 4
  },
  "12-29": {
-  "title": "The Holy Innocents of Bethlehem",
+  "title": {
+   "en": "The Holy Innocents of Bethlehem"
+  },
   "rank": 4
  },
  "12-30": {
-  "title": "Martyr Anysia",
+  "title": {
+   "en": "Martyr Anysia"
+  },
   "rank": 4
  },
  "12-31": {
-  "title": "Leavetaking of the Nativity · St. Melania",
+  "title": {
+   "en": "Leavetaking of the Nativity · St. Melania"
+  },
   "rank": 4
  }
 }

@@ -31,7 +31,8 @@ class TestDocuments(unittest.TestCase):
         for doc_id, doc in catalogue().items():
             for b in doc["blocks"]:
                 if b["type"] in ("para", "refrain", "dismissal"):
-                    self.assertTrue(b.get("en"), f"{doc_id}: {b['type']} with no text")
+                    self.assertTrue(b.get("text", {}).get("en"),
+                                    f"{doc_id}: {b['type']} with no English")
 
     def test_the_seven_documents_are_present(self):
         self.assertEqual(
@@ -47,7 +48,7 @@ class TestAssembler(unittest.TestCase):
     def test_include_is_expanded_inline(self):
         """The Trisagion is authored once and spliced into six documents."""
         built = assemble("morning", self.day)
-        texts = [b.get("en", "") for b in built["blocks"]]
+        texts = [b.get("text", {}).get("en", "") for b in built["blocks"]]
         self.assertTrue(any("Holy God, Holy Mighty" in t for t in texts))
         self.assertNotIn("include", [b["type"] for b in built["blocks"]])
 
@@ -145,3 +146,45 @@ class TestPsalmNumbering(unittest.TestCase):
 
     def test_missing_edition_returns_none(self):
         self.assertIsNone(passage("Ps 50", edition="kjv", numbering="lxx"))
+
+
+class TestPrayerTranslations(unittest.TestCase):
+    """The invariable prayers — the ones said aloud from memory — must carry
+    all three languages. These are what a Greek yiayia and a Russian babushka
+    each open the app expecting to find."""
+
+    CORE = [
+        "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
+        "Lord, have mercy.",
+        "Glory to Thee, our God, glory to Thee.",
+    ]
+
+    def test_core_texts_are_complete_in_all_three(self):
+        from liturgics.i18n import missing_languages
+        found = {}
+        for doc in catalogue().values():
+            for b in doc["blocks"]:
+                t = b.get("text") or {}
+                if t.get("en") in self.CORE:
+                    found[t["en"]] = missing_languages(t)
+        for line in self.CORE:
+            self.assertIn(line, found, f"not found in any document: {line}")
+            self.assertEqual(found[line], [], f"incomplete: {line}")
+
+    def test_the_lords_prayer_is_complete(self):
+        from liturgics.i18n import missing_languages
+        blocks = load("trisagion")["blocks"]
+        pater = next(b for b in blocks
+                     if b.get("text", {}).get("en", "").startswith("Our Father"))
+        self.assertEqual(missing_languages(pater["text"]), [])
+        self.assertIn("Отче наш", pater["text"]["ru"])
+        self.assertIn("Πάτερ ἡμῶν", pater["text"]["el"])
+
+    def test_no_block_is_slavonic_only_or_greek_only(self):
+        """English is the working language of the repo; every block must have
+        it so a gap in another language is always diffable against something."""
+        for doc_id, doc in catalogue().items():
+            for i, b in enumerate(doc["blocks"]):
+                t = b.get("text")
+                if t:
+                    self.assertIn("en", t, f"{doc_id} block {i} has no English")

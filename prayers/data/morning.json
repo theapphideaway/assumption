@@ -8,7 +8,9 @@
  "blocks": [
   {
    "type": "rubric",
-   "text": "Rising from sleep, stand before your icons and collect yourself a moment before beginning."
+   "text": {
+    "en": "Rising from sleep, stand before your icons and collect yourself a moment before beginning."
+   }
   },
   {
    "type": "include",
@@ -16,65 +18,114 @@
   },
   {
    "type": "heading",
-   "text": "The Morning Troparia"
+   "text": {
+    "en": "The Morning Troparia",
+    "el": "Τροπάρια Ὀρθρινά",
+    "ru": "Тропари утренние"
+   }
   },
   {
    "type": "para",
-   "en": "Having risen from sleep, we fall down before Thee, O Good One, and sing to Thee, O Mighty One, the angelic hymn: Holy, Holy, Holy art Thou, O God; through the Theotokos have mercy on us."
+   "text": {
+    "en": "Having risen from sleep, we fall down before Thee, O Good One, and sing to Thee, O Mighty One, the angelic hymn: Holy, Holy, Holy art Thou, O God; through the Theotokos have mercy on us."
+   }
   },
   {
    "type": "rubric",
-   "text": "Glory..."
+   "text": {
+    "en": "Glory...",
+    "el": "Δόξα...",
+    "ru": "Слава:"
+   }
   },
   {
    "type": "para",
-   "en": "Having raised me from my bed and from sleep, O Lord, enlighten my mind and my heart, and open my lips that I may praise Thee, O Holy Trinity: Holy, Holy, Holy art Thou, O God; through the Theotokos have mercy on us."
+   "text": {
+    "en": "Having raised me from my bed and from sleep, O Lord, enlighten my mind and my heart, and open my lips that I may praise Thee, O Holy Trinity: Holy, Holy, Holy art Thou, O God; through the Theotokos have mercy on us."
+   }
   },
   {
    "type": "rubric",
-   "text": "Both now..."
+   "text": {
+    "en": "Both now...",
+    "el": "Καὶ νῦν...",
+    "ru": "И ныне:"
+   }
   },
   {
    "type": "para",
-   "en": "Suddenly the Judge shall come, and the deeds of each shall be revealed; but with fear we cry out in the middle of the night: Holy, Holy, Holy art Thou, O God; through the Theotokos have mercy on us."
+   "text": {
+    "en": "Suddenly the Judge shall come, and the deeds of each shall be revealed; but with fear we cry out in the middle of the night: Holy, Holy, Holy art Thou, O God; through the Theotokos have mercy on us."
+   }
   },
   {
    "type": "refrain",
    "times": 12,
-   "en": "Lord, have mercy."
+   "text": {
+    "en": "Lord, have mercy.",
+    "el": "Κύριε, ἐλέησον.",
+    "ru": "Господи, помилуй."
+   }
   },
   {
    "type": "heading",
-   "text": "Prayer of Thanksgiving"
+   "text": {
+    "en": "Prayer of Thanksgiving",
+    "el": "Εὐχὴ Εὐχαριστίας",
+    "ru": "Молитва благодарственная"
+   }
   },
   {
    "type": "para",
-   "en": "Having risen from sleep, I thank Thee, O Holy Trinity, for through Thy great goodness and long-suffering Thou wast not angered with me, an idler and a sinner, nor hast Thou destroyed me in my transgressions; but Thou hast shown Thy usual love for mankind, and hast raised me up as I lay in heedlessness, that I might rise early and glorify Thy power."
+   "text": {
+    "en": "Having risen from sleep, I thank Thee, O Holy Trinity, for through Thy great goodness and long-suffering Thou wast not angered with me, an idler and a sinner, nor hast Thou destroyed me in my transgressions; but Thou hast shown Thy usual love for mankind, and hast raised me up as I lay in heedlessness, that I might rise early and glorify Thy power.",
+    "ru": "От сна востав, благодарю Тя, Святая Троице, яко многия ради Твоея благости и долготерпения не прогневался еси на мя, лениваго и грешнаго, ниже погубил мя еси со беззаконьми моими; но человеколюбствовал еси обычно, и в нечаянии лежащаго воздвигл мя еси, во еже утреневати и славословити державу Твою."
+   }
   },
   {
    "type": "heading",
-   "text": "The Prayer of St. Basil the Great"
+   "text": {
+    "en": "The Prayer of St. Basil the Great",
+    "el": "Εὐχὴ Μεγάλου Βασιλείου",
+    "ru": "Молитва свт. Василия Великого"
+   }
   },
   {
    "type": "para",
-   "en": "O Lord Almighty, God of the powers and of all flesh, who dwellest on high and lookest down on things that are lowly: Thou knowest the hearts and the reins, and Thou clearly foreknowest the secrets of men. O Beginningless and Everlasting Light, in whom is no change nor shadow of turning: receive our morning prayers, and forgive us our sins, both voluntary and involuntary."
+   "text": {
+    "en": "O Lord Almighty, God of the powers and of all flesh, who dwellest on high and lookest down on things that are lowly: Thou knowest the hearts and the reins, and Thou clearly foreknowest the secrets of men. O Beginningless and Everlasting Light, in whom is no change nor shadow of turning: receive our morning prayers, and forgive us our sins, both voluntary and involuntary."
+   }
   },
   {
    "type": "heading",
-   "text": "The Prayer of St. Macarius the Great"
+   "text": {
+    "en": "The Prayer of St. Macarius the Great",
+    "el": "Εὐχὴ Ἁγίου Μακαρίου",
+    "ru": "Молитва прп. Макария Великого"
+   }
   },
   {
    "type": "para",
-   "en": "O God, cleanse me a sinner, for I have never done anything good in Thy sight; but deliver me from the evil one, and let Thy will be done in me, that I may open my unworthy mouth without condemnation and praise Thy holy name, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages. Amen."
+   "text": {
+    "en": "O God, cleanse me a sinner, for I have never done anything good in Thy sight; but deliver me from the evil one, and let Thy will be done in me, that I may open my unworthy mouth without condemnation and praise Thy holy name, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages. Amen.",
+    "el": "Ὁ Θεός, ἱλάσθητί μοι τῷ ἁμαρτωλῷ.",
+    "ru": "Боже, очисти мя грешнаго, яко николиже сотворих благое пред Тобою; но избави мя от лукаваго, и да будет во мне воля Твоя, да неосужденно отверзу уста моя недостойная и восхвалю имя Твое святое, Отца и Сына и Святаго Духа, ныне и присно и во веки веков. Аминь."
+   }
   },
   {
    "type": "heading",
-   "text": "The Symbol of Faith"
+   "text": {
+    "en": "The Symbol of Faith",
+    "el": "Τὸ Σύμβολον τῆς Πίστεως",
+    "ru": "Символ веры"
+   }
   },
   {
    "type": "para",
-   "en": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible. And in one Lord Jesus Christ, the only-begotten Son of God, begotten of the Father before all ages; Light of Light, true God of true God, begotten, not made, of one essence with the Father, by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and was crucified for us under Pontius Pilate, and suffered and was buried; and rose again on the third day according to the Scriptures; and ascended into heaven, and sitteth at the right hand of the Father; and shall come again with glory to judge the living and the dead, whose kingdom shall have no end. And in the Holy Spirit, the Lord, the Giver of Life, who proceedeth from the Father, who together with the Father and the Son is worshipped and glorified, who spake by the prophets. In one holy, catholic and apostolic Church. I confess one baptism for the remission of sins. I look for the resurrection of the dead, and the life of the age to come. Amen.",
-   "el": "Πιστεύω εἰς ἕνα Θεόν, Πατέρα, Παντοκράτορα, ποιητὴν οὐρανοῦ καὶ γῆς, ὁρατῶν τε πάντων καὶ ἀοράτων."
+   "text": {
+    "en": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible. And in one Lord Jesus Christ, the only-begotten Son of God, begotten of the Father before all ages; Light of Light, true God of true God, begotten, not made, of one essence with the Father, by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and was crucified for us under Pontius Pilate, and suffered and was buried; and rose again on the third day according to the Scriptures; and ascended into heaven, and sitteth at the right hand of the Father; and shall come again with glory to judge the living and the dead, whose kingdom shall have no end. And in the Holy Spirit, the Lord, the Giver of Life, who proceedeth from the Father, who together with the Father and the Son is worshipped and glorified, who spake by the prophets. In one holy, catholic and apostolic Church. I confess one baptism for the remission of sins. I look for the resurrection of the dead, and the life of the age to come. Amen.",
+    "el": "Πιστεύω εἰς ἕνα Θεόν, Πατέρα, Παντοκράτορα, ποιητὴν οὐρανοῦ καὶ γῆς, ὁρατῶν τε πάντων καὶ ἀοράτων."
+   }
   },
   {
    "type": "proper",
@@ -82,40 +133,68 @@
   },
   {
    "type": "heading",
-   "text": "Prayer to the Guardian Angel"
+   "text": {
+    "en": "Prayer to the Guardian Angel",
+    "el": "Εὐχὴ εἰς τὸν Φύλακα Ἄγγελον",
+    "ru": "Молитва Ангелу хранителю"
+   }
   },
   {
    "type": "para",
-   "en": "O holy angel, attendant upon my wretched soul and my afflicted life: forsake me not, a sinner, neither depart from me for my incontinence. Give no place to the evil demon to subdue me by the oppression of this mortal body; but take me by my wretched and outstretched hand, and lead me in the way of salvation."
+   "text": {
+    "en": "O holy angel, attendant upon my wretched soul and my afflicted life: forsake me not, a sinner, neither depart from me for my incontinence. Give no place to the evil demon to subdue me by the oppression of this mortal body; but take me by my wretched and outstretched hand, and lead me in the way of salvation."
+   }
   },
   {
    "type": "heading",
-   "text": "The Commemoration"
+   "text": {
+    "en": "The Commemoration",
+    "el": "Μνημόνευσις",
+    "ru": "Поминовение"
+   }
   },
   {
    "type": "rubric",
-   "text": "Remember here those you have been asked to pray for, and any you have wronged."
+   "text": {
+    "en": "Remember here those you have been asked to pray for, and any you have wronged."
+   }
   },
   {
    "type": "para",
-   "en": "O Lord, save and have mercy on my spiritual father, my parents, my family, and all Orthodox Christians. Remember, O Lord, the souls of Thy departed servants, and forgive them every sin, voluntary and involuntary, and grant them the Kingdom and a portion in Thine eternal good things."
+   "text": {
+    "en": "O Lord, save and have mercy on my spiritual father, my parents, my family, and all Orthodox Christians. Remember, O Lord, the souls of Thy departed servants, and forgive them every sin, voluntary and involuntary, and grant them the Kingdom and a portion in Thine eternal good things."
+   }
   },
   {
    "type": "silence"
   },
   {
    "type": "heading",
-   "text": "The Dismissal"
+   "text": {
+    "en": "The Dismissal",
+    "el": "Ἀπόλυσις",
+    "ru": "Отпуст"
+   }
   },
   {
    "type": "para",
-   "en": "It is truly meet to bless thee, O Theotokos, ever-blessed and most pure, and the Mother of our God. More honourable than the Cherubim, and beyond compare more glorious than the Seraphim: without corruption thou gavest birth to God the Word. True Theotokos, we magnify thee.",
-   "el": "Ἄξιόν ἐστιν ὡς ἀληθῶς μακαρίζειν σε τὴν Θεοτόκον, τὴν ἀειμακάριστον καὶ παναμώμητον καὶ μητέρα τοῦ Θεοῦ ἡμῶν."
+   "text": {
+    "en": "It is truly meet to bless thee, O Theotokos, ever-blessed and most pure, and the Mother of our God. More honourable than the Cherubim, and beyond compare more glorious than the Seraphim: without corruption thou gavest birth to God the Word. True Theotokos, we magnify thee.",
+    "el": "Ἄξιόν ἐστιν ὡς ἀληθῶς μακαρίζειν σε τὴν Θεοτόκον, τὴν ἀειμακάριστον καὶ παναμώμητον καὶ μητέρα τοῦ Θεοῦ ἡμῶν.",
+    "ru": "Достойно есть яко воистинну блажити Тя, Богородицу, Присноблаженную и Пренепорочную и Матерь Бога нашего. Честнейшую Херувим и славнейшую без сравнения Серафим, без истления Бога Слова рождшую, сущую Богородицу Тя величаем."
+   }
   },
   {
    "type": "dismissal",
-   "en": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us and save us. Amen.",
-   "el": "Δι' εὐχῶν τῶν ἁγίων Πατέρων ἡμῶν, Κύριε Ἰησοῦ Χριστὲ ὁ Θεός, ἐλέησον καὶ σῶσον ἡμᾶς. Ἀμήν."
+   "text": {
+    "en": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us and save us. Amen.",
+    "el": "Δι' εὐχῶν τῶν ἁγίων Πατέρων ἡμῶν, Κύριε Ἰησοῦ Χριστὲ ὁ Θεός, ἐλέησον καὶ σῶσον ἡμᾶς. Ἀμήν.",
+    "ru": "Молитвами святых отец наших, Господи Иисусе Христе, Боже наш, помилуй нас. Аминь."
+   }
   }
- ]
+ ],
+ "title_text": {
+  "en": "Morning Prayers",
+  "el": "Πρωϊναὶ Προσευχαί"
+ }
 }
