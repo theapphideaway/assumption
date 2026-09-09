@@ -1,0 +1,85 @@
+"""
+Day resolution: the one object the clients render.
+
+Assembles the movable cycle, the fixed Menaion and the fast resolver into a
+single dict. Parish overrides (Father's edits, service times, the patronal
+feast) are layered on top of this by the Django layer — this module stays
+pure so it can be tested without a database.
+"""
+
+from __future__ import annotations
+
+import json
+from datetime import date, timedelta
+from functools import lru_cache
+from pathlib import Path
+
+from .fasting import resolve_fast
+from .movable import eothinon_for, movable_day, season_for, tone_for
+from .paschalion import gregorian_to_julian, reference_pascha
+
+__all__ = ["resolve_day", "resolve_range", "menaion"]
+
+_DATA = Path(__file__).parent / "data" / "menaion.json"
+
+
+@lru_cache(maxsize=1)
+def menaion() -> dict:
+    raw = json.loads(_DATA.read_text(encoding="utf-8"))
+    return {k: v for k, v in raw.items() if not k.startswith("_")}
+
+
+def resolve_day(d: date) -> dict:
+    """Fully resolve one civil date into the object the API serves."""
+    pascha_date, offset = reference_pascha(d)
+    season = season_for(offset)
+
+    fixed = menaion().get(f"{d.month:02d}-{d.day:02d}")
+    moving = movable_day(offset)
+
+    # The higher-ranked commemoration supplies the day's title; the other is
+    # still listed. Movable wins ties — Pascha outranks anything fixed.
+    commemorations = []
+    if moving:
+        commemorations.append({"title": moving[0], "rank": moving[1],
+                               "greek": moving[2], "kind": "movable"})
+    if fixed:
+        commemorations.append({"title": fixed["title"], "rank": fixed["rank"],
+                               "greek": fixed.get("greek", ""), "kind": "fixed",
+                               "patronal": fixed.get("patronal", False)})
+    commemorations.sort(key=lambda c: c["rank"])
+
+    rank = commemorations[0]["rank"] if commemorations else 6
+    title = commemorations[0]["title"] if commemorations else season.label
+    color = season.color
+    if commemorations and commemorations[0]["kind"] == "fixed":
+        color = (fixed or {}).get("color", color)
+
+    jy, jm, jd = gregorian_to_julian(d)
+    fast = resolve_fast(d, offset, rank=rank)
+
+    return {
+        "date": d.isoformat(),
+        "julian": f"{jy:04d}-{jm:02d}-{jd:02d}",
+        "pascha": pascha_date.isoformat(),
+        "pascha_offset": offset,
+        "season": {"key": season.key, "label": season.label,
+                   "greek": season.greek, "color": color},
+        "title": title,
+        "rank": rank,
+        "tone": tone_for(d),
+        "eothinon": eothinon_for(d),
+        "fast": {"level": fast.level, "label": fast.label,
+                 "reason": fast.reason, "is_fast": fast.is_fast},
+        "commemorations": commemorations,
+        "patronal": any(c.get("patronal") for c in commemorations),
+        # filled by the Django layer:
+        "readings": None,
+        "icon": None,
+        "parish": {"services": [], "note": None},
+    }
+
+
+def resolve_range(start: date, days: int) -> list[dict]:
+    """Resolve a window of days — the clients cache roughly +/-400."""
+    return [resolve_day(start + timedelta(days=i)) for i in range(days)]
