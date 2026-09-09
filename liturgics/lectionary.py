@@ -175,30 +175,39 @@ def course_for(d: date, offset: int) -> dict | None:
     return {"gospel": "LUK", "week": week, "day": d.weekday()}
 
 
-def no_liturgy(offset: int, weekday: int) -> bool:
-    """Weekdays of Great Lent have no Liturgy, so no Gospel is appointed.
-
-    Monday to Friday from Clean Monday to the Friday before Lazarus Saturday.
-    The Presanctified Liturgy served on some of those days has Old Testament
-    readings at Vespers, not a Gospel. A blank here is not missing data — it is
-    the correct answer, and the app should say so rather than show an empty card.
-    """
+def lenten_weekday(offset: int, weekday: int) -> bool:
+    """Monday to Friday of Great Lent, when the full Liturgy is not served."""
     return -48 <= offset <= -9 and weekday < 5
 
 
 def readings_detail(d: date, offset: int) -> dict:
-    """Readings for a day, or an explicit reason there are none.
+    """Readings for a day, or an explicit reason we cannot supply them.
 
-    The app needs to tell "no Gospel is appointed today" apart from "we have
-    not sourced this day yet". One is a fact about the calendar; the other is a
-    gap in our data, and showing them the same way would be misleading.
+    EVERY day of the year has appointed readings. What changes is WHICH
+    services carry them. Outside Lent it is an Epistle and Gospel at the
+    Liturgy. On weekdays of Great Lent the full Liturgy is not served, so the
+    appointed readings are Old Testament instead — Genesis and Proverbs at
+    Vespers, Isaiah at the Sixth Hour, each read as a course through the fast.
+
+    So a Lenten weekday is not an empty day. Reporting it as "no readings"
+    would be simply wrong, and would tell a parishioner there is nothing
+    appointed when in fact there are three lessons.
     """
     got = readings_for(d, offset)
     if got:
         return {**got, "status": "appointed"}
-    if no_liturgy(offset, d.weekday()):
-        return {"status": "no_liturgy",
-                "note": "No Liturgy is appointed on weekdays of Great Lent."}
+
+    if lenten_weekday(offset, d.weekday()):
+        return {
+            "status": "unsourced",
+            "kind": "lenten_old_testament",
+            "services": ["vespers", "sixth_hour"],
+            "courses": ["GEN", "PRO", "ISA"],
+            "note": ("Weekday of Great Lent: no Gospel at Liturgy, but Genesis "
+                     "and Proverbs are appointed at Vespers and Isaiah at the "
+                     "Sixth Hour. Course tables not yet loaded."),
+        }
+
     course = course_for(d, offset)
     if course:
         table = pericopes().get(course["gospel"], {})
@@ -206,7 +215,16 @@ def readings_detail(d: date, offset: int) -> dict:
         if entry:
             return {**entry, "status": "appointed", "source": "course",
                     "course": course}
-        return {"status": "unsourced", "course": course,
+        return {"status": "unsourced", "kind": "weekday_course", "course": course,
                 "note": "Weekday course reading — pericope table not yet loaded."}
-    return {"status": "unsourced",
-            "note": "Reading not yet on file for this day."}
+
+    if 1 <= offset <= 49:
+        return {
+            "status": "unsourced", "kind": "pentecostarion_course",
+            "services": ["liturgy"], "courses": ["ACT", "JHN"],
+            "note": ("Paschal season: Acts and John are read daily. Course "
+                     "table not yet loaded."),
+        }
+
+    return {"status": "unsourced", "kind": "triodion",
+            "note": "Triodion weekday — reading not yet on file."}

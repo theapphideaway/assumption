@@ -317,17 +317,30 @@ class TestLectionaryCourse(unittest.TestCase):
             # The day before must be the Sunday that follows the Elevation.
             self.assertEqual((jump - timedelta(days=1)).weekday(), 6)
 
-    def test_lenten_weekdays_report_no_liturgy_not_a_gap(self):
-        """A blank here is the correct answer, not missing data, and the app
-        must be able to tell the two apart."""
+    def test_lenten_weekdays_still_have_appointed_readings(self):
+        """Corrects an earlier model that marked these days as having no
+        readings. The full Liturgy is not served, so there is no Gospel — but
+        Genesis and Proverbs are appointed at Vespers and Isaiah at the Sixth
+        Hour. Reporting the day as empty would be plainly wrong.
+        """
         from liturgics.lectionary import readings_detail
         p = pascha(2027)
         wednesday = p - timedelta(days=46)
         self.assertEqual(wednesday.weekday(), 2)
-        self.assertEqual(readings_detail(wednesday, -46)["status"], "no_liturgy")
-        # Saturdays and Sundays in Lent DO have a Liturgy.
-        saturday = p - timedelta(days=43)
-        self.assertNotEqual(readings_detail(saturday, -43)["status"], "no_liturgy")
+        r = readings_detail(wednesday, -46)
+        self.assertEqual(r["kind"], "lenten_old_testament")
+        self.assertEqual(r["courses"], ["GEN", "PRO", "ISA"])
+        self.assertIn("vespers", r["services"])
+
+    def test_no_day_of_the_year_claims_to_have_nothing_appointed(self):
+        """Every day has readings; the only question is whether we hold them."""
+        from liturgics.lectionary import readings_detail
+        d = date(2027, 1, 1)
+        while d.year == 2027:
+            _, off = reference_pascha(d)
+            r = readings_detail(d, off)
+            self.assertIn(r["status"], ("appointed", "unsourced"))
+            d += timedelta(days=1)
 
     def test_appointed_days_still_resolve(self):
         from liturgics.lectionary import readings_detail
@@ -348,5 +361,5 @@ class TestLectionaryCourse(unittest.TestCase):
         while d.year == 2027:
             _, off = reference_pascha(d)
             status = readings_detail(d, off)["status"]
-            self.assertIn(status, ("appointed", "no_liturgy", "unsourced"))
+            self.assertIn(status, ("appointed", "unsourced"))
             d += timedelta(days=1)

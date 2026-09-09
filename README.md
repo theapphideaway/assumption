@@ -190,13 +190,17 @@ app never renders an empty heading and we always know what is outstanding.
    Matthew course varies in length year to year. That variation is what a
    hand-built table gets wrong, and it is computed rather than guessed.
 
-   Days now report a `status`, so the app can tell a fact from a gap:
+   **Every day of the year has appointed readings.** What varies is which
+   services carry them, so days report a `status` and a `kind` and no day ever
+   claims to have nothing:
 
-   | status | meaning |
-   |---|---|
-   | `appointed` | readings on file |
-   | `no_liturgy` | weekday of Great Lent — no Gospel is appointed. Correct, not missing |
-   | `unsourced` | we do not have it yet; carries the course, week and weekday |
+   | kind | 2027 | what is appointed |
+   |---|---|---|
+   | *(appointed)* | 55 | on file |
+   | `weekday_course` | 224 | Epistle and Gospel, Matthew or Luke course |
+   | `lenten_old_testament` | 28 | Genesis and Proverbs at Vespers, Isaiah at the Sixth Hour — no Gospel, since the full Liturgy is not served |
+   | `pentecostarion_course` | ~50 | Acts and John, read daily in the paschal season |
+   | `triodion` | few | pre-Lenten weekdays |
 
    **Drop a table at `liturgics/data/pericopes.json` and every weekday
    resolves, no code changes.** Shape: `{"MAT": {"1": {"0": {"epistle": …,
