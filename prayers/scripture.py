@@ -115,20 +115,26 @@ def lxx_to_masoretic(psalm: int) -> tuple[int, ...]:
     return (psalm,)                   # 1-8 and 148-150 agree
 
 
-_OT_BOOKS = frozenset({
-    "gen", "genesis", "ex", "exodus", "lev", "leviticus", "num", "numbers",
-    "deut", "deuteronomy", "josh", "judg", "ruth", "kingdoms", "chron",
-    "ezra", "neh", "esther", "job", "ps", "psalm", "psalms", "prov",
-    "proverbs", "eccl", "song", "wisdom", "sirach", "isa", "isaiah", "jer",
-    "jeremiah", "lam", "ezek", "ezekiel", "dan", "daniel", "hos", "joel",
-    "amos", "obad", "jonah", "micah", "nahum", "hab", "zeph", "hag", "zech",
-    "mal", "tobit", "judith", "maccabees",
+# Old Testament, by canonical code. Codes rather than spellings: callers pass
+# both raw references ("Ps 50") and resolved codes ("PSA"), and a name-based
+# set silently missed the codes — which quietly served Masoretic psalms from
+# the WEB instead of Brenton's Septuagint, and dropped Greek psalms entirely.
+_OT_CODES = frozenset({
+    "GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "JDG", "RUT", "1SA", "2SA",
+    "1KI", "2KI", "1CH", "2CH", "EZR", "NEH", "EST", "JOB", "PSA", "PRO",
+    "ECC", "SNG", "ISA", "JER", "LAM", "EZK", "DAN", "HOS", "JOL", "AMO",
+    "OBA", "JON", "MIC", "NAM", "HAB", "ZEP", "HAG", "ZEC", "MAL",
+    # Deuterocanon and Septuagint-only books.
+    "TOB", "JDT", "WIS", "SIR", "BAR", "1MA", "2MA", "3MA", "4MA", "1ES",
+    "LJE", "SUS", "BEL", "MAN", "ODA", "PSS",
 })
 
 
 def _is_ot(ref: str) -> bool:
-    book = ref.strip().split()[0].lower() if ref.strip() else ""
-    return book.rstrip(".") in _OT_BOOKS
+    """True when a reference or code names an Old Testament book."""
+    from .books import code_for
+    code = code_for(ref.strip().split()[0] if ref.strip() else "")
+    return code in _OT_CODES
 
 
 def edition_for(lang: str, ref: str, loaded: set[str] | None = None) -> str | None:

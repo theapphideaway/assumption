@@ -17,7 +17,7 @@ from pathlib import Path
 from .fasting import resolve_fast
 from .i18n import (FAST_LABELS, LANGUAGES, SEASONS, fast_reason,
                     missing_languages)
-from .lectionary import readings_for
+from .lectionary import readings_detail
 from .movable import eothinon_for, movable_day, season_for, tone_for
 from .paschalion import gregorian_to_julian, reference_pascha
 
@@ -91,7 +91,7 @@ def resolve_day(d: date) -> dict:
         "translation_gaps": gaps,
         "commemorations": commemorations,
         "patronal": any(c.get("patronal") for c in commemorations),
-        "readings": readings_for(d, offset),
+        "readings": readings_detail(d, offset),
         # filled by the Django layer:
         "icon": None,
         "parish": {"services": [], "note": None},

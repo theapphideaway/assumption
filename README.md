@@ -37,8 +37,16 @@ never the reverse.
 ./venv/bin/python manage.py runserver
 ```
 
-Endpoints: `/api/v1/today/`, `/api/v1/day/<YYYY-MM-DD>/`,
-`/api/v1/days/?start=&days=`, `/api/v1/announcements/`, `/api/v1/prayers/`.
+Endpoints:
+
+    /api/v1/today/                       resolved day
+    /api/v1/day/<YYYY-MM-DD>/            one day
+    /api/v1/days/?start=&days=           window, up to 400 — the offline cache
+    /api/v1/prayers/?date=               the day's rule, by time-of-day slot
+    /api/v1/announcements/
+    /api/v1/scripture/books/             book list with per-book languages
+    /api/v1/scripture/<book>/<chapter>/  a chapter in every covering language
+    /api/v1/scripture/search/?q=&lang=
 
 The clients render this and compute nothing liturgical themselves. That rule is
 what keeps two native codebases from drifting apart over years.
@@ -175,11 +183,26 @@ Converting an already-Septuagint-numbered edition shifts the psalm twice.
 The API reports these in a `missing` array on every prayer response, so the
 app never renders an empty heading and we always know what is outstanding.
 
-1. **Weekday lectionary.** Sundays, Great Feasts and Holy Week are on file.
-   Ordinary weekday course readings are not — that cycle turns on the "Lucan
-   jump" and interacts with Menaion feasts in ways that cannot be
-   reconstructed from memory. This is the strongest reason to get written
-   permission from the Archdiocese or AGES for their lectionary.
+1. **Weekday lectionary — machinery done, ~77% of days still unsourced.**
+   Sundays, Great Feasts and Holy Week resolve. The course-reading engine and
+   the **Lucan jump** are implemented and tested: the course of Luke begins on
+   the Monday after the Sunday following 14 September, a fixed date, so the
+   Matthew course varies in length year to year. That variation is what a
+   hand-built table gets wrong, and it is computed rather than guessed.
+
+   Days now report a `status`, so the app can tell a fact from a gap:
+
+   | status | meaning |
+   |---|---|
+   | `appointed` | readings on file |
+   | `no_liturgy` | weekday of Great Lent — no Gospel is appointed. Correct, not missing |
+   | `unsourced` | we do not have it yet; carries the course, week and weekday |
+
+   **Drop a table at `liturgics/data/pericopes.json` and every weekday
+   resolves, no code changes.** Shape: `{"MAT": {"1": {"0": {"epistle": …,
+   "gospel": …}}}}` — gospel course, week, weekday index (0 = Monday). The
+   ~700 references are not invented here; get them from the Archdiocese or
+   AGES.
 2. **Hymn texts.** The Menaion carries commemorations, not troparia, so every
    `proper` slot currently reports missing rather than showing a placeholder.
 3. **Scripture. Nothing is bundled — not one verse.** The loader and reader

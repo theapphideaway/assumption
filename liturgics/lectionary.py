@@ -103,3 +103,110 @@ def coverage() -> dict:
     return {"movable_days": len(MOVABLE), "fixed_days": len(FIXED),
             "weekdays_covered": False,
             "gap": "Ordinary weekday course readings, including the Lucan jump."}
+
+
+# ---------------------------------------------------------------------------
+# The course-reading cycle
+# ---------------------------------------------------------------------------
+#
+# Weekday readings run as a course (lectio continua) rather than by paschal
+# offset, and the hard part is that the course of Luke does NOT key to Pascha.
+# It begins on the Monday after the Sunday following the Elevation of the Cross
+# (14 September) — a FIXED date. So the number of weeks in the Matthew course
+# varies from year to year with the date of Pascha, and that variation is the
+# whole difficulty. It is computed here rather than guessed.
+#
+# The pericope tables themselves are NOT in this repo. Filling roughly 700
+# chapter-and-verse references from memory would produce plausible-looking
+# errors in exactly the place a priest would notice them. `PERICOPES` is loaded
+# from data/pericopes.json when present; until then the engine reports the day
+# as unsourced and says so, which the app renders honestly.
+
+import json as _json
+from datetime import timedelta as _td
+from functools import lru_cache as _lru
+from pathlib import Path as _Path
+
+ELEVATION = (9, 14)
+_PERICOPES = _Path(__file__).parent / "data" / "pericopes.json"
+
+
+@_lru(maxsize=1)
+def pericopes() -> dict:
+    """The weekday course tables, when someone has supplied them.
+
+    Shape, keyed gospel -> week -> weekday index (0 = Monday):
+
+        {"MAT": {"1": {"0": {"epistle": "Rom 1:1-7",
+                             "gospel":  "Matt 4:25-5:13"}}}}
+
+    Drop a file at data/pericopes.json and every weekday resolves; no code
+    changes. Absent, the engine reports days as unsourced and says why.
+    """
+    if not _PERICOPES.exists():
+        return {}
+    return _json.loads(_PERICOPES.read_text(encoding="utf-8"))
+
+
+def lucan_jump(year: int) -> date:
+    """The Monday the course of Luke begins: after the Sunday following 14 Sept."""
+    elevation = date(year, *ELEVATION)
+    # The Sunday strictly after the Elevation.
+    days_ahead = (6 - elevation.weekday()) % 7 or 7
+    sunday_after = elevation + _td(days=days_ahead)
+    return sunday_after + _td(days=1)
+
+
+def course_for(d: date, offset: int) -> dict | None:
+    """Which Gospel course a date falls in, and how far into it.
+
+    Returns None inside the Triodion and Pentecostarion, which have their own
+    appointed readings rather than a course.
+    """
+    if offset < 0 or offset <= 49:
+        return None                      # Triodion, Holy Week, Pentecostarion
+    jump = lucan_jump(d.year)
+    if d < jump:
+        start = None                     # Matthew course, from the Monday after
+        pentecost = d - _td(days=offset - 50)
+        week = ((d - pentecost).days // 7) + 1
+        return {"gospel": "MAT", "week": week, "day": d.weekday()}
+    week = ((d - jump).days // 7) + 1
+    return {"gospel": "LUK", "week": week, "day": d.weekday()}
+
+
+def no_liturgy(offset: int, weekday: int) -> bool:
+    """Weekdays of Great Lent have no Liturgy, so no Gospel is appointed.
+
+    Monday to Friday from Clean Monday to the Friday before Lazarus Saturday.
+    The Presanctified Liturgy served on some of those days has Old Testament
+    readings at Vespers, not a Gospel. A blank here is not missing data — it is
+    the correct answer, and the app should say so rather than show an empty card.
+    """
+    return -48 <= offset <= -9 and weekday < 5
+
+
+def readings_detail(d: date, offset: int) -> dict:
+    """Readings for a day, or an explicit reason there are none.
+
+    The app needs to tell "no Gospel is appointed today" apart from "we have
+    not sourced this day yet". One is a fact about the calendar; the other is a
+    gap in our data, and showing them the same way would be misleading.
+    """
+    got = readings_for(d, offset)
+    if got:
+        return {**got, "status": "appointed"}
+    if no_liturgy(offset, d.weekday()):
+        return {"status": "no_liturgy",
+                "note": "No Liturgy is appointed on weekdays of Great Lent."}
+    course = course_for(d, offset)
+    if course:
+        table = pericopes().get(course["gospel"], {})
+        entry = table.get(str(course["week"]), {}).get(str(course["day"]))
+        if entry:
+            return {**entry, "status": "appointed", "source": "course",
+                    "course": course}
+        return {"status": "unsourced", "course": course,
+                "note": "Weekday course reading — pericope table not yet loaded."}
+    return {"status": "unsourced",
+            "note": "Reading not yet on file for this day."}

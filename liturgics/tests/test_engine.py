@@ -294,3 +294,59 @@ class TestTrilingual(unittest.TestCase):
     def test_response_declares_its_languages(self):
         self.assertEqual(resolve_day(date(2027, 1, 1))["languages"],
                          ["en", "el", "ru"])
+
+
+class TestLectionaryCourse(unittest.TestCase):
+    """The Lucan jump is the hard part of the weekday lectionary.
+
+    It does NOT key to Pascha: the course of Luke begins on the Monday after
+    the Sunday following the Elevation of the Cross, a fixed date. So the
+    Matthew course varies in length year to year, and that variation is exactly
+    what a hand-built table gets wrong.
+    """
+
+    def test_lucan_jump_is_always_the_right_monday(self):
+        from datetime import date as _d
+        from liturgics.lectionary import ELEVATION, lucan_jump
+        for year in range(2025, 2041):
+            jump = lucan_jump(year)
+            self.assertEqual(jump.weekday(), 0, f"{year}: not a Monday")
+            elevation = _d(year, *ELEVATION)
+            self.assertGreater(jump, elevation)
+            self.assertLessEqual((jump - elevation).days, 8)
+            # The day before must be the Sunday that follows the Elevation.
+            self.assertEqual((jump - timedelta(days=1)).weekday(), 6)
+
+    def test_lenten_weekdays_report_no_liturgy_not_a_gap(self):
+        """A blank here is the correct answer, not missing data, and the app
+        must be able to tell the two apart."""
+        from liturgics.lectionary import readings_detail
+        p = pascha(2027)
+        wednesday = p - timedelta(days=46)
+        self.assertEqual(wednesday.weekday(), 2)
+        self.assertEqual(readings_detail(wednesday, -46)["status"], "no_liturgy")
+        # Saturdays and Sundays in Lent DO have a Liturgy.
+        saturday = p - timedelta(days=43)
+        self.assertNotEqual(readings_detail(saturday, -43)["status"], "no_liturgy")
+
+    def test_appointed_days_still_resolve(self):
+        from liturgics.lectionary import readings_detail
+        p = pascha(2027)
+        r = readings_detail(p, 0)
+        self.assertEqual(r["status"], "appointed")
+        self.assertEqual(r["gospel"], "John 1:1-17")
+
+    def test_course_is_none_inside_the_pentecostarion(self):
+        from liturgics.lectionary import course_for
+        p = pascha(2027)
+        for off in (0, 20, 49):
+            self.assertIsNone(course_for(p + timedelta(days=off), off))
+
+    def test_every_day_of_a_year_reports_a_status(self):
+        from liturgics.lectionary import readings_detail
+        d = date(2027, 1, 1)
+        while d.year == 2027:
+            _, off = reference_pascha(d)
+            status = readings_detail(d, off)["status"]
+            self.assertIn(status, ("appointed", "no_liturgy", "unsourced"))
+            d += timedelta(days=1)
