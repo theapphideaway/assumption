@@ -1,6 +1,6 @@
 # Assumption GOC — parish server
 
-Django backend for the Assumption Greek Orthodox Church app. Serves the
+Django backend for the Assumption Greek Orthodox Church app, Pocatello, Idaho. Serves the
 liturgical calendar, parish information and announcements to the iOS client,
 and will host Father's panel.
 
@@ -50,9 +50,21 @@ Grep for `NEEDS_CONFIRMATION`. Current list:
   Pentecostarion have their own appointed Matins Gospels.
 - **Tone during Lent and on Pentecost** — several Sundays have proper hymnody
   rather than the plain cycle value.
-- **`PARISH_TZ`** in settings — every service time depends on it.
-- **`data/menaion.json` is incomplete.** The Great Feasts and notable Greek
-  commemorations are in; the full ~365-day Menaion is authoring work.
+- ~~`PARISH_TZ`~~ — settled: `America/Boise` (Pocatello, Idaho). Mountain time.
+  Not `America/Denver`; northern Idaho is Pacific, so the zone name matters.
+- **`data/menaion.json` covers all 366 days but is UNVERIFIED.** It was
+  authored from general knowledge, not transcribed from a published GOARCH
+  calendar. The Great Feasts and well-known commemorations are reliable; the
+  long tail of minor martyrs is where errors will be. Seven entries are
+  flagged for review first — Greek/Slavic divergences (Holy Protection on
+  28 October rather than 1 October, St. Catherine on the 25th) and recently
+  glorified Greek saints (Paisios, Porphyrios, Iakovos of Evia).
+
+  ```bash
+  ./venv/bin/python manage.py menaion_review           # the 7 flagged
+  ./venv/bin/python manage.py menaion_review --all     # full-year checklist
+  ./venv/bin/python manage.py menaion_review --month 8
+  ```
 
 ## SQLite now, Postgres later
 

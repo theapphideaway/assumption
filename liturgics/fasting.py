@@ -21,7 +21,7 @@ Precedence, strongest first:
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 
 __all__ = ["FastLevel", "Fast", "resolve_fast"]
 
@@ -134,8 +134,16 @@ def resolve_fast(d: date, offset: int, rank: int | None = None) -> Fast:
                         "Great Lent — Saturday and Sunday")
         return Fast(FastLevel.STRICT, LABELS[FastLevel.STRICT], "Great Lent")
 
-    # 4 — Apostles' Fast (variable length; can be very short) ------------
-    if offset >= APOSTLES_FAST_BEGINS and _md(d) <= APOSTLES_FAST_END:
+    # 4 — Apostles' Fast ------------------------------------------------
+    # Genuinely variable: it runs from the Monday after All Saints to 28 June,
+    # so a late Pascha shortens it to days, and a very late one to nothing at
+    # all. Both endpoints must be real dates — testing the month/day against
+    # 28 June alone would match every January and February too, because those
+    # dates also sit past offset 57 in the previous paschal cycle.
+    pascha_date = d - timedelta(days=offset)
+    fast_start = pascha_date + timedelta(days=APOSTLES_FAST_BEGINS)
+    fast_end = date(fast_start.year, *APOSTLES_FAST_END)
+    if fast_start <= d <= fast_end:
         # NEEDS_CONFIRMATION: GOARCH practice on fish days differs from Slavic.
         if dow in (WEDNESDAY, FRIDAY):
             return Fast(FastLevel.STRICT, LABELS[FastLevel.STRICT],

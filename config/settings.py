@@ -127,9 +127,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-# Parish local time. CONFIRM with Father before deploying - every service
-# time and every 'is it morning yet' decision depends on it.
-TIME_ZONE = os.environ.get('PARISH_TZ', 'America/Chicago')
+# Parish local time: Assumption GOC, Pocatello, Idaho.
+#
+# America/Boise, NOT America/Denver. The offsets are identical today, but Boise
+# is the canonical zone for southern Idaho and says so in the name. Note that
+# Idaho is genuinely split: the northern panhandle is Pacific. Anyone reaching
+# for a "just use Mountain" shortcut later should see this comment first.
+#
+# Every service time and every time-of-day prayer-card decision depends on it.
+TIME_ZONE = os.environ.get("PARISH_TZ", "America/Boise")
 
 USE_I18N = True
 

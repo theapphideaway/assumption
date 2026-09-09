@@ -8,7 +8,7 @@ functions of the paschal offset.
 """
 
 import unittest
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 from liturgics.fasting import FastLevel, resolve_fast
 from liturgics.movable import movable_day, season_for, tone_for
@@ -166,3 +166,89 @@ class TestResolver(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class TestParishSettings(unittest.TestCase):
+    """Pins the parish timezone.
+
+    Idaho straddles two zones — Pocatello is Mountain, the northern panhandle
+    is Pacific. A well-meaning "simplify this to America/Denver" edit would
+    pass every other test in this file, so it gets one of its own.
+    """
+
+    def test_timezone_is_boise(self):
+        from zoneinfo import ZoneInfo
+        from django.conf import settings
+        self.assertEqual(settings.TIME_ZONE, "America/Boise")
+        jan = date(2026, 1, 15)
+        tz = ZoneInfo(settings.TIME_ZONE)
+        self.assertEqual(
+            datetime(jan.year, jan.month, jan.day, 12, tzinfo=tz).tzname(), "MST")
+
+
+class TestMenaionCoverage(unittest.TestCase):
+    """Every day of the year must resolve to something.
+
+    A sparse Today screen — a season and a fast and nothing else — is what
+    makes an app look unfinished on the one Tuesday somebody actually opens it.
+    """
+
+    def test_all_366_days_present(self):
+        import calendar as _cal
+        from liturgics.resolver import menaion
+        data = menaion()
+        expected = {f"{m:02d}-{d:02d}" for m in range(1, 13)
+                    for d in range(1, _cal.monthrange(2024, m)[1] + 1)}
+        self.assertEqual(expected - set(data), set(), "days with no commemoration")
+        self.assertEqual(len(data), 366)
+
+    def test_every_day_of_a_year_has_a_title(self):
+        d = date(2027, 1, 1)
+        while d.year == 2027:
+            self.assertTrue(resolve_day(d)["title"], f"no title for {d}")
+            d += timedelta(days=1)
+
+    def test_leap_day_resolves(self):
+        self.assertIn("Cassian", resolve_day(date(2028, 2, 29))["title"])
+
+    def test_patronal_feast_survived_the_merge(self):
+        from liturgics.resolver import menaion
+        self.assertTrue(menaion()["08-15"]["patronal"])
+        self.assertEqual(menaion()["08-15"]["color"], "lapis")
+
+
+class TestApostlesFastWindow(unittest.TestCase):
+    """The Apostles' Fast is the only fast whose length varies year to year,
+    and the only one that can vanish entirely. It is also where a month/day
+    comparison quietly swallows January and February, so it gets its own case.
+    """
+
+    def _fast(self, d):
+        _, off = reference_pascha(d)
+        return resolve_fast(d, off)
+
+    def test_february_is_not_the_apostles_fast(self):
+        """Regression: offset 303 is past 57, and (2, 9) sorts before (6, 28),
+        so a naive month/day test made every February a fish day."""
+        f = self._fast(date(2027, 2, 9))
+        self.assertEqual(f.level, FastLevel.FAST_FREE)
+        self.assertNotIn("Apostles", f.reason)
+
+    def test_june_inside_the_window_is_the_fast(self):
+        f = self._fast(date(2026, 6, 16))       # Pascha 12 Apr, fast opens 8 Jun
+        self.assertEqual(f.level, FastLevel.FISH)
+        self.assertIn("Apostles", f.reason)
+        self.assertEqual(self._fast(date(2026, 6, 17)).level, FastLevel.STRICT)
+
+    def test_late_pascha_shortens_the_fast_to_almost_nothing(self):
+        p = pascha(2027)                         # 2 May — very late
+        self.assertEqual(p + timedelta(days=57), date(2027, 6, 28))
+        self.assertIn("Apostles", self._fast(date(2027, 6, 28)).reason)
+        self.assertNotIn("Apostles", self._fast(date(2027, 6, 27)).reason)
+
+    def test_window_never_leaks_outside_june_or_july(self):
+        for year in (2025, 2026, 2027, 2028, 2029, 2030):
+            for month in (1, 2, 3, 10, 11):
+                d = date(year, month, 15)
+                self.assertNotIn("Apostles", self._fast(d).reason,
+                                 f"{d} wrongly inside the Apostles' Fast")
