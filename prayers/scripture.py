@@ -53,7 +53,11 @@ from pathlib import Path
 
 _DATA = Path(__file__).parent / "data" / "scripture"
 
-_REF = re.compile(r"^\s*((?:[1-3]\s+)?[A-Za-z]+)\s+(\d+)(?::([\d,\s\-]+))?\s*$")
+# The verse spec must admit a colon: a lectionary range can cross a chapter
+# boundary ("1 Corinthians 10:28-11:7"), and a spec class without ":" fails the
+# whole anchored match, silently returning nothing for every such reading.
+_REF = re.compile(
+    r"^\s*((?:[1-4]\s+)?[A-Za-z]+)\s+(\d+)(?::([\d,\s\-:]+))?\s*$")
 
 # One Bible edition per language. The Bible is the Bible — prayer books are a
 # separate domain and never read from here.
@@ -163,37 +167,105 @@ def _book(edition: str, book: str) -> dict | None:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def passage(ref: str, edition: str = "kjv", numbering: str = "masoretic"):
-    """Return verse blocks for a reference, or None if unavailable.
+# "3[1] Kings" is Septuagint Kingdoms numbering with the modern equivalent in
+# brackets: 3 Kingdoms is 1 Kings. Take the bracketed number, which is
+# unambiguous, rather than guessing which convention the bare numeral follows.
+_BRACKET = re.compile(r"\b(\d)\s*\[(\d)\]\s*")
+# Vespers on a Great Feast stitches several passages together; orthocal
+# labels these "Composite N - <refs>". The label is not part of the
+# reference.
+_COMPOSITE = re.compile(r"^Composite\s+\d+\s*-\s*")
 
-    Returning None rather than raising is deliberate: the assembler reports the
-    gap and the app renders nothing, instead of showing an empty heading or a
-    placeholder that looks like scripture but is not.
+
+def _normalise_ref(ref: str) -> str:
+    return _BRACKET.sub(r"\2 ", _COMPOSITE.sub("", ref)).strip()
+
+
+def _parse(ref: str):
+    """Split a reference into a book and one or more (chapter, verse) spans.
+
+    Handles the forms the lectionary actually uses, including ranges that CROSS
+    a chapter boundary — "1 Corinthians 10:28-11:7". Epistles do this
+    constantly, and a single-chapter parser silently returns nothing for them.
     """
     m = _REF.match(ref)
     if not m:
-        return None
-    book, chapter, verses = m.group(1), int(m.group(2)), m.group(3)
+        return None, []
+    book, chapter, spec = m.group(1).strip(), int(m.group(2)), m.group(3)
+    if not spec:
+        return book, [((chapter, None), (chapter, None))]
 
-    convert = (numbering == "lxx" and book.lower().startswith("ps")
-               and edition not in LXX_NATIVE)
-    chapters = lxx_to_masoretic(chapter) if convert else (chapter,)
+    spans = []
+    for part in spec.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        if "-" in part:
+            a, b = part.split("-", 1)
+            try:
+                start = (chapter, int(a.strip()))
+                if ":" in b:
+                    ec, ev = b.split(":", 1)
+                    end = (int(ec), int(ev))
+                else:
+                    end = (chapter, int(b.strip()))
+            except ValueError:
+                continue
+            spans.append((start, end))
+        else:
+            try:
+                v = int(part)
+            except ValueError:
+                continue
+            spans.append(((chapter, v), (chapter, v)))
+    return book, spans
+
+
+def passage(ref: str, edition: str = "web", numbering: str = "masoretic"):
+    """Verse blocks for a reference, or None if unavailable.
+
+    Returning None rather than raising is deliberate: the caller reports the
+    gap and the app renders nothing, instead of an empty heading or a
+    placeholder that looks like scripture but is not.
+    """
+    # A reading can join two passages with a semicolon; each half is resolved
+    # and the results concatenated in order.
+    ref = _normalise_ref(ref)
+    if ";" in ref:
+        out = []
+        for part in ref.split(";"):
+            got = passage(part.strip(), edition=edition, numbering=numbering)
+            if got:
+                out.extend(got)
+        return out or None
+
+    book, spans = _parse(ref)
+    if not book or not spans:
+        return None
 
     data = _book(edition, book)
     if not data:
         return None
 
+    convert = (numbering == "lxx" and book.lower().startswith("ps")
+               and edition not in LXX_NATIVE)
+
     out = []
-    for c in chapters:
-        ch = data.get(str(c))
-        if not ch:
-            continue
-        # A verse range only makes sense against a single chapter. Where an LXX
-        # psalm spans two KJV chapters we serve both in full rather than guess
-        # how the verse numbers should carry across the seam.
-        spec = verses if len(chapters) == 1 else None
-        out.extend({"type": "verse", "n": n, "en": ch[str(n)], "chapter": c}
-                   for n in _verse_numbers(spec, ch) if str(n) in ch)
+    for (sc, sv), (ec, ev) in spans:
+        chapters = [sc] if not convert else list(lxx_to_masoretic(sc))
+        if convert and sc == ec:
+            ec = chapters[-1]
+            sc = chapters[0]
+        for c in range(sc, ec + 1):
+            ch = data.get(str(c))
+            if not ch:
+                continue
+            lo = sv if (c == sc and sv is not None) else 1
+            hi = ev if (c == ec and ev is not None) else 10 ** 6
+            for n in sorted((int(k) for k in ch), key=int):
+                if lo <= n <= hi:
+                    out.append({"type": "verse", "n": n, "en": ch[str(n)],
+                                "chapter": c})
     return out or None
 
 
