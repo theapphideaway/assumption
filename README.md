@@ -14,6 +14,12 @@ liturgics/          the calendar engine — PURE PYTHON, no Django imports
   resolver.py       assembles one fully-resolved day
   data/menaion.json fixed-date commemorations (INCOMPLETE — see below)
   tests/            20 tests, run in ~1ms
+  lectionary.py     daily readings (Sundays and feasts only - see below)
+prayers/            prayer documents and the assembler, also pure Python
+  blocks.py         the ten block types, closed and versioned
+  assembler.py      include / proper / scripture resolution
+  scripture.py      file-backed passage store; LXX <-> Masoretic psalms
+  data/*.json       Trisagion, Morning, Evening, Compline, the three Hours
 parish/             what people decide: services, overrides, announcements
 config/             settings, urls
 ```
@@ -32,7 +38,7 @@ never the reverse.
 ```
 
 Endpoints: `/api/v1/today/`, `/api/v1/day/<YYYY-MM-DD>/`,
-`/api/v1/days/?start=&days=`, `/api/v1/announcements/`.
+`/api/v1/days/?start=&days=`, `/api/v1/announcements/`, `/api/v1/prayers/`.
 
 The clients render this and compute nothing liturgical themselves. That rule is
 what keeps two native codebases from drifting apart over years.
@@ -65,6 +71,28 @@ Grep for `NEEDS_CONFIRMATION`. Current list:
   ./venv/bin/python manage.py menaion_review --all     # full-year checklist
   ./venv/bin/python manage.py menaion_review --month 8
   ```
+
+## Content gaps
+
+The API reports these in a `missing` array on every prayer response, so the
+app never renders an empty heading and we always know what is outstanding.
+
+1. **Weekday lectionary.** Sundays, Great Feasts and Holy Week are on file.
+   Ordinary weekday course readings are not — that cycle turns on the "Lucan
+   jump" and interacts with Menaion feasts in ways that cannot be
+   reconstructed from memory. This is the strongest reason to get written
+   permission from the Archdiocese or AGES for their lectionary.
+2. **Hymn texts.** The Menaion carries commemorations, not troparia, so every
+   `proper` slot currently reports missing rather than showing a placeholder.
+3. **Scripture.** Nothing is bundled. `manage.py load_scripture <file>`
+   ingests a public-domain edition (KJV, and Brenton for the Septuagint).
+
+**Psalm numbering is a live hazard.** The Orthodox Psalter follows the
+Septuagint, which runs one behind the KJV for most of the book and disagrees
+about where several psalms divide — LXX 113 spans KJV 114 and 115; LXX 114 and
+115 both fall inside KJV 116. Every psalm citation in the prayer documents
+carries `"numbering": "lxx"` and is converted on read. Getting this wrong does
+not raise; it silently serves a different psalm than the one appointed.
 
 ## SQLite now, Postgres later
 

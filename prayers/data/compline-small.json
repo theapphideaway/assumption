@@ -1,0 +1,88 @@
+{
+ "id": "compline-small",
+ "title": "Small Compline",
+ "greek": "Μικρὸν Ἀπόδειπνον",
+ "slot": "compline",
+ "minutes": 12,
+ "abbreviated": true,
+ "provenance": "Traditional received English, in the forms in common liturgical use and long out of copyright. NOT transcribed from any modern published prayer book — those translations are copyrighted. Confirm with Father that these match what the parish actually says.",
+ "blocks": [
+  {
+   "type": "rubric",
+   "text": "This is an abbreviated Small Compline. The full order includes the Canon to the Theotokos, which is not yet on file."
+  },
+  {
+   "type": "include",
+   "doc": "trisagion"
+  },
+  {
+   "type": "scripture",
+   "ref": "Ps 50",
+   "numbering": "lxx",
+   "heading": "Psalm 50"
+  },
+  {
+   "type": "scripture",
+   "ref": "Ps 69",
+   "numbering": "lxx",
+   "heading": "Psalm 69"
+  },
+  {
+   "type": "scripture",
+   "ref": "Ps 142",
+   "numbering": "lxx",
+   "heading": "Psalm 142"
+  },
+  {
+   "type": "heading",
+   "text": "The Symbol of Faith"
+  },
+  {
+   "type": "rubric",
+   "text": "Said as at Morning Prayers."
+  },
+  {
+   "type": "para",
+   "en": "It is truly meet to bless thee, O Theotokos, ever-blessed and most pure, and the Mother of our God. More honourable than the Cherubim, and beyond compare more glorious than the Seraphim: without corruption thou gavest birth to God the Word. True Theotokos, we magnify thee."
+  },
+  {
+   "type": "refrain",
+   "times": 40,
+   "en": "Lord, have mercy.",
+   "el": "Κύριε, ἐλέησον."
+  },
+  {
+   "type": "heading",
+   "text": "The Prayer of the Hours"
+  },
+  {
+   "type": "para",
+   "en": "O Thou who at all times and at every hour, in heaven and on earth, art worshipped and glorified, O Christ our God, who art long-suffering and plenteous in mercy and compassion; who lovest the just and showest mercy upon the sinner: do Thou Thyself, O Master, receive our prayers at this present hour, and direct our lives according to Thy commandments."
+  },
+  {
+   "type": "heading",
+   "text": "The Prayer of St. Ephraim"
+  },
+  {
+   "type": "rubric",
+   "text": "During Great Lent, with prostrations:"
+  },
+  {
+   "type": "para",
+   "en": "O Lord and Master of my life, take from me the spirit of sloth, despair, lust of power, and idle talk. But grant rather the spirit of chastity, humility, patience, and love to Thy servant. Yea, O Lord and King, grant me to see my own transgressions, and not to judge my brother, for blessed art Thou unto the ages of ages. Amen.",
+   "el": "Κύριε καὶ Δέσποτα τῆς ζωῆς μου, πνεῦμα ἀργίας, περιεργίας, φιλαρχίας καὶ ἀργολογίας μή μοι δῷς."
+  },
+  {
+   "type": "heading",
+   "text": "Prayer of Forgiveness"
+  },
+  {
+   "type": "para",
+   "en": "Forgive, remit, and pardon, O God, our offences, both voluntary and involuntary, in deed and word, in knowledge and ignorance, by day and by night, in mind and thought: forgive us all things, for Thou art good and lovest mankind."
+  },
+  {
+   "type": "dismissal",
+   "en": "Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us and save us. Amen."
+  }
+ ]
+}

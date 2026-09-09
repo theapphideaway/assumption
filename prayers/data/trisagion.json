@@ -1,0 +1,92 @@
+{
+ "id": "trisagion",
+ "title": "The Trisagion Prayers",
+ "greek": "Τρισάγιον",
+ "slot": null,
+ "minutes": 2,
+ "provenance": "Traditional received English, in the forms in common liturgical use and long out of copyright. NOT transcribed from any modern published prayer book — those translations are copyrighted. Confirm with Father that these match what the parish actually says.",
+ "blocks": [
+  {
+   "type": "para",
+   "en": "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
+   "el": "Εἰς τὸ ὄνομα τοῦ Πατρὸς καὶ τοῦ Υἱοῦ καὶ τοῦ Ἁγίου Πνεύματος. Ἀμήν."
+  },
+  {
+   "type": "para",
+   "en": "Glory to Thee, our God, glory to Thee.",
+   "el": "Δόξα σοι ὁ Θεὸς ἡμῶν, δόξα σοι."
+  },
+  {
+   "type": "para",
+   "en": "O Heavenly King, the Comforter, the Spirit of Truth, who art everywhere present and fillest all things, Treasury of good things and Giver of life: come and dwell in us, and cleanse us from every impurity, and save our souls, O Good One.",
+   "el": "Βασιλεῦ Οὐράνιε, Παράκλητε, τὸ Πνεῦμα τῆς ἀληθείας, ὁ πανταχοῦ παρὼν καὶ τὰ πάντα πληρῶν, ὁ θησαυρὸς τῶν ἀγαθῶν καὶ ζωῆς χορηγός, ἐλθὲ καὶ σκήνωσον ἐν ἡμῖν καὶ καθάρισον ἡμᾶς ἀπὸ πάσης κηλῖδος καὶ σῶσον, Ἀγαθέ, τὰς ψυχὰς ἡμῶν."
+  },
+  {
+   "type": "rubric",
+   "text": "Thrice:"
+  },
+  {
+   "type": "refrain",
+   "times": 3,
+   "en": "Holy God, Holy Mighty, Holy Immortal, have mercy on us.",
+   "el": "Ἅγιος ὁ Θεός, Ἅγιος Ἰσχυρός, Ἅγιος Ἀθάνατος, ἐλέησον ἡμᾶς."
+  },
+  {
+   "type": "para",
+   "en": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen.",
+   "el": "Δόξα Πατρὶ καὶ Υἱῷ καὶ Ἁγίῳ Πνεύματι, καὶ νῦν καὶ ἀεὶ καὶ εἰς τοὺς αἰῶνας τῶν αἰώνων. Ἀμήν."
+  },
+  {
+   "type": "para",
+   "en": "All-holy Trinity, have mercy on us. Lord, cleanse us from our sins. Master, pardon our iniquities. Holy One, visit and heal our infirmities, for Thy name's sake.",
+   "el": "Παναγία Τριάς, ἐλέησον ἡμᾶς. Κύριε, ἱλάσθητι ταῖς ἁμαρτίαις ἡμῶν. Δέσποτα, συγχώρησον τὰς ἀνομίας ἡμῖν. Ἅγιε, ἐπίσκεψαι καὶ ἴασαι τὰς ἀσθενείας ἡμῶν, ἕνεκεν τοῦ ὀνόματός σου."
+  },
+  {
+   "type": "refrain",
+   "times": 3,
+   "en": "Lord, have mercy.",
+   "el": "Κύριε, ἐλέησον."
+  },
+  {
+   "type": "para",
+   "en": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen."
+  },
+  {
+   "type": "heading",
+   "text": "The Lord's Prayer"
+  },
+  {
+   "type": "para",
+   "en": "Our Father, who art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation, but deliver us from the evil one.",
+   "el": "Πάτερ ἡμῶν ὁ ἐν τοῖς οὐρανοῖς, ἁγιασθήτω τὸ ὄνομά σου· ἐλθέτω ἡ βασιλεία σου· γενηθήτω τὸ θέλημά σου, ὡς ἐν οὐρανῷ καὶ ἐπὶ τῆς γῆς. Τὸν ἄρτον ἡμῶν τὸν ἐπιούσιον δὸς ἡμῖν σήμερον· καὶ ἄφες ἡμῖν τὰ ὀφειλήματα ἡμῶν, ὡς καὶ ἡμεῖς ἀφίεμεν τοῖς ὀφειλέταις ἡμῶν· καὶ μὴ εἰσενέγκῃς ἡμᾶς εἰς πειρασμόν, ἀλλὰ ῥῦσαι ἡμᾶς ἀπὸ τοῦ πονηροῦ."
+  },
+  {
+   "type": "rubric",
+   "text": "If a priest is present, he says: For Thine is the kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto the ages of ages."
+  },
+  {
+   "type": "para",
+   "en": "Amen."
+  },
+  {
+   "type": "refrain",
+   "times": 12,
+   "en": "Lord, have mercy.",
+   "el": "Κύριε, ἐλέησον."
+  },
+  {
+   "type": "para",
+   "en": "Glory to the Father, and to the Son, and to the Holy Spirit, both now and ever, and unto the ages of ages. Amen."
+  },
+  {
+   "type": "rubric",
+   "text": "Thrice:"
+  },
+  {
+   "type": "refrain",
+   "times": 3,
+   "en": "O come, let us worship God our King. O come, let us worship and fall down before Christ, our King and our God. O come, let us worship and fall down before Christ Himself, our King and our God.",
+   "el": "Δεῦτε προσκυνήσωμεν καὶ προσπέσωμεν τῷ Βασιλεῖ ἡμῶν Θεῷ."
+  }
+ ]
+}

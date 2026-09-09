@@ -15,6 +15,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from .fasting import resolve_fast
+from .lectionary import readings_for
 from .movable import eothinon_for, movable_day, season_for, tone_for
 from .paschalion import gregorian_to_julian, reference_pascha
 
@@ -73,8 +74,8 @@ def resolve_day(d: date) -> dict:
                  "reason": fast.reason, "is_fast": fast.is_fast},
         "commemorations": commemorations,
         "patronal": any(c.get("patronal") for c in commemorations),
+        "readings": readings_for(d, offset),
         # filled by the Django layer:
-        "readings": None,
         "icon": None,
         "parish": {"services": [], "note": None},
     }
