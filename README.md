@@ -4,6 +4,19 @@ Django backend for the Assumption Greek Orthodox Church app, Pocatello, Idaho. S
 liturgical calendar, parish information and announcements to the iOS client,
 and will host Father's panel.
 
+## The iOS client
+
+Lives in its own repository: **AssumptionGOC** (SwiftUI, MVVM-C). It renders
+what this server sends and computes nothing liturgical itself — that rule is
+what keeps a native client from drifting away from the calendar over years.
+
+Two parts of the contract the client depends on, worth not breaking casually:
+
+- Endpoints keep their **trailing slash**. Django redirects without one, and a
+  missing slash costs a round trip on every request.
+- Documents are a **flat array of typed blocks**. The server resolves includes,
+  propers and psalm text before sending, so the client is a renderer.
+
 ## Layout
 
 ```
